@@ -65,23 +65,11 @@
     video.play().catch(() => {});
   }
 
-  /* Botón pausa / reproducir: refleja el estado real del video (con "menos movimiento"
-     arranca en pausa y el botón permite reproducirlo a pedido) */
+  /* Botón pausa / reproducir (cinta de marcas y proyectos): refleja el estado real */
   const setToggle = (btn, paused, labels) => {
     btn.classList.toggle('is-paused', paused);
     btn.setAttribute('aria-label', paused ? labels[1] : labels[0]);
   };
-  const heroToggle = document.querySelector('[data-hero-toggle]');
-  if (video && heroToggle) {
-    const labels = ['Pausar video', 'Reproducir video'];
-    const syncHero = () => setToggle(heroToggle, video.paused, labels);
-    video.addEventListener('play', syncHero);
-    video.addEventListener('pause', syncHero);
-    heroToggle.addEventListener('click', () => {
-      if (video.paused) { video.preload = 'auto'; video.play().catch(() => {}); } else video.pause();
-    });
-    syncHero();
-  }
 
   /* WhatsApp flotante: oculto mientras se ve el hero (ya tiene "Cotizar") o el footer
      (ya tiene el WhatsApp a la vista). La primera vez que aparece, dos pulsos de atención. */
