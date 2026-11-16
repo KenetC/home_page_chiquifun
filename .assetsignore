@@ -1,0 +1,18 @@
+# Qué NO publica Cloudflare (wrangler deploy) desde "./".
+# Lista blanca: solo se sirven los archivos de la página.
+/*
+
+!/index.html
+!/styles.css
+!/script.js
+!/favicon.ico
+!/uploads/
+
+# Dentro de uploads/, archivos que la página no carga
+/uploads/web/manifest.json
+/uploads/web/**/*-1920.jpg
+/uploads/icons/icon-512.png
+
+.DS_Store
+Thumbs.db
+desktop.ini

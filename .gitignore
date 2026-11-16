@@ -9,6 +9,10 @@
 !/favicon.ico
 !/uploads/
 
+# Configuración de deploy (Cloudflare)
+!/wrangler.jsonc
+!/.assetsignore
+
 # Dentro de uploads/, archivos que la página no carga
 /uploads/web/manifest.json
 /uploads/web/**/*-1920.jpg
