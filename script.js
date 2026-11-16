@@ -65,12 +65,6 @@
     video.play().catch(() => {});
   }
 
-  /* Botón pausa / reproducir (cinta de marcas y proyectos): refleja el estado real */
-  const setToggle = (btn, paused, labels) => {
-    btn.classList.toggle('is-paused', paused);
-    btn.setAttribute('aria-label', paused ? labels[1] : labels[0]);
-  };
-
   /* WhatsApp flotante: oculto mientras se ve el hero (ya tiene "Cotizar") o el footer
      (ya tiene el WhatsApp a la vista). La primera vez que aparece, dos pulsos de atención. */
   const waFloat = document.querySelector('.wa-float');
@@ -90,13 +84,6 @@
     waZones.forEach((z) => waObserver.observe(z));
   }
 
-  /* Cinta de marcas: pausa la animación CSS */
-  const brands = document.querySelector('[data-brands]');
-  const brandsToggle = brands?.querySelector('[data-brands-toggle]');
-  brandsToggle?.addEventListener('click', () => {
-    const paused = brands.classList.toggle('is-paused');
-    setToggle(brandsToggle, paused, ['Pausar la cinta de marcas', 'Reanudar la cinta de marcas']);
-  });
   /* ───────── Reseñas ───────── */
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -707,9 +694,9 @@
     const full = section.clientWidth;
     let w = full;
     if (phone.matches) {
-      // Celular: fila plana, una tarjeta centrada (76% del ancho, tope por alto de pantalla)
+      // Celular: fila plana, una tarjeta centrada (86% del ancho, tope por alto de pantalla)
       // y las vecinas asomando. u convierte unidades a px: el arrastre sigue al dedo 1:1.
-      flatW = Math.min(full * 0.76, 320, window.innerHeight * 0.5 * TILE_RATIO);
+      flatW = Math.min(full * 0.86, 380, window.innerHeight * 0.62 * TILE_RATIO);
       flatH = flatW / TILE_RATIO;
       flatP = flatW + 8;
       u = flatP / PITCH;
@@ -748,6 +735,7 @@
 
   let offset = 0;  // desplazamiento acumulado, en unidades
   let snapTarget = null;  // celular: posición a la que se acomoda la fila al soltar
+  let goToCard = () => {};  // celular: centra una tarjeta (se define más abajo)
 
   /* Celular: fila plana. La tarjeta del centro se ve completa; las vecinas se achican,
      se apagan y pierden color según su distancia al centro (la transición es continua) */
@@ -857,12 +845,11 @@
 
   /* Estado del movimiento */
   let velocity = 0;           // u/s, por la inercia
-  let userPaused = false;
   let focusIndex = -1;        // tarjeta con foco de teclado: se centra y se frena
   let drag = null;
   let onScreen = false;
   let galleryOpen = false;
-  const autoOn = () => !phone.matches && !reduceMotion.matches && !userPaused && focusIndex < 0 && !drag;
+  const autoOn = () => !phone.matches && !reduceMotion.matches && focusIndex < 0 && !drag;
 
   /* Reloj de larga duración (Web Animations): el avance depende del tiempo, no de los cuadros */
   const clock = document.documentElement.animate([], { duration: 1e9 });
@@ -936,8 +923,8 @@
       const dx = e.clientX - drag.x0;
       const base = Math.round(drag.off0 / PITCH);
       let idx = base;
-      if (dx < -40 || drag.v > 600) idx = base + 1;
-      else if (dx > 40 || drag.v < -600) idx = base - 1;
+      if (dx < -24 || drag.v > 250) idx = base + 1;
+      else if (dx > 24 || drag.v < -250) idx = base - 1;
       snapTarget = idx * PITCH;
       velocity = 0;
       stage.classList.remove('is-grabbing');
@@ -1002,7 +989,7 @@
     });
   };
   const playSource = () => {
-    if (source && !userPaused && running()) source.play().catch(() => {});
+    if (source && running()) source.play().catch(() => {});
   };
   const startVideos = () => {
     if (source || reduceMotion.matches) return;
@@ -1031,19 +1018,6 @@
     }
   };
 
-  /* Pausa: frena el avance automático y el video de las tarjetas (con "menos movimiento"
-     no hay nada que pausar y el botón queda oculto) */
-  const featuredToggle = section.querySelector('[data-featured-toggle]');
-  if (featuredToggle && !reduceMotion.matches) {
-    featuredToggle.hidden = false;
-    featuredToggle.addEventListener('click', () => {
-      userPaused = !userPaused;
-      featuredToggle.classList.toggle('is-paused', userPaused);
-      featuredToggle.setAttribute('aria-label', userPaused ? 'Reanudar proyectos' : 'Pausar proyectos');
-      if (userPaused) source?.pause(); else playSource();
-    });
-  }
-
   /* Arrastre interrumpido: si el navegador pierde el puntero o la ventana pierde el foco,
      el arrastre termina limpio y el próximo toque funciona */
   stage.addEventListener('lostpointercapture', endDrag);
@@ -1071,6 +1045,15 @@
     if (phone.matches) snapTarget = Math.round(offset / PITCH) * PITCH;
   };
   setStageLabel();
+
+  /* Celular: tocar una vecina la trae al centro, por el camino más corto del ciclo */
+  goToCard = (i) => {
+    const base = Math.round((snapTarget ?? offset) / PITCH);
+    let d = (((i - base) % N) + N) % N;
+    if (d > N / 2) d -= N;
+    snapTarget = (base + d) * PITCH;
+    start();
+  };
   phone.addEventListener('change', () => { setStageLabel(); measure(); layout(); start(); });
 
   /* ───────── Galería de cada trabajo ───────── */
@@ -1187,8 +1170,12 @@
     });
   }, { passive: true });
 
-  items.forEach((it) => {
-    it.btn.addEventListener('click', () => openGallery(it.btn.dataset.project, Number(it.btn.dataset.video) || 0));
+  items.forEach((it, i) => {
+    it.btn.addEventListener('click', () => {
+      // Celular: tocar una vecina la trae al centro; la del centro abre su galería
+      if (phone.matches && !it.center) { goToCard(i); return; }
+      openGallery(it.btn.dataset.project, Number(it.btn.dataset.video) || 0);
+    });
   });
   gPrev.addEventListener('click', () => goTo(current - 1));
   gNext.addEventListener('click', () => goTo(current + 1));

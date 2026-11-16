@@ -382,27 +382,6 @@ a { color: inherit; text-underline-offset: .2em; }
 }
 .hero__place .icon { flex: none; width: 1.125rem; height: 1.125rem; color: var(--yellow); }
 
-/* Pausa / reproducir: el mismo control para todo lo que se mueve solo (video del hero,
-   cinta de marcas, fila de Proyectos). Círculo oscuro como la etiqueta de ubicación. */
-.motion-toggle {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: rgba(13, 13, 13, .55);
-  color: var(--paper);
-  cursor: pointer;
-  transition: background-color .2s ease;
-}
-.motion-toggle:hover { background: rgba(13, 13, 13, .8); }
-.motion-toggle .icon { width: 1.125rem; height: 1.125rem; }
-.motion-toggle__play,
-.motion-toggle.is-paused .motion-toggle__pause { display: none; }
-.motion-toggle.is-paused .motion-toggle__play { display: block; }
-
 .hero__content {
   position: relative;
   z-index: 2;
@@ -1041,7 +1020,7 @@ a { color: inherit; text-underline-offset: .2em; }
     scroll-snap-align: center;
     scroll-snap-stop: always;
   }
-  .carousel-btn { display: none; }
+  .reviews__carousel .carousel-btn { display: none; }
 
   .reviews__carousel.is-swipe .reviews__track > .review:not(.stagger-item) {
     transform: scale(.92);
@@ -1087,22 +1066,6 @@ a { color: inherit; text-underline-offset: .2em; }
   color: var(--paper);
   overflow: hidden;
 }
-
-/* Pausa de la cinta: a la derecha, sobre el fundido a negro del borde */
-.brands__toggle {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  bottom: 0;
-  right: max(.5rem, calc(var(--gutter) - .75rem));
-  margin-block: auto;
-  /* Sobre el negro de la cinta, el velo translúcido no se ve: fondo sólido y filo claro */
-  background: var(--black);
-  box-shadow: 0 0 0 1px rgba(244, 241, 236, .18), 0 0 18px 10px var(--black);
-  --focus: var(--paper);
-}
-.brands__toggle:hover { background: #262523; }
-.brands.is-paused .brands__track { animation-play-state: paused; }
 
 .brands__marquee {
   display: flex;
@@ -1175,7 +1138,6 @@ a { color: inherit; text-underline-offset: .2em; }
   .brands__list li:last-child { padding-right: 0; }
   .brands__list[aria-hidden] { display: none; }
   .brands__list li:last-child::after { display: none; }
-  .brands__toggle { display: none; }
 }
 
 /* ───────── Scroll reveal ─────────
@@ -1215,14 +1177,6 @@ a { color: inherit; text-underline-offset: .2em; }
   padding-inline: var(--edge);
   text-align: center;
 }
-
-/* Pausa de la fila (solo con JS y movimiento permitido: script.js le quita [hidden]) */
-.featured__controls {
-  display: flex;
-  justify-content: flex-end;
-  padding-inline: var(--edge);
-}
-.featured__toggle[hidden] { display: none; }
 
 /* Recorte de cada tarjeta dentro de la grilla 5×2 */
 .pcard:nth-child(1)  { --c: 0; --r: 0; }
