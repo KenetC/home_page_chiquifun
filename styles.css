@@ -1,0 +1,3042 @@
+/* ChiquiFun · Home — Header + Hero */
+
+:root {
+  /* Marca */
+  --red: #C1121A;
+  --red-bright: #E00000;
+  --yellow: #F2B705;
+  --black: #0D0D0D;
+  --amber: #E0A000;        /* hover del amarillo y estrellas de calificación */
+  --red-deep: #B0101A;     /* pregunta abierta en Preguntas frecuentes */
+  --whatsapp: #25D366;     /* solo el canal de WhatsApp */
+
+  /* Fondo off-white y tinta */
+  --bg: #F5F3F0;
+  --ink: #0D0D0D;
+  --ink-hover: #2A2725;
+  --ink-muted: #55514D;
+  --line: rgba(13, 13, 13, .1);
+
+  /* Texto claro sobre el video (celular) */
+  --paper: #F4F1EC;
+  --paper-80: #D9D3CB;
+
+  --font-display: "Clash Display", "Arial Narrow", sans-serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --header-h: 4rem;
+  /* cuánto asoma la franja de marcas bajo el hero: menos que su padding superior, así no se ven los logos */
+  --brands-peek: .75rem;
+  /* Aire lateral: 20px en el celular, 4% del ancho, tope 40px */
+  --gutter: clamp(20px, 4vw, 40px);
+  /* Ancho máximo del contenido; el resto se reparte a los costados */
+  --container: 1440px;
+  /* Padding lateral que centra el contenido en pantallas anchas */
+  --edge: max(var(--gutter), calc((100% - var(--container)) / 2 + var(--gutter)));
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --focus: var(--ink);
+
+  /* Vidrio claro (grafito neutro): relleno translúcido, filo de luz arriba y sombra gris suave */
+  --glass-fill: rgba(255, 255, 255, .54);
+  --glass-fill-hover: rgba(255, 255, 255, .68);
+  /* Sin desenfoque: el vidrio claro va sobre el fondo de manchas, que ya es borroso;
+     desenfocarlo no cambiaba la imagen y costaba repintados en cada scroll */
+  --glass-blur: none;
+  --glass-edge:
+    inset 0 1px 0 rgba(255, 255, 255, .95),
+    inset 0 0 0 1px rgba(255, 255, 255, .55),
+    0 0 0 1px rgba(24, 24, 27, .07);
+  --glass-shadow: var(--glass-edge), 0 18px 40px -26px rgba(24, 24, 27, .42);
+  --glass-shadow-lift: var(--glass-edge), 0 28px 50px -26px rgba(24, 24, 27, .48);
+  /* Vidrio oscuro: para las secciones negras */
+  --glass-dark-fill: rgba(244, 241, 236, .055);
+  --glass-dark-edge:
+    inset 0 1px 0 rgba(244, 241, 236, .12),
+    inset 0 0 0 1px rgba(244, 241, 236, .09);
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+body.is-locked { overflow: hidden; }
+
+::selection { background: var(--yellow); color: var(--black); }
+
+img, video, svg { display: block; max-width: 100%; }
+
+a { color: inherit; text-underline-offset: .2em; }
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: .75rem; left: .75rem;
+  z-index: 100;
+  padding: .75rem 1rem;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 999px;
+  transform: translateY(-200%);
+  transition: transform .2s var(--ease-out);
+}
+.skip-link:focus { transform: none; }
+
+.icon {
+  width: 1.25rem; height: 1.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ───────────────────────── Header ───────────────────────── */
+
+/* Header oscuro con texto claro.
+   Celular: arranca transparente sobre el video. Escritorio: barra oscura sólida.
+   Al hacer scroll pasa a vidrio oscuro translúcido; con el menú abierto, sólido. */
+.site-header {
+  --header-bg: #141413;
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  color: var(--paper);
+  --focus: var(--paper);
+  transition:
+    background-color .45s var(--ease-out),
+    -webkit-backdrop-filter .45s var(--ease-out),
+    backdrop-filter .45s var(--ease-out),
+    box-shadow .45s var(--ease-out);
+}
+
+.site-header.is-scrolled {
+  background: rgba(20, 20, 19, .82);
+  -webkit-backdrop-filter: blur(16px) saturate(1.3);
+  backdrop-filter: blur(16px) saturate(1.3);
+  box-shadow: 0 1px 0 rgba(244, 241, 236, .08), 0 10px 30px -18px rgba(0, 0, 0, .6);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header.is-scrolled { background: rgba(20, 20, 19, .94); }
+}
+
+.site-header.is-open {
+  background: var(--header-bg);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: 0 1px 0 rgba(244, 241, 236, .08);
+}
+
+.site-header__bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  height: var(--header-h);
+  padding-inline: var(--edge);
+  padding-top: env(safe-area-inset-top, 0);
+  box-sizing: content-box;
+}
+
+.brand,
+.menu-toggle {
+  position: relative;
+  z-index: 2;
+}
+
+.brand {
+  flex: none;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  border-radius: 6px;
+}
+.brand img { width: auto; height: 2.25rem; }
+
+/* Botón de menú (celular y tablet): solo ícono; el texto queda para lectores de pantalla */
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px; height: 44px;
+  margin-right: -.625rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.menu-toggle__icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 2.25rem; height: 2.25rem;
+}
+.menu-toggle__icon span {
+  position: absolute;
+  width: 1.375rem; height: 2.5px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform .35s var(--ease-out);
+}
+.menu-toggle__icon span:first-child { transform: translateY(-4.5px); }
+.menu-toggle__icon span:last-child  { transform: translateY(4.5px); }
+.menu-toggle[aria-expanded="true"] .menu-toggle__icon span:first-child { transform: rotate(45deg); }
+.menu-toggle[aria-expanded="true"] .menu-toggle__icon span:last-child  { transform: rotate(-45deg); }
+
+/* Menú desplegable */
+.nav {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  padding: calc(var(--header-h) + env(safe-area-inset-top, 0) + 1rem) var(--gutter) 2rem;
+  background: var(--header-bg);
+  color: var(--paper);
+  overflow-y: auto;
+  visibility: hidden;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path .5s var(--ease-out), visibility 0s linear .5s;
+}
+.site-header.is-open .nav {
+  visibility: visible;
+  clip-path: inset(0 0 0 0);
+  transition: clip-path .5s var(--ease-out), visibility 0s;
+}
+
+.nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav__list a {
+  display: flex;
+  align-items: center;
+  min-height: 3.75rem;
+  border-bottom: 1px solid rgba(244, 241, 236, .1);
+  font: 600 clamp(1.5rem, 1.1rem + 2vw, 2rem)/1.1 var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.nav__list a:hover,
+.nav__list a[aria-current] { color: var(--yellow); }
+
+/* Desde tablet horizontal el hero es claro: el header arranca como barra oscura sólida */
+@media (min-width: 960px) {
+  .site-header { background: var(--header-bg); }
+}
+
+@media (min-width: 1180px) {
+  :root { --header-h: 4.75rem; }
+
+  .brand img { height: 2.75rem; }
+
+  .menu-toggle { display: none; }
+
+  .nav {
+    position: static;
+    padding: 0;
+    background: none;
+    overflow: visible;
+    visibility: visible;
+    clip-path: none;
+    transition: none;
+  }
+  .nav__list {
+    display: flex;
+    align-items: center;
+    gap: clamp(.25rem, .9vw, 1rem);
+  }
+  .nav__list a {
+    position: relative;
+    min-height: 44px;
+    padding-inline: .5rem;
+    border: 0;
+    font: 500 .9375rem/1 var(--font-body);
+    text-transform: none;
+    letter-spacing: 0;
+    color: rgba(244, 241, 236, .7);
+    transition: color .2s ease;
+  }
+  .nav__list a:hover,
+  .nav__list a[aria-current] { color: var(--paper); }
+  /* Sección actual: línea amarilla que crece desde la izquierda */
+  .nav__list a::after {
+    content: "";
+    position: absolute;
+    left: .5rem;
+    right: .5rem;
+    bottom: .5rem;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--yellow);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .35s var(--ease-out);
+  }
+  .nav__list a[aria-current]::after { transform: scaleX(1); }
+}
+
+/* ───────────────────────── Hero ───────────────────────── */
+
+/* Celular: video a pantalla completa y texto claro encima */
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-items: end;
+  min-height: calc(100vh - var(--brands-peek));
+  min-height: calc(100svh - var(--brands-peek));
+  overflow: hidden;
+  color: var(--paper);
+  --focus: var(--paper);
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #0D0D0D url("uploads/hero_vento-poster.webp") center 30% / cover no-repeat;
+}
+
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+/* Velo para que el texto se lea sobre el video */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(13, 13, 13, .50) 0%,
+    rgba(13, 13, 13, .30) 18%,
+    rgba(13, 13, 13, .62) 42%,
+    rgba(13, 13, 13, .84) 58%,
+    rgba(13, 13, 13, .92) 100%
+  );
+}
+
+.hero__place {
+  position: absolute;
+  z-index: 2;
+  top: calc(var(--header-h) + env(safe-area-inset-top, 0) + .75rem);
+  left: var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: 2.5rem;
+  margin: 0;
+  padding: 0 1rem 0 .75rem;
+  border-radius: 999px;
+  background: rgba(13, 13, 13, .6);
+  font-size: .875rem;
+  font-weight: 500;
+  letter-spacing: .02em;
+  color: var(--paper);
+}
+.hero__place .icon { flex: none; width: 1.125rem; height: 1.125rem; color: var(--yellow); }
+
+/* Pausa / reproducir: el mismo control para todo lo que se mueve solo (video del hero,
+   cinta de marcas, fila de Proyectos). Círculo oscuro como la etiqueta de ubicación. */
+.motion-toggle {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(13, 13, 13, .55);
+  color: var(--paper);
+  cursor: pointer;
+  transition: background-color .2s ease;
+}
+.motion-toggle:hover { background: rgba(13, 13, 13, .8); }
+.motion-toggle .icon { width: 1.125rem; height: 1.125rem; }
+.motion-toggle__play,
+.motion-toggle.is-paused .motion-toggle__pause { display: none; }
+.motion-toggle.is-paused .motion-toggle__play { display: block; }
+
+.hero__toggle {
+  position: absolute;
+  z-index: 2;
+  top: calc(var(--header-h) + env(safe-area-inset-top, 0) + .75rem - 2px);
+  right: var(--gutter);
+  --focus: var(--paper);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 40rem;
+  padding: calc(var(--header-h) + 3rem) var(--gutter) calc(50px + env(safe-area-inset-bottom, 0));
+}
+
+.hero__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.625rem, 1.3rem + 5.4vw, 6rem);
+  line-height: .92;
+  letter-spacing: -.025em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.hero__line { display: block; }
+.hero__accent { color: var(--red-bright); }
+
+.hero__lead {
+  max-width: 34rem;
+  margin: 1.125rem 0 0;
+  font-size: clamp(1rem, .96rem + .3vw, 1.25rem);
+  line-height: 1.5;
+  color: var(--paper-80);
+  text-wrap: pretty;
+}
+.hero__lead-tail { display: block; }
+
+/* Botones uno al lado del otro */
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem;
+  margin-top: 1.5rem;
+}
+
+/* Lista de datos clave: cifra grande + etiqueta en versalitas al lado */
+.hero__facts {
+  display: flex;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--paper);
+}
+.hero__facts li {
+  display: flex;
+  align-items: center;
+  gap: .625rem;
+  padding-inline: clamp(.875rem, 1.6vw, 1.5rem);
+  border-left: 1px solid color-mix(in srgb, currentColor 16%, transparent);
+}
+.hero__facts li:first-child { padding-left: 0; border-left: 0; }
+.hero__facts li:last-child { padding-right: 0; }
+/* Columna angosta (960–1179px): la etiqueta baja debajo de la cifra */
+@media (max-width: 1179px) {
+  .hero__facts li { flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: .5rem; }
+}
+.hero__fact-value {
+  font: 800 clamp(1.5rem, 1rem + 1vw, 2rem)/1 var(--font-body);
+  letter-spacing: -.02em;
+  white-space: nowrap;
+}
+.hero__fact-value:has(.hero__fact-star) { display: inline-flex; align-items: center; }
+.hero__fact-star {
+  display: inline-block;
+  flex: none;
+  width: .82em;
+  height: .82em;
+  margin-right: .12em;
+  /* Corrección óptica: la punta superior es fina y la estrella "pesa" abajo */
+  transform: translateY(-.06em);
+  fill: var(--amber);
+  stroke: var(--amber);
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+}
+.hero__fact-label {
+  max-width: 9em;
+  font: 500 .875rem/1.3 var(--font-body);
+  color: var(--paper-80);
+}
+
+/* Botones */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  min-height: 3rem;
+  padding: 0 1.5rem;
+  border-radius: 999px;
+  font: 600 1rem/1 var(--font-body);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color .2s ease, color .2s ease, transform .2s var(--ease-out), box-shadow .2s ease;
+}
+/* Respuesta al cursor, igual en todos los botones: se levanta y la sombra crece; al apretar, se hunde */
+.btn { transition: background-color .2s ease, color .2s ease, transform .25s var(--ease-out), box-shadow .25s var(--ease-out); }
+@media (hover: hover) {
+  .btn:hover { transform: translateY(-2px); }
+  .btn--primary:hover .btn__wa { animation: wa-nudge .5s var(--ease-out); }
+  .btn--light:hover { box-shadow: 0 14px 30px -10px rgba(13, 13, 13, .22); }
+}
+.btn:active {
+  transform: translateY(0) scale(.98);
+  transition-duration: .1s;
+}
+.btn--light:active { box-shadow: 0 3px 10px -4px rgba(13, 13, 13, .2); }
+
+.btn--primary {
+  background: var(--ink);
+  color: #fff;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, .14),
+    0 6px 14px -6px rgba(13, 13, 13, .55);
+}
+.btn--primary:hover { background: var(--ink-hover); }
+
+.btn__wa { display: grid; place-items: center; }
+.btn__wa svg { width: 1.25rem; height: 1.25rem; fill: currentColor; }
+
+/* Celular: transparente con contorno claro sobre el video */
+.btn--ghost {
+  background: transparent;
+  color: var(--paper);
+  box-shadow: inset 0 0 0 1.5px rgba(244, 241, 236, .7);
+}
+.btn--ghost:hover { background: rgba(244, 241, 236, .1); }
+
+/* ── Celular: título grande, Cotizar en amarillo, sin lista de datos ── */
+@media (max-width: 959px) {
+  .hero__title { font-size: clamp(2.75rem, 13.4vw, 4.75rem); line-height: .95; }
+  /* El rojo de marca es oscuro: sobre el video necesita un halo propio para llegar a 3:1 */
+  .hero__accent { text-shadow: 0 0 .35em rgba(13, 13, 13, .9), 0 0 .12em rgba(13, 13, 13, .9); }
+
+  .hero__facts { display: none; }
+
+  .btn--primary {
+    background: var(--yellow);
+    color: var(--black);
+    box-shadow: 0 6px 16px -8px rgba(0, 0, 0, .6);
+  }
+  .btn--primary:hover { background: var(--amber); }
+}
+
+/* Botón flotante de WhatsApp (celular) */
+.wa-float {
+  position: fixed;
+  z-index: 40;
+  right: max(.875rem, env(safe-area-inset-right, 0));
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0));
+  display: grid;
+  place-items: center;
+  width: 3.25rem; height: 3.25rem;
+  border-radius: 50%;
+  background: var(--whatsapp);
+  color: #fff;
+  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, .55);
+  transition: transform .2s var(--ease-out), opacity .3s var(--ease-out), visibility 0s;
+}
+.wa-float:hover { transform: scale(1.05); }
+.wa-float.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(1rem) scale(.9);
+  transition: transform .3s var(--ease-out), opacity .3s var(--ease-out), visibility 0s linear .3s;
+}
+.wa-float svg { width: 1.75rem; height: 1.75rem; fill: currentColor; }
+.wa-float:focus-visible { outline-color: var(--ink); }
+/* Escritorio: también visible, un poco más grande y más separado del borde */
+@media (min-width: 960px) {
+  .wa-float {
+    right: clamp(1.25rem, 2vw, 2rem);
+    bottom: clamp(1.25rem, 2vw, 2rem);
+    width: 3.75rem; height: 3.75rem;
+  }
+  .wa-float svg { width: 2rem; height: 2rem; }
+}
+
+/* ── Escritorio: fondo blanco, texto a la izquierda, video en tarjeta a la derecha ── */
+@media (min-width: 960px) {
+  .hero {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    align-items: center;
+    column-gap: clamp(2.5rem, 5vw, 5rem);
+    min-height: max(42rem, calc(100svh - var(--brands-peek)));
+    padding: calc(var(--header-h) + 2rem) var(--edge) 3rem;
+    background: var(--bg);
+    color: var(--ink);
+    --focus: var(--ink);
+  }
+
+  .hero__media {
+    position: relative;
+    inset: auto;
+    z-index: 0;
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    max-width: 38rem;
+    justify-self: end;
+    aspect-ratio: 4 / 5;
+    max-height: calc(100svh - var(--header-h) - 5rem - var(--brands-peek));
+    border-radius: 1.5rem;
+    overflow: hidden;
+  }
+  .hero__overlay {
+    background: linear-gradient(to bottom, rgba(13, 13, 13, .45) 0, rgba(13, 13, 13, 0) 26%);
+  }
+
+  .hero__place {
+    top: 1.25rem;
+    left: 1.25rem;
+  }
+  .hero__toggle {
+    top: calc(1.25rem - 2px);
+    right: 1.25rem;
+  }
+
+  .hero__content {
+    grid-column: 1;
+    grid-row: 1;
+    max-width: 44rem;
+    padding: 0;
+  }
+
+  .hero__title { font-size: min(clamp(3.5rem, 1.2rem + 4.4vw, 5.5rem), 10svh); }
+  .hero__accent { color: var(--red); }
+
+  .hero__lead { margin-top: 1.5rem; color: var(--ink-muted); }
+
+  .hero__actions { gap: 1rem; margin-top: 2.25rem; }
+  
+  .btn { min-height: 3.25rem; padding-inline: 1.75rem; font-size: 1.0625rem; }
+  /* Escritorio: Cotizar negro con sombra; Ver proyectos blanco con sombra suave, sin borde */
+  .btn--primary {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .12),
+      inset 0 0 0 1px rgba(255, 255, 255, .08),
+      0 8px 18px -8px rgba(13, 13, 13, .55);
+  }
+  .btn--ghost {
+    background: #fff;
+    color: var(--ink);
+    box-shadow:
+      0 0 0 1px rgba(13, 13, 13, .05),
+      0 6px 16px -8px rgba(13, 13, 13, .2);
+  }
+  .btn--ghost:hover { background: #fff; }
+
+  /* Sombras de hover y clic propias de cada botón del hero (el movimiento es el común de .btn) */
+  @media (hover: hover) {
+    .btn--primary:hover {
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .14),
+        inset 0 0 0 1px rgba(255, 255, 255, .1),
+        0 14px 26px -10px rgba(13, 13, 13, .6);
+    }
+    .btn--ghost:hover {
+      box-shadow:
+        0 0 0 1px rgba(13, 13, 13, .06),
+        0 12px 24px -10px rgba(13, 13, 13, .26);
+    }
+  }
+  .btn--primary:active { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 3px 8px -4px rgba(13, 13, 13, .5); }
+  .btn--ghost:active   { box-shadow: 0 0 0 1px rgba(13, 13, 13, .08), 0 3px 8px -4px rgba(13, 13, 13, .2); }
+
+  .hero__facts { margin-top: 9.375rem; color: var(--ink); }
+  .hero__fact-label { color: var(--ink-muted); }
+}
+
+@media (min-width: 960px) and (max-height: 800px) {
+  .hero__lead { margin-top: 1.25rem; }
+  .hero__actions { margin-top: 1.5rem; }
+  .hero__facts { margin-top: 1.75rem; }
+}
+
+/* Entrada: una sola, orquestada */
+@media (prefers-reduced-motion: no-preference) {
+  .hero__line,
+  .hero__lead,
+  .hero__actions,
+  .hero__facts {
+    animation: rise .9s var(--ease-out) both;
+  }
+  .hero__line:nth-child(2) { animation-delay: .08s; }
+  .hero__lead    { animation-delay: .18s; }
+  .hero__actions { animation-delay: .26s; }
+  .hero__facts   { animation-delay: .34s; }
+
+  .hero__media { animation: settle 1.4s var(--ease-out) both; }
+}
+
+@keyframes rise {
+  from { transform: translateY(1.25rem); }
+}
+@keyframes wa-nudge {
+  0%   { transform: rotate(0); }
+  30%  { transform: rotate(-14deg); }
+  60%  { transform: rotate(8deg); }
+  100% { transform: rotate(0); }
+}
+@keyframes settle {
+  from { transform: scale(1.04); filter: brightness(.6); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  /* Sin desplazamientos ni giros; el cambio de sombra y color sigue marcando el estado */
+  .btn:hover, .btn:active { transform: none !important; }
+  .btn__wa { animation: none !important; }
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}
+
+/* ───────────────────────── Reseñas ───────────────────────── */
+
+.svg-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.reviews {
+  --card-gap: clamp(.875rem, 1.6vw, 1.5rem);
+  --star: var(--amber);
+  padding-block: clamp(4rem, 3rem + 5vw, 7.5rem);
+  overflow: hidden;
+}
+
+/* Cabecera: título a la izquierda; nota y "Dejar reseña" a la derecha */
+.reviews__head {
+  display: grid;
+  gap: 1.75rem;
+  padding-inline: var(--edge);
+}
+
+.section-title {
+  margin: 0;
+  font: 600 clamp(1.625rem, 1.1rem + 1.9vw, 2.75rem)/1 var(--font-display);
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+@media (min-width: 768px) {
+  .section-title { white-space: nowrap; }
+}
+
+.reviews__summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: .875rem;
+}
+.rating__value {
+  margin: 0;
+  font: 800 clamp(2.5rem, 2.1rem + 1.4vw, 3.25rem)/.9 var(--font-body);
+  letter-spacing: -.035em;
+  font-variant-numeric: tabular-nums;
+}
+.rating__detail { display: grid; gap: .25rem; }
+.rating__source {
+  margin: 0;
+  font-size: .8125rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+
+.g-logo { flex: none; width: 1rem; height: 1rem; }
+
+/* Estrellas: llenas en las tarjetas; en el resumen, la última parcial según --fill */
+.stars {
+  display: inline-flex;
+  gap: .125rem;
+  color: var(--star);
+}
+/* Mismo formato que la estrella del hero: relleno + trazo con puntas redondeadas */
+.stars svg {
+  width: 1rem; height: 1rem;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+}
+
+.stars--partial {
+  /* 4.9 de 5: cuatro estrellas llenas y la quinta al 65 %.
+     La punta de la estrella es fina: con 90 % parecería llena. */
+  --star-size: 1.25rem;
+  --star-gap: .125rem;
+  --fill: calc(4 * (var(--star-size) + var(--star-gap)) + .65 * var(--star-size));
+  position: relative;
+  display: inline-grid;
+}
+.stars--partial > span { display: inline-flex; gap: var(--star-gap); grid-area: 1 / 1; }
+.stars--partial svg { width: var(--star-size); height: var(--star-size); }
+/* Base en contorno ámbar: el faltante de la quinta estrella se lee claro */
+.stars__base { color: transparent; }
+.stars__base svg { stroke: var(--star); stroke-width: 1.5; stroke-linejoin: round; overflow: visible; }
+.stars__fill {
+  color: var(--star);
+  clip-path: inset(0 calc(100% - var(--fill)) 0 0);
+}
+
+/* Botón claro sobre fondo claro: blanco, sin borde, con sombra difusa */
+.btn--light {
+  gap: .75rem;
+  min-height: 3.125rem;
+  padding-inline: 1.75rem;
+  background: #fff;
+  color: var(--ink);
+  font-size: .9375rem;
+  font-weight: 500;
+  box-shadow: 0 8px 24px -8px rgba(13, 13, 13, .16);
+}
+.btn--light .g-logo { width: 1.125rem; height: 1.125rem; }
+/* "G" de Google en un solo color */
+.g-logo--mono path { fill: #4285F4; }
+
+/* Carrusel en cinta: se ven 1 (celular), 2 (tablet) o 3 (escritorio) tarjetas;
+   la cinta se mueve con transform y da la vuelta sin cortes (ver script.js) */
+.reviews__carousel {
+  --per-view: 1;
+  --card-max: 22rem; /* tarjeta angosta: la foto o el video vertical se ve entero */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(.5rem, 2vw, 1.5rem);
+  margin-top: clamp(2.25rem, 1.5rem + 2.5vw, 3.5rem);
+  padding-inline: var(--edge);
+}
+@media (min-width: 700px)  { .reviews__carousel { --per-view: 2; } }
+@media (min-width: 1024px) { .reviews__carousel { --per-view: 3; } }
+
+.reviews__viewport {
+  flex: 0 1 calc(var(--per-view) * var(--card-max) + (var(--per-view) - 1) * var(--card-gap));
+  min-width: 0;
+  overflow: hidden;
+  /* aire para la sombra de las tarjetas */
+  margin-block: -.5rem -1.75rem;
+  padding-block: .5rem 1.75rem;
+  touch-action: pan-y;
+}
+
+.reviews__track {
+  --i: 0;
+  display: flex;
+  gap: var(--card-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transform: translate3d(calc(var(--i) * -1 * (100% + var(--card-gap)) / var(--per-view)), 0, 0);
+}
+.reviews__track.is-animating { transition: transform .6s var(--ease-out); }
+
+.reviews__track > .review {
+  flex: 0 0 calc((100% - (var(--per-view) - 1) * var(--card-gap)) / var(--per-view));
+  min-width: 0;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 1.125rem;
+  background: #fff;
+  box-shadow:
+    0 0 0 1px rgba(13, 13, 13, .05),
+    0 10px 28px -18px rgba(13, 13, 13, .35);
+}
+
+.review__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #1A1918;
+}
+.review__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .9s var(--ease-out);
+}
+@media (hover: hover) {
+  .review:hover .review__img { transform: scale(1.035); }
+}
+
+
+.review__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.25rem 1.25rem 1.375rem;
+}
+
+.review__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.review__meta .g-logo { width: 1.125rem; height: 1.125rem; }
+
+.review__quote { margin: .875rem 0 0; }
+.review__quote p {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+.review__quote.is-open p {
+  display: block;
+  -webkit-line-clamp: unset;
+  line-clamp: none;
+}
+
+.review__more {
+  align-self: flex-start;
+  min-height: 44px;
+  margin: -.25rem 0 -.5rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink-muted);
+  font: 600 .875rem/1 var(--font-body);
+  cursor: pointer;
+  transition: color .2s ease;
+}
+/* Solo se muestra cuando el texto realmente se corta (lo decide script.js) */
+.review__more[hidden] { display: none; }
+.review__more:hover { color: var(--ink); }
+
+/* Fundido sobre el texto cortado mientras haya "Leer más" */
+.review__quote:not(.is-open):has(+ .review__more:not([hidden])) p {
+  -webkit-mask-image: linear-gradient(#000 55%, transparent);
+  mask-image: linear-gradient(#000 55%, transparent);
+}
+
+.review__author {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
+}
+.review__avatar {
+  flex: none;
+  width: 2.5rem; height: 2.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.review__avatar--initials {
+  display: grid;
+  place-items: center;
+  background: #ECE7E0;
+  color: var(--ink);
+  font-size: .875rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+.review__who { display: grid; gap: .125rem; min-width: 0; }
+.review__name {
+  font-style: normal;
+  font-weight: 700;
+  font-size: .9375rem;
+  line-height: 1.25;
+}
+.review__role { font-size: .8125rem; line-height: 1.3; color: var(--ink-muted); }
+
+
+@media (min-width: 960px) {
+  .reviews__head { gap: 2.25rem; }
+}
+
+/* Controles: flechas a la derecha, debajo de la cinta */
+.reviews__status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
+
+.carousel-btn {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 3rem; height: 3rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow:
+    0 0 0 1px rgba(13, 13, 13, .07),
+    0 6px 14px -8px rgba(13, 13, 13, .3);
+  transition: background-color .2s ease, color .2s ease, transform .25s var(--ease-out), box-shadow .25s var(--ease-out);
+}
+.carousel-btn .icon { width: 1.25rem; height: 1.25rem; stroke-width: 2; }
+@media (max-width: 479px) {
+  .carousel-btn { width: 44px; height: 44px; }
+  .carousel-btn .icon { width: 1.125rem; height: 1.125rem; }
+}
+/* Celular: sin flechas (se desliza con el dedo) y tarjeta casi a todo el ancho.
+   Las reseñas vecinas asoman a los costados para sugerir el gesto.
+   Las flechas siguen en el DOM: aparecen solo al recibir foco con teclado o lector. */
+/* Celular: igual que Accesorios. Fila que se desliza con el dedo (scroll-snap nativo),
+   sin flechas y sin fin (con las copias de cada lado, ver script.js); la reseña del centro se ve completa y las vecinas quedan atrás,
+   más chicas y tenues (.is-current lo marca script.js). */
+@media (max-width: 699px) {
+  .reviews__carousel {
+    --card-w: min(80vw, 22rem);
+    display: block;
+    padding-inline: 0;
+  }
+  .reviews__viewport {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    touch-action: pan-x pan-y;
+  }
+  .reviews__viewport::-webkit-scrollbar { display: none; }
+  .reviews__viewport:focus-visible { outline-offset: -2px; }
+  .reviews__track {
+    gap: .5rem;
+    width: max-content;
+    padding-inline: calc((100vw - var(--card-w)) / 2);
+    transform: none !important;
+    transition: none !important;
+  }
+  .reviews__track > .review {
+    flex: 0 0 var(--card-w);
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+  .carousel-btn { display: none; }
+
+  .reviews__carousel.is-swipe .reviews__track > .review:not(.stagger-item) {
+    transform: scale(.92);
+    opacity: .45;
+    filter: saturate(.6);
+    transition: transform .6s var(--ease-out), opacity .5s var(--ease-out), filter .5s var(--ease-out);
+  }
+  .reviews__carousel.is-swipe .reviews__track > .review.is-current:not(.stagger-item) { transform: none; opacity: 1; filter: none; }
+  /* el salto de una copia a la reseña original equivalente es invisible: sin transición */
+  .reviews__carousel.is-jumping .reviews__track > .review { transition: none !important; }
+}
+@media (max-width: 699px) and (prefers-reduced-motion: reduce) {
+  .reviews__carousel.is-swipe .reviews__track > .review:not(.stagger-item) { transition-duration: .01ms; }
+}
+/* Misma respuesta que los demás botones: sube y la sombra crece; al apretar, se hunde */
+@media (hover: hover) {
+  .carousel-btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 0 0 1px rgba(13, 13, 13, .08),
+      0 12px 24px -10px rgba(13, 13, 13, .32);
+  }
+}
+.carousel-btn:active {
+  transform: translateY(0) scale(.96);
+  transition-duration: .1s;
+  box-shadow: 0 0 0 1px rgba(13, 13, 13, .08), 0 3px 8px -4px rgba(13, 13, 13, .2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .review:hover .review__img { transform: none; }
+  .carousel-btn:hover, .carousel-btn:active { transform: none; }
+  .reviews__track.is-animating { transition: none; }
+}
+
+/* ───────────────── Franja de empresas (entre el hero y Reseñas) ───────────────── */
+
+/* Cinta negra que se desliza sin fin: logos en un solo color alternados con tipos de vehículo.
+   Hay 4 copias idénticas de la lista; la cinta se corre exactamente una copia y vuelve a empezar. */
+.brands {
+  position: relative;
+  background: var(--black);
+  color: var(--paper);
+  overflow: hidden;
+}
+
+/* Pausa de la cinta: a la derecha, sobre el fundido a negro del borde */
+.brands__toggle {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  right: max(.5rem, calc(var(--gutter) - .75rem));
+  margin-block: auto;
+  /* Sobre el negro de la cinta, el velo translúcido no se ve: fondo sólido y filo claro */
+  background: var(--black);
+  box-shadow: 0 0 0 1px rgba(244, 241, 236, .18), 0 0 18px 10px var(--black);
+  --focus: var(--paper);
+}
+.brands__toggle:hover { background: #262523; }
+.brands.is-paused .brands__track { animation-play-state: paused; }
+
+.brands__marquee {
+  display: flex;
+  padding-block: clamp(1.125rem, .9rem + 1vw, 1.75rem);
+  /* los bordes se funden con el negro para que la cinta no corte en seco */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+
+.brands__track {
+  display: flex;
+  flex: none;
+  animation: brands-roll 60s linear infinite;
+  will-change: transform;
+}
+
+.brands__list {
+  display: flex;
+  flex: none;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.brands__list li {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: clamp(1.75rem, 1.2rem + 2.2vw, 3.5rem);
+  padding-right: clamp(1.75rem, 1.2rem + 2.2vw, 3.5rem);
+}
+/* Separador: rombo amarillo de marca después de cada elemento */
+.brands__list li::after {
+  content: "";
+  flex: none;
+  width: .5rem;
+  height: .5rem;
+  background: var(--yellow);
+  transform: rotate(45deg);
+}
+
+.brands__word {
+  font: 600 clamp(1.5rem, 1.1rem + 1.6vw, 2.5rem)/1 var(--font-display);
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Tamaños ópticos: cada logo con el alto que lo hace pesar parecido a los demás */
+.brands__logo { width: auto; max-width: none; }
+.brands__logo--kp    { height: clamp(2.5rem, 2rem + 1.6vw, 3.5rem); }
+.brands__logo--claro {
+  height: clamp(1.75rem, 1.4rem + 1.2vw, 2.5rem);
+  /* Los rayos ocupan la parte de arriba del logo: la palabra "Claro" tiene su centro
+     un 15 % más abajo que el de la imagen. Se sube para alinearla con las mayúsculas vecinas. */
+  transform: translateY(-15%);
+}
+.brands__logo--lacto { height: clamp(1.25rem, 1rem + .9vw, 1.75rem); }
+
+@keyframes brands-roll {
+  to { transform: translateX(-25%); }
+}
+
+/* Con "menos movimiento": quieta, una sola copia, centrada y en varias filas si no entra */
+@media (prefers-reduced-motion: reduce) {
+  .brands__marquee { -webkit-mask-image: none; mask-image: none; padding-inline: var(--gutter); }
+  .brands__track { flex: 1; justify-content: center; animation: none; }
+  .brands__list { flex: 1 1 100%; min-width: 0; flex-wrap: wrap; justify-content: center; row-gap: 1rem; }
+  .brands__list li:last-child { padding-right: 0; }
+  .brands__list[aria-hidden] { display: none; }
+  .brands__list li:last-child::after { display: none; }
+  .brands__toggle { display: none; }
+}
+
+/* ───────── Scroll reveal ─────────
+   Solo se oculta si el JS confirmó que puede mostrarlo (clase en <html>).
+   Sin JS o con movimiento reducido, todo se ve desde el principio. */
+.js-reveal [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 1.75rem, 0);
+  transition:
+    opacity .8s var(--ease-out) var(--reveal-delay, 0s),
+    transform 1s var(--ease-out) var(--reveal-delay, 0s);
+}
+.js-reveal [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+/* En la franja de marcas solo aparece el contenido (el fondo negro asoma bajo el hero)
+   y sin desplazamiento: ya tiene su propio movimiento */
+.js-reveal .brands__marquee[data-reveal] { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal [data-reveal] { opacity: 1; transform: none; transition: none; }
+}
+
+/* ───────────────────────── Proyectos destacados ─────────────────────────
+   Fila curva de 10 tarjetas, como el interior de un cilindro. Todas muestran su
+   recorte de UN solo video (grilla 5×2). Sin JS: fila con scroll horizontal y el
+   póster recortado por CSS. Con JS (.is-live): script.js calcula cada tarjeta
+   en cada cuadro (posición, ancho, alto de cada borde y clip-path). */
+.featured {
+  --card-bg: #141312;
+  padding-block: clamp(4rem, 3rem + 5vw, 7.5rem) clamp(3rem, 2rem + 4vw, 6rem);
+  overflow: hidden;
+}
+
+.featured__head {
+  padding-inline: var(--edge);
+  text-align: center;
+}
+
+/* Pausa de la fila (solo con JS y movimiento permitido: script.js le quita [hidden]) */
+.featured__controls {
+  display: flex;
+  justify-content: flex-end;
+  padding-inline: var(--edge);
+}
+.featured__toggle[hidden] { display: none; }
+
+/* Recorte de cada tarjeta dentro de la grilla 5×2 */
+.pcard:nth-child(1)  { --c: 0; --r: 0; }
+.pcard:nth-child(2)  { --c: 1; --r: 0; }
+.pcard:nth-child(3)  { --c: 2; --r: 0; }
+.pcard:nth-child(4)  { --c: 3; --r: 0; }
+.pcard:nth-child(5)  { --c: 4; --r: 0; }
+.pcard:nth-child(6)  { --c: 0; --r: 1; }
+.pcard:nth-child(7)  { --c: 1; --r: 1; }
+.pcard:nth-child(8)  { --c: 2; --r: 1; }
+.pcard:nth-child(9)  { --c: 3; --r: 1; }
+.pcard:nth-child(10) { --c: 4; --r: 1; }
+
+/* ── Sin JS: fila con scroll ── */
+.featured__stage { margin-top: clamp(2rem, 1.5rem + 2vw, 3.5rem); }
+/* En el celular la banda ya trae aire arriba de las tarjetas */
+.featured.is-live .featured__stage { margin-top: clamp(.5rem, 1.5vw, 1.25rem); }
+.featured__row {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 var(--edge);
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.featured__row::-webkit-scrollbar { display: none; }
+.pcard {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(9rem, 38vw, 12rem);
+  aspect-ratio: 384 / 540;
+  scroll-snap-align: start;
+}
+.pcard__btn {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 15px;
+  overflow: hidden;
+  background: var(--card-bg);
+  color: var(--paper);
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.pcard__media {
+  position: absolute;
+  top: calc(var(--r) * -100%);
+  left: calc(var(--c) * -100%);
+  width: 500%;
+  height: 200%;
+}
+.pcard__poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: fill;
+}
+/* Lienzo del video: una sola celda de la grilla, dibujada desde el video fuente */
+.pcard__canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none;
+  opacity: 0;
+  transition: opacity .6s ease;
+}
+.pcard__canvas.is-ready { opacity: 1; }
+/* Video fuente: no se ve, pero queda dentro del escenario para que el navegador no lo pause */
+.featured__source {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Anillo de foco: el outline quedaría recortado por el clip-path, así que se dibuja adentro */
+.pcard__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  fill: none;
+  stroke: var(--yellow);
+  stroke-width: 6;
+  opacity: 0;
+}
+.pcard__btn:focus-visible { outline: 2px solid var(--yellow); outline-offset: -4px; }
+.is-live .pcard__btn:focus-visible { outline: 0; }
+.pcard__btn:focus-visible .pcard__ring { opacity: 1; }
+
+
+/* ── Con JS: escenario curvo ── */
+.featured.is-live .featured__stage {
+  position: relative;
+  height: var(--stage-h, 250px);
+  overflow: hidden;
+  overflow: clip;
+  touch-action: pan-y;
+  cursor: grab;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.featured.is-live .featured__stage.is-grabbing { cursor: grabbing; }
+/* La fila ocupa todo el ancho y se desvanece en los costados */
+.featured.is-live .featured__stage {
+  --fade: clamp(2.5rem, 8vw, 8rem);
+  width: var(--stage-w, 100%);
+  margin-inline: auto;
+  /* Costados y borde inferior desvanecidos (el de abajo, para que la sombra no se corte) */
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent),
+    linear-gradient(180deg, #000 82%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(90deg, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent),
+    linear-gradient(180deg, #000 82%, transparent);
+  mask-composite: intersect;
+}
+/* Celular: la cámara está más cerca, el desvanecido de los costados es más corto para que asomen las vecinas */
+@media (max-width: 820px) { .featured.is-live .featured__stage { --fade: 1.25rem; } }
+.featured.is-live .featured__row {
+  position: absolute;
+  inset: 0;
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  overflow: clip;
+}
+.featured.is-live .pcard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  aspect-ratio: auto;
+  will-change: transform;
+}
+.featured.is-live .pcard__btn { border-radius: 0; cursor: inherit; }
+/* Fuera de la vista: transparente, pero enfocable (al enfocarla, la fila la trae al centro) */
+.featured.is-live .pcard.is-off { opacity: 0; pointer-events: none; }
+.featured.is-live .pcard__media { top: 0; left: 0; will-change: transform; }
+.featured.is-live .pcard img { -webkit-user-drag: none; }
+
+/* ── Sombra del marco ──
+   El recorte curvo va en el botón y la sombra en la tarjeta (drop-shadow sigue la forma exacta).
+   Más sombra en el centro, que está "más cerca"; al pasar el mouse la tarjeta se eleva. */
+.featured.is-live .pcard {
+  filter:
+    drop-shadow(0 var(--sy, 14px) var(--sb, 20px) rgba(13, 13, 13, var(--sa, .25)))
+    drop-shadow(0 2px 3px rgba(13, 13, 13, .12));
+}
+.featured.is-live .pcard__btn { transition: transform .5s var(--ease-out); }
+
+/* Nombre del vehículo: sube desde abajo al pasar el mouse o al llegar con Tab */
+.pcard__label {
+  position: absolute;
+  inset: auto 0 0;
+  display: grid;
+  gap: .25rem;
+  padding: 2.75rem .875rem calc(.875rem + var(--edge-pad, 0px));
+  background: linear-gradient(180deg, transparent, rgba(13, 13, 13, .82));
+  color: var(--paper);
+  text-align: left;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(0, 1rem, 0);
+  transition: opacity .3s var(--ease-out), transform .45s var(--ease-out);
+}
+.pcard__name {
+  font: 600 clamp(.875rem, .8rem + .35vw, 1.0625rem)/1.15 var(--font-body);
+  text-wrap: balance;
+}
+.pcard__year {
+  color: var(--paper-80);
+  font: 500 .8125rem/1.2 var(--font-body);
+}
+/* Celular: el nombre del vehículo se ve siempre en todas las tarjetas */
+@media (max-width: 820px) {
+  .featured.is-live .pcard__label { opacity: 1; transform: none; }
+}
+.pcard__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  color: var(--yellow);
+  font: 600 .8125rem/1 var(--font-body);
+}
+.pcard__cta svg {
+  width: .95rem;
+  height: .95rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .35s var(--ease-out);
+}
+.pcard__btn:focus-visible .pcard__label { opacity: 1; transform: none; }
+@media (hover: hover) {
+  .pcard__btn:hover .pcard__label { opacity: 1; transform: none; }
+  .pcard__btn:hover .pcard__cta svg { transform: translateX(3px); }
+  .featured.is-live .pcard:hover {
+    filter:
+      drop-shadow(0 calc(var(--sy, 14px) * 1.6) calc(var(--sb, 20px) * 1.5) rgba(13, 13, 13, calc(var(--sa, .25) + .08)))
+      drop-shadow(0 2px 3px rgba(13, 13, 13, .12));
+  }
+  .featured.is-live .pcard:hover .pcard__btn { transform: translate3d(0, -8px, 0); }
+}
+/* Sin mouse (táctil): el nombre lo muestra la tarjeta del centro */
+@media (hover: none) {
+  .pcard.is-center .pcard__label { opacity: 1; transform: none; }
+}
+
+/* Entrada: la fila sube */
+.featured.has-entrance .featured__row {
+  opacity: 0;
+  transform: translate3d(0, 22%, 0);
+  transition: opacity .9s var(--ease-out), transform 1.4s var(--ease-out);
+}
+.featured.has-entrance.is-in .featured__row { opacity: 1; transform: none; }
+
+/* ───────── Galería de un trabajo (dialog) ───────── */
+.gallery {
+  --focus: var(--yellow);
+  --bar-h: 4.5rem;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--black);
+  color: var(--paper);
+  overflow: hidden;
+}
+.gallery[open] {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+}
+.gallery::backdrop { background: var(--black); }
+
+.gallery__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: calc(.75rem + env(safe-area-inset-top, 0px)) var(--gutter) .75rem;
+}
+.gallery__heading { min-width: 0; }
+.gallery__title {
+  margin: 0;
+  font: 600 clamp(1.25rem, 1rem + 1vw, 1.75rem)/1.05 var(--font-display);
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.gallery__count {
+  margin: .375rem 0 0;
+  color: var(--paper-80);
+  font-size: .875rem;
+  font-weight: 500;
+}
+.gallery__close,
+.gallery__nav {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(244, 241, 236, .1);
+  color: var(--paper);
+  cursor: pointer;
+  transition: background-color .2s ease, opacity .2s ease, transform .25s var(--ease-out);
+}
+.gallery__close .icon,
+.gallery__nav .icon { width: 1.375rem; height: 1.375rem; }
+@media (hover: hover) {
+  .gallery__close:hover,
+  .gallery__nav:hover:not(:disabled) { background: rgba(244, 241, 236, .2); }
+}
+.gallery__nav:disabled { opacity: 0; pointer-events: none; }
+
+.gallery__track {
+  --slide-h: min(100%, calc((100vw - 2.5rem) * 16 / 9));
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin: 0;
+  padding: 0 50vw;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.gallery__track::-webkit-scrollbar { display: none; }
+.gallery__slide {
+  flex: 0 0 auto;
+  height: var(--slide-h);
+  aspect-ratio: 9 / 16;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #141312;
+  opacity: .35;
+  transform: scale(.94);
+  transition: opacity .45s var(--ease-out), transform .45s var(--ease-out);
+}
+.gallery__slide.is-current { opacity: 1; transform: none; }
+.gallery__slide img,
+.gallery__slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #141312;
+}
+
+.gallery__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  margin-top: -1.5rem;
+  background: rgba(13, 13, 13, .55);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.gallery__nav--prev { left: var(--gutter); }
+.gallery__nav--next { right: var(--gutter); }
+/* En el celular las flechas van abajo, para no tapar los controles del video */
+@media (max-width: 820px) {
+  .gallery__nav { top: auto; bottom: calc(.5rem + env(safe-area-inset-bottom, 0px)); margin-top: 0; }
+}
+
+.gallery__pos {
+  margin: 0;
+  padding: 1rem var(--gutter) calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  color: var(--paper-80);
+  font-size: .875rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gallery[open] { animation: gallery-in .45s var(--ease-out); }
+  .gallery[open] .gallery__track { animation: gallery-rise .7s var(--ease-out); }
+}
+@keyframes gallery-in { from { opacity: 0; } }
+@keyframes gallery-rise { from { opacity: 0; transform: translate3d(0, 2.5rem, 0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .featured.has-entrance .featured__row { opacity: 1; transform: none; transition: none; }
+  .gallery__slide { transition: none; }
+}
+
+/* ───────────────────────── Cómo trabajamos ───────────────────────── */
+
+/* Banda negra. Sin JS (o con "menos movimiento") es una lista común: título, foto y pasos abiertos.
+   Con JS, .is-enhanced muestra las pestañas y abre un paso por vez; con .is-scrolly la sección
+   queda fija mientras se scrollea y el avance recorre los pasos 01 → 04 (ver script.js). */
+.process {
+  --steps: 4;
+  --pin-top: calc(var(--header-h) + env(safe-area-inset-top, 0px));
+  --rule: rgba(244, 241, 236, .16);
+  --muted: rgba(244, 241, 236, .58);
+  position: relative;
+  background: var(--black);
+  color: var(--paper);
+  --focus: var(--yellow);
+}
+
+.process__track,
+.process__pin { position: relative; }
+
+.process__pin { padding: clamp(4rem, 3rem + 5vw, 7rem) var(--edge); }
+
+.process__title {
+  max-width: 14ch;
+  margin: 0;
+  font: 600 clamp(2rem, 1.25rem + 3.4vw, 3.75rem)/.95 var(--font-display);
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+/* Pestañas: píldora con la opción elegida en papel */
+.process__tabs { display: none; }
+.is-enhanced .process__tabs {
+  display: flex;
+  gap: .25rem;
+  margin-top: 1.75rem;
+  padding: .25rem;
+  border-radius: 999px;
+  background: rgba(244, 241, 236, .05);
+  box-shadow: inset 0 0 0 1px var(--rule);
+}
+.process__tab {
+  flex: 1 1 auto;
+  min-height: 44px;
+  padding: 0 .5rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font: 600 .875rem/1 var(--font-body);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color .35s var(--ease-out), color .35s var(--ease-out), box-shadow .35s var(--ease-out);
+}
+.process__tab:hover { color: var(--paper); }
+.process__tab[aria-selected="true"] {
+  background: var(--paper);
+  color: var(--black);
+  box-shadow: 0 6px 16px -8px rgba(0, 0, 0, .7);
+}
+@media (min-width: 480px) {
+  .is-enhanced .process__tabs { display: inline-flex; }
+  .process__tab { padding-inline: 1.125rem; font-size: .9375rem; }
+}
+
+/* Foto del paso: se revela con un barrido vertical (hacia arriba al avanzar, hacia abajo al volver) */
+.process__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  margin-top: 2.25rem;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  background: #1A1918;
+  isolation: isolate;
+}
+.process__img {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: inset(100% 0 0 0);
+  transform: scale(1.08);
+}
+.process__media[data-dir="back"] .process__img:not(.is-active):not(.is-leaving) { clip-path: inset(0 0 100% 0); }
+.process__img.is-leaving { z-index: 2; clip-path: inset(0); transform: none; }
+.process__img.is-active {
+  z-index: 3;
+  clip-path: inset(0);
+  transform: none;
+  transition: clip-path .9s var(--ease-out), transform 1.3s var(--ease-out);
+}
+
+.process__panels { margin-top: 2rem; }
+.process__panel + .process__panel { margin-top: 3rem; }
+.process__panel[hidden] { display: none; }
+
+.process__intro {
+  margin: 0 0 1.25rem;
+  color: var(--yellow);
+  font-size: .9375rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Pasos: lista con una línea a la izquierda; la del paso activo se llena en amarillo con el avance */
+.steps {
+  display: grid;
+  gap: .25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.step {
+  --fill: 0;
+  position: relative;
+  padding-left: 1.5rem;
+}
+.step::before,
+.step::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .5rem;
+  bottom: .5rem;
+  width: 2px;
+  border-radius: 2px;
+}
+.step::before { background: var(--rule); }
+.step::after {
+  background: var(--yellow);
+  transform: scaleY(var(--fill));
+  transform-origin: top;
+}
+.process:not(.is-scrolly) .step::after { transition: transform .6s var(--ease-out); }
+
+.step__head {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 44px;
+  padding: .375rem 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: 500 clamp(1.0625rem, 1rem + .3vw, 1.25rem)/1.3 var(--font-body);
+  text-align: left;
+  cursor: pointer;
+  transition: color .3s ease;
+}
+.step__head:hover,
+.step.is-active .step__head { color: var(--paper); }
+.process:not(.is-enhanced) .step__head { color: var(--paper); cursor: default; }
+.step__num { font-variant-numeric: tabular-nums; }
+.step__dot { white-space: pre; }
+
+/* Cuerpo desplegable: se abre animando la fila de la grilla */
+.step__body {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows .55s var(--ease-out);
+}
+.step__inner {
+  min-height: 0;
+  overflow: hidden;
+  transition: opacity .45s var(--ease-out) .1s, visibility 0s;
+}
+.is-enhanced .step:not(.is-active) .step__body { grid-template-rows: 0fr; }
+.is-enhanced .step:not(.is-active) .step__inner {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .2s ease, visibility 0s linear .55s;
+}
+.step__label { display: none; }
+.step__text {
+  max-width: 42ch;
+  margin: 0;
+  padding: .125rem 0 .875rem;
+  color: var(--paper-80);
+  font-size: 1rem;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.process__cta { margin-top: 1.75rem; }
+
+/* Botones sobre negro: el principal en amarillo (como en el hero del celular), el secundario con contorno */
+.process .btn--primary {
+  background: var(--yellow);
+  color: var(--black);
+  box-shadow: 0 8px 20px -10px rgba(0, 0, 0, .7);
+}
+.process .btn--primary:hover { background: var(--amber); }
+.process .btn--ghost {
+  background: transparent;
+  color: var(--paper);
+  box-shadow: inset 0 0 0 1.5px rgba(244, 241, 236, .5);
+}
+.process .btn--ghost:hover {
+  background: rgba(244, 241, 236, .08);
+  box-shadow: inset 0 0 0 1.5px var(--paper);
+}
+
+/* ── Celular y tablet: los pasos pasan a una fila 01–04 con la línea arriba;
+      debajo, el título y el texto del paso activo ── */
+@media (max-width: 959px) {
+  .is-enhanced .steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: .5rem;
+    row-gap: 0;
+  }
+  .is-enhanced .step { display: contents; }
+  .is-enhanced .step::before,
+  .is-enhanced .step::after { display: none; }
+
+  .is-enhanced .step__head {
+    position: relative;
+    grid-row: 1;
+    justify-content: flex-start;
+    padding: .875rem 0 .25rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .is-enhanced .step__head::before,
+  .is-enhanced .step__head::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 2px;
+    border-radius: 2px;
+  }
+  .is-enhanced .step__head::before { background: var(--rule); }
+  .is-enhanced .step__head::after {
+    background: var(--yellow);
+    transform: scaleX(var(--fill));
+    transform-origin: left;
+  }
+  .process.is-enhanced:not(.is-scrolly) .step__head::after { transition: transform .6s var(--ease-out); }
+  /* la variable --fill vive en el <li>; con display: contents el botón la hereda igual */
+
+  .is-enhanced .step__dot,
+  .is-enhanced .step__name {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .is-enhanced .step__body {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    transition: none;
+  }
+  .is-enhanced .step:not(.is-active) .step__body { display: none; }
+  .is-enhanced .step.is-active .step__inner { animation: step-in .5s var(--ease-out) both; }
+  .is-enhanced .step__label {
+    display: block;
+    margin: .75rem 0 .25rem;
+    color: var(--paper);
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+  /* alto reservado para 3 líneas: el botón de abajo no salta al cambiar de paso */
+  .is-enhanced .step__text { min-height: calc(3 * 1.55em + .875rem); padding-bottom: 0; }
+
+  .is-enhanced .process__cta { margin-top: 1rem; }
+
+  /* Fijo al scrollear: el título y las pestañas pasan; queda la foto arriba y el paso abajo */
+  .process.is-scrolly .process__pin { padding-bottom: 0; }
+  .process.is-scrolly .process__pin::after {
+    content: "";
+    display: block;
+    height: calc(var(--steps) * 30svh); /* scroll por paso: 30% del alto de pantalla */
+  }
+  .process.is-scrolly .process__stage {
+    position: sticky;
+    top: var(--pin-top);
+    display: flex;
+    flex-direction: column;
+    height: calc(100svh - var(--pin-top));
+    padding-block: 1rem calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  }
+  .process.is-scrolly .process__media {
+    flex: 1 1 auto;
+    min-height: 9rem;
+    margin-top: 0;
+    aspect-ratio: auto;
+  }
+  .process.is-scrolly .process__panels { flex: none; margin-top: 1.25rem; }
+  .process.is-scrolly .process__intro { margin-bottom: .25rem; }
+}
+
+@keyframes step-in {
+  from { opacity: 0; transform: translateY(.5rem); }
+}
+
+/* ── Escritorio: título y pasos a la izquierda, foto grande a la derecha ── */
+@media (min-width: 960px) {
+  .process__pin {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(3rem, 7vw, 8rem);
+  }
+  .process__head { grid-column: 1; grid-row: 1; }
+  .process__stage { display: contents; }
+  .process__media {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    align-self: stretch;
+    min-height: 26rem;
+    margin: 0;
+    aspect-ratio: auto;
+    border-radius: 1.5rem;
+  }
+  /* título alineado con el borde superior de la foto y el botón con el inferior */
+  .process__panels { grid-column: 1; grid-row: 2; align-self: end; margin-top: clamp(2rem, 6svh, 3.5rem); }
+  /* los pasos suben un poco: el botón queda por encima del borde inferior de la foto */
+  /* tanto como permita el alto de la pantalla: nada en notebooks bajas, hasta 4.5rem en pantallas altas */
+  .process.is-scrolly .process__panels { margin-bottom: max(0px, min(4.5rem, 100svh - 44rem)); }
+  .process.is-tight .process__panels { margin-bottom: 0; }
+
+  .process.is-scrolly .process__track { height: calc(100svh - var(--pin-top) + var(--steps) * 35svh); } /* scroll por paso: 35% del alto de pantalla */
+  .process.is-scrolly .process__pin {
+    position: sticky;
+    top: var(--pin-top);
+    height: calc(100svh - var(--pin-top));
+    padding-block: clamp(1.5rem, 6svh, 4.5rem);
+    align-content: start; /* si algo no entra, desborda hacia abajo y script.js lo detecta */
+  }
+  .process.is-scrolly .process__title { font-size: min(clamp(2.5rem, 1.25rem + 2.6vw, 3.75rem), 7.5svh); }
+}
+
+/* Pantallas bajas (notebooks): se aprietan los espacios para que todo entre con la sección fija */
+@media (min-width: 960px) and (max-height: 780px) {
+  .process.is-scrolly .process__pin { padding-block: 1rem; }
+  .process.is-scrolly .process__title { font-size: min(clamp(2.25rem, 1.25rem + 2.6vw, 3.5rem), 6svh); }
+  .is-enhanced .process__tabs { margin-top: 1rem; }
+  .process__panels { margin-top: 1rem; }
+  .process__intro { margin-bottom: .5rem; }
+  .steps { gap: 0; }
+  .step__text { padding-bottom: .375rem; }
+  .process__cta { margin-top: 1rem; }
+}
+
+/* Mientras script.js mide si el contenido entra: sin transiciones, alto final */
+.process.is-measuring *,
+.process.is-measuring *::before,
+.process.is-measuring *::after { transition: none !important; animation: none !important; }
+
+/* Compacto: pantallas muy bajas (lo activa script.js solo si el contenido no entra) */
+.process.is-tight .process__intro { display: none; }
+@media (max-width: 959px) {
+  .process.is-tight .process__media { min-height: 6rem; }
+  .process.is-tight .process__panels { margin-top: .75rem; }
+  .process.is-tight .step__label { margin-top: .5rem; font-size: 1.125rem; }
+  .process.is-tight .step__text { min-height: 0; font-size: .9375rem; }
+  .process.is-tight .process__stage { padding-block: .75rem; }
+}
+@media (min-width: 960px) {
+  .process.is-tight .process__pin { padding-block: .75rem; }
+  .process.is-tight .process__title { font-size: min(2.75rem, 5.5svh); }
+  .process.is-tight .process__tabs { margin-top: .75rem; }
+  .process.is-tight .process__panels { margin-top: .75rem; }
+  .process.is-tight .step__head { min-height: 44px; padding-block: .125rem; font-size: 1.0625rem; }
+  .process.is-tight .step__text { padding-bottom: .25rem; font-size: .9375rem; }
+  .process.is-tight .process__cta { margin-top: .75rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process__img { transform: none; }
+  .is-enhanced .step.is-active .step__inner { animation: none; }
+}
+
+/* ───────────────────────── Accesorios ───────────────────────── */
+
+/* Vuelve el fondo claro después de la banda negra. Tres tarjetas con foto y una cuarta (Otros)
+   que en lugar de foto muestra los productos con íconos. Al aparecer, la foto sube con un barrido
+   y los íconos se dibujan trazo a trazo, como una costura. */
+.acc {
+  --tile: #F1ECE5;
+  padding-block: clamp(4rem, 3rem + 5vw, 7.5rem);
+}
+
+.acc__head {
+  display: grid;
+  gap: 1rem;
+  padding-inline: var(--edge);
+}
+.acc__lead {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: clamp(1rem, .95rem + .25vw, 1.125rem);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+@media (min-width: 960px) {
+  .acc__head {
+    grid-template-columns: auto minmax(0, 24rem);
+    justify-content: space-between;
+    align-items: end;
+    column-gap: 3rem;
+  }
+}
+
+.acc__grid {
+  display: grid;
+  gap: clamp(.875rem, 1.6vw, 1.5rem);
+  margin: clamp(2rem, 1.5rem + 2vw, 3.5rem) 0 0;
+  padding: 0 var(--edge);
+  list-style: none;
+}
+@media (min-width: 640px)  { .acc__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1180px) { .acc__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+.acc__item { display: flex; }
+
+/* Tarjeta: blanca, misma sombra que las reseñas; al pasar el cursor se levanta,
+   una línea amarilla corre por el borde superior y el ícono pasa a amarillo */
+.acc-card {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 1.125rem;
+  background: #fff;
+  box-shadow:
+    0 0 0 1px rgba(13, 13, 13, .05),
+    0 10px 28px -18px rgba(13, 13, 13, .35);
+  transition: transform .45s var(--ease-out), box-shadow .45s var(--ease-out);
+}
+.acc-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 2;
+  height: 3px;
+  background: var(--yellow);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .55s var(--ease-out);
+}
+
+/* Foto del accesorio */
+.acc-card__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #1A1918;
+}
+@media (min-width: 1180px) { .acc-card__media { aspect-ratio: 4 / 3; } }
+
+.acc-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .9s var(--ease-out);
+}
+
+/* Pisos: el piso está en la mitad de abajo; en el formato apaisado del celular se prioriza esa zona */
+.acc-card__img--pisos { object-position: 50% 65%; }
+
+/* Otros: los productos en una grilla de 2 × 2 sobre el mismo fondo oscuro que las fotos */
+.acc-more {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  height: 100%;
+  margin: 0;
+  padding: .75rem;
+  gap: .5rem;
+  list-style: none;
+}
+.acc-more li {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: .5rem;
+  padding: .5rem;
+  border-radius: .75rem;
+  background: rgba(244, 241, 236, .06);
+  box-shadow: inset 0 0 0 1px rgba(244, 241, 236, .08);
+  color: var(--paper);
+  font-size: .8125rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+}
+.acc-more svg {
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: none;
+  stroke: var(--yellow);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Texto */
+.acc-card__body {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  flex: 1;
+  padding: 1.5rem 1.5rem 1.75rem;
+}
+.acc-card__title {
+  display: flex;
+  align-items: center;
+  gap: .875rem;
+  margin: 0;
+  font: 600 clamp(1.125rem, 1.05rem + .35vw, 1.3125rem)/1.05 var(--font-display);
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.acc-card__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: .875rem;
+  background: var(--tile);
+  color: var(--red);
+  transition: background-color .4s var(--ease-out), color .4s var(--ease-out), transform .5s var(--ease-out);
+}
+.acc-card__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.acc-card__text {
+  max-width: 42ch;
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: .9375rem;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+@media (hover: hover) {
+  .acc-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 0 0 1px rgba(13, 13, 13, .05),
+      0 22px 40px -22px rgba(13, 13, 13, .4);
+  }
+  .acc-card:hover::before { transform: scaleX(1); }
+  .acc-card:hover .acc-card__icon {
+    background: var(--yellow);
+    color: var(--black);
+    transform: rotate(-4deg);
+  }
+  .acc-card:hover .acc-card__img { transform: scale(1.04); }
+}
+
+/* Tarjetas de una misma fila: foto, título y texto comparten alturas,
+   así los textos arrancan a la misma altura aunque un título ocupe más líneas */
+@supports (grid-template-rows: subgrid) {
+  @media (min-width: 640px) {
+    .acc__item,
+    .acc-card {
+      display: grid;
+      grid-row: span 3;
+      grid-template-rows: subgrid;
+      row-gap: 0;
+    }
+    .acc-card__body { display: contents; }
+    .acc-card__title { padding: 1.5rem 1.5rem 0; }
+    .acc-card__text { padding: 1rem 1.5rem 1.75rem; }
+  }
+}
+
+/* Entrada: la foto sube con un barrido y los íconos se dibujan.
+   Solo con .js-reveal (JS activo y sin "menos movimiento"); si no, todo se ve de entrada. */
+.js-reveal .acc-card__media > * {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1s var(--ease-out) calc(var(--reveal-delay, 0s) + .15s);
+}
+.js-reveal .is-revealed .acc-card__media > * { clip-path: inset(0); }
+
+.js-reveal .acc-card svg [pathLength] {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.2s var(--ease-out) calc(var(--reveal-delay, 0s) + .45s);
+}
+.js-reveal .acc-more svg [pathLength] { transition-delay: calc(var(--reveal-delay, 0s) + .7s); }
+.js-reveal .is-revealed .acc-card svg [pathLength] { stroke-dashoffset: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .acc-card,
+  .acc-card::before,
+  .acc-card__icon,
+  .acc-card__img { transition: none; }
+  .acc-card:hover,
+  .acc-card:hover .acc-card__icon { transform: none; }
+}
+
+/* ───────────────────────── Preguntas frecuentes ───────────────────────── */
+
+/* Banda blanca para separarla de Accesorios. Lista con divisores finos: la pregunta abierta
+   pasa a rojo y su "+" gira hasta ser una "×". Sin JS se ven los tres temas uno debajo del otro;
+   con JS (.is-enhanced) aparecen las pestañas y se muestra un tema por vez. */
+.faq {
+  --rule: #E4E0DA;
+  display: grid;
+  gap: clamp(2rem, 1.5rem + 2vw, 3rem);
+  padding: clamp(4rem, 3rem + 5vw, 7.5rem) var(--edge);
+  background: #fff;
+}
+
+/* rojo de texto un poco más oscuro que el de marca: contraste AA cómodo sobre blanco */
+.faq { --q-open: var(--red-deep); }
+
+.faq__title {
+  max-width: 18ch;
+  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.75rem);
+  line-height: 1;
+  white-space: normal;
+}
+
+/* Pestañas: filas sin líneas; el tema elegido sobre un fondo cálido redondeado */
+.faq__tabs { display: none; }
+.is-enhanced .faq__tabs {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  max-width: 24rem;
+  margin-top: 1.5rem;
+}
+.faq__tab {
+  display: flex;
+  align-items: center;
+  min-height: 3.25rem;
+  padding: 0 1.125rem;
+  border: 0;
+  border-radius: .75rem;
+  background: none;
+  color: var(--ink-muted);
+  font: 600 1rem/1.2 var(--font-body);
+  text-align: left;
+  cursor: pointer;
+  transition: color .3s var(--ease-out), background-color .3s var(--ease-out);
+}
+.faq__tab:hover { background: #FAF8F5; color: var(--ink); }
+.faq__tab[aria-selected="true"] { background: var(--bg); color: var(--ink); }
+
+/* Paneles */
+.faq__panel + .faq__panel { margin-top: 2.5rem; }
+.is-enhanced .faq__panel + .faq__panel { margin-top: 0; }
+.faq__panel[hidden] { display: none; }
+.faq__panel:focus-visible { outline-offset: 6px; }
+.faq__panel-title {
+  margin: 0 0 .5rem;
+  font: 600 1.125rem/1.2 var(--font-display);
+  text-transform: uppercase;
+}
+.is-enhanced .faq__panel-title { display: none; }
+.is-enhanced .faq__panel:not([hidden]) { animation: faq-in .5s var(--ease-out) both; }
+@keyframes faq-in { from { opacity: 0; transform: translateY(.75rem); } }
+
+/* Pregunta */
+.faq__item { border-bottom: 1px solid var(--rule); }
+.faq__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  min-height: 44px;
+  padding: 1.25rem 0;
+  color: var(--ink);
+  font-size: clamp(1rem, .96rem + .2vw, 1.125rem);
+  font-weight: 600;
+  line-height: 1.35;
+  list-style: none;
+  cursor: pointer;
+  transition: color .3s var(--ease-out);
+}
+.faq__q::-webkit-details-marker { display: none; }
+.faq__q:focus-visible { outline-offset: 2px; }
+.faq__item[open] > .faq__q { color: var(--q-open); }
+@media (hover: hover) {
+  .faq__q:hover { color: var(--q-open); }
+}
+
+/* "+" dibujado con dos barras; abierto gira 135° y queda como "×" */
+.faq__icon {
+  position: relative;
+  flex: none;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  transition: background-color .3s var(--ease-out), transform .5s var(--ease-out);
+}
+.faq__icon::before,
+.faq__icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: .875rem;
+  height: 1.75px;
+  margin: -.875px 0 0 -.4375rem;
+  border-radius: 2px;
+  background: currentColor;
+}
+.faq__icon::after { transform: rotate(90deg); }
+.faq__item[open] .faq__icon { transform: rotate(135deg); background: rgba(193, 18, 26, .07); }
+@media (hover: hover) {
+  .faq__q:hover .faq__icon { background: rgba(193, 18, 26, .07); }
+}
+
+/* Respuesta: se abre animando el alto donde el navegador lo permite */
+.faq__a p {
+  max-width: 68ch;
+  margin: 0;
+  padding: 0 0 1.5rem;
+  color: var(--ink-muted);
+  font-size: 1rem;
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+.faq__item[open] .faq__a { animation: faq-answer .45s var(--ease-out) both; }
+@media (min-width: 640px) { .faq__a p { padding-right: 3.5rem; } }
+@keyframes faq-answer { from { opacity: 0; transform: translateY(-.375rem); } }
+
+@supports (interpolate-size: allow-keywords) {
+  .faq { interpolate-size: allow-keywords; }
+  .faq__item::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition: block-size .45s var(--ease-out), content-visibility .45s allow-discrete;
+  }
+  .faq__item[open]::details-content { block-size: auto; }
+}
+
+/* Dato pendiente: visible a propósito */
+.todo {
+  padding: .05em .3em;
+  border-radius: 4px;
+  background: rgba(242, 183, 5, .28);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Escritorio: título a todo el ancho y en una línea; debajo, pestañas a la izquierda
+   (fijas al scrollear) y preguntas a la derecha */
+@media (min-width: 960px) {
+  .faq {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr);
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(3rem, 7vw, 8rem);
+    row-gap: 2.5rem;
+  }
+  .faq__head { display: contents; }
+  .faq__title { grid-column: 1 / -1; grid-row: 1; max-width: none; }
+  .faq__tabs { grid-column: 1; grid-row: 2; align-self: start; position: sticky; top: calc(var(--header-h) + 2rem); }
+  .faq__panels { grid-column: 2; grid-row: 2; margin-top: -1.25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-enhanced .faq__panel:not([hidden]),
+  .faq__item[open] .faq__a { animation: none; }
+  .faq__icon { transition: none; }
+  .faq__item::details-content { transition: none; }
+}
+
+/* ───────────────────────── Footer / Contacto ───────────────────────── */
+
+/* Cierre negro. Marca y datos de contacto a la izquierda, mapa a la derecha;
+   abajo, legales y redes separados por una línea fina. */
+.site-footer {
+  --muted: rgba(244, 241, 236, .62);
+  --rule: rgba(244, 241, 236, .1);
+  --focus: var(--yellow);
+  background: var(--black);
+  color: var(--paper);
+}
+
+.site-footer__main {
+  display: grid;
+  gap: 3rem;
+  padding: clamp(3.5rem, 2.5rem + 4vw, 6rem) var(--edge) clamp(3rem, 2.5rem + 2vw, 4.5rem);
+}
+
+.site-footer__logo { display: inline-block; border-radius: 6px; }
+.site-footer__logo img { width: auto; height: 2.75rem; }
+
+.site-footer__tagline {
+  max-width: 30rem;
+  margin: 1.25rem 0 0;
+  color: var(--muted);
+  font-size: .9375rem;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+/* Datos de contacto: ícono en círculo + texto */
+.contact {
+  display: grid;
+  gap: .75rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.contact__row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.contact__row--hours { align-items: flex-start; }
+.contact__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(244, 241, 236, .16);
+  color: var(--yellow);
+  transition: background-color .3s var(--ease-out), color .3s var(--ease-out), box-shadow .3s var(--ease-out);
+}
+.contact__icon svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.contact__icon--fill svg { fill: currentColor; stroke: none; }
+
+.contact__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--paper);
+  font-size: 1rem;
+  text-decoration: none;
+}
+.contact__link--strong { font-size: 1.125rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+@media (hover: hover) {
+  .contact__row:hover .contact__icon { background: var(--yellow); color: var(--black); box-shadow: none; }
+}
+
+/* Horarios */
+.hours { padding-top: .625rem; }
+.hours__list { display: grid; gap: .375rem; margin: 0; }
+.hours__list div { display: flex; flex-wrap: wrap; column-gap: .375rem; }
+.hours__list dt::after { content: ":"; }
+.hours__list dd { margin: 0; font-variant-numeric: tabular-nums; }
+.hours__note {
+  margin: .5rem 0 0;
+  color: var(--muted);
+  font-size: .9375rem;
+}
+
+/* Mapa */
+.site-footer__heading {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin: 0 0 1rem;
+  font: 600 1.125rem/1 var(--font-display);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+.site-footer__heading .icon { width: 1.125rem; height: 1.125rem; color: var(--yellow); }
+
+.map {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 1.125rem;
+  background: #1A1918;
+  box-shadow: 0 0 0 1px var(--rule);
+}
+.map__frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Barra inferior */
+.site-footer__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+  /* en el celular deja lugar al botón flotante de WhatsApp */
+  padding: 1.75rem var(--edge) calc(6rem + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--rule);
+}
+.site-footer__copy {
+  margin: 0;
+  color: var(--paper-80);
+  font-size: .875rem;
+  line-height: 1.5;
+}
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  margin: .25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.legal { column-gap: 1.25rem; }
+.legal li { display: flex; align-items: center; }
+@media (min-width: 640px) { .legal { column-gap: 0; } }
+@media (min-width: 640px) {
+.legal li + li::before {
+  content: "";
+  width: 3px;
+  height: 3px;
+  margin: 0 .625rem;
+  border-radius: 50%;
+  background: var(--muted);
+}
+}
+.legal a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--muted);
+  font-size: .8125rem;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.legal a:hover,
+.legal a:focus-visible { color: var(--paper); }
+
+.social {
+  display: flex;
+  gap: .625rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.social__link {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(244, 241, 236, .2);
+  color: var(--paper);
+  transition: background-color .3s var(--ease-out), color .3s var(--ease-out), box-shadow .3s var(--ease-out), transform .3s var(--ease-out);
+}
+.social__link svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+}
+.social__link--fill svg { fill: currentColor; stroke: none; }
+@media (hover: hover) {
+  .social__link:hover {
+    background: var(--yellow);
+    color: var(--black);
+    box-shadow: none;
+    transform: translateY(-2px);
+  }
+}
+
+@media (min-width: 960px) {
+  .site-footer__main {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 32rem);
+    column-gap: clamp(3rem, 8vw, 9rem);
+    align-items: start;
+  }
+  .map { aspect-ratio: 3 / 2; }
+  /* a la derecha deja lugar al botón flotante de WhatsApp, así no tapa las redes */
+  .site-footer__bar { padding-bottom: 1.75rem; padding-right: calc(var(--edge) + 4.5rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact__icon,
+  .social__link { transition: none; }
+  .social__link:hover { transform: none; }
+}
+
+/* ───────────────────────── Fondo ambiental + vidrio ─────────────────────────
+   Detrás de todo, tres capas de manchas grafito y blancas que se desplazan a distinta
+   velocidad con el scroll (parallax, ver script.js), y un grano fino fijo encima.
+   Cada capa es un mosaico vertical que se repite: el desplazamiento da la vuelta sin
+   cortes, así nunca se acaba aunque la página sea larga. Las secciones claras quedan
+   transparentes y sus tarjetas son vidrio esmerilado; las negras conservan su fondo. */
+
+body { background: #EEEEED; }
+
+.ambient {
+  --tile: 120vh;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.ambient__layer {
+  position: absolute;
+  inset: 0 0 auto;
+  height: calc(100vh + var(--tile));
+  background-size: 100% var(--tile);
+  background-repeat: repeat-y;
+  will-change: transform;
+}
+/* Lejos: grandes y blancas, casi quietas */
+.ambient__layer--far {
+  background-image:
+    radial-gradient(46% 30% at 18% 28%, rgba(255, 255, 255, .95), transparent 70%),
+    radial-gradient(40% 26% at 84% 70%, rgba(255, 255, 255, .85), transparent 70%);
+}
+/* Medio: grafito suave */
+.ambient__layer--mid {
+  background-image:
+    radial-gradient(38% 24% at 82% 22%, rgba(58, 58, 64, .16), transparent 70%),
+    radial-gradient(34% 22% at 14% 74%, rgba(72, 72, 78, .13), transparent 70%);
+}
+/* Cerca: más chicas y oscuras, las que más se mueven */
+.ambient__layer--near {
+  background-image:
+    radial-gradient(22% 14% at 62% 46%, rgba(32, 32, 36, .12), transparent 70%),
+    radial-gradient(18% 12% at 30% 12%, rgba(255, 255, 255, .8), transparent 70%),
+    radial-gradient(20% 13% at 90% 88%, rgba(40, 40, 44, .10), transparent 70%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .1 0 0 0 0 .1 0 0 0 0 .11 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Secciones claras: dejan ver el fondo */
+@media (min-width: 960px) { .hero { background: transparent; } }
+.faq { background: transparent; --rule: rgba(24, 24, 27, .1); }
+
+/* Superficie de vidrio claro común */
+.review,
+.acc-card,
+.carousel-btn,
+.btn--light,
+.faq__panels {
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+}
+@media (min-width: 960px) {
+  .hero .btn--ghost {
+    background: var(--glass-fill);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+    box-shadow: var(--glass-shadow);
+  }
+  .hero .btn--ghost:hover { background: var(--glass-fill-hover); }
+  .hero__media { box-shadow: 0 0 0 1px rgba(255, 255, 255, .6), 0 30px 60px -30px rgba(24, 24, 27, .5); }
+}
+@media (hover: hover) {
+  .acc-card:hover,
+  .carousel-btn:hover,
+  .btn--light:hover,
+  .hero .btn--ghost:hover { background: var(--glass-fill-hover); box-shadow: var(--glass-shadow-lift); }
+}
+.carousel-btn:active,
+.btn--light:active { box-shadow: var(--glass-edge), 0 4px 10px -6px rgba(24, 24, 27, .38); }
+
+/* Celular: sobre el video, "Ver proyectos" y la ubicación son vidrio oscuro que desenfoca la imagen */
+@media (max-width: 959px) {
+  .hero .btn--ghost {
+    background: rgba(13, 13, 13, .22);
+    -webkit-backdrop-filter: blur(14px) saturate(1.4);
+    backdrop-filter: blur(14px) saturate(1.4);
+  }
+}
+.hero__place {
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  backdrop-filter: blur(12px) saturate(1.4);
+}
+
+/* Preguntas frecuentes: las respuestas viven en un panel de vidrio */
+.faq__panels {
+  padding: .25rem clamp(1.125rem, 2.5vw, 2.25rem);
+  border-radius: 1.5rem;
+}
+.faq__item:last-child { border-bottom: 0; }
+@media (min-width: 960px) { .faq__panels { margin-top: 0; } }
+.faq__tab:hover { background: rgba(255, 255, 255, .4); }
+.faq__tab[aria-selected="true"] { background: var(--glass-fill-hover); box-shadow: var(--glass-edge); }
+
+/* ── Secciones oscuras: resplandor tenue y vidrio oscuro ── */
+.brands {
+  background:
+    radial-gradient(60% 140% at 8% 0%, rgba(244, 241, 236, .09), transparent 60%),
+    radial-gradient(50% 140% at 95% 100%, rgba(120, 120, 128, .12), transparent 60%),
+    var(--black);
+}
+.process__pin {
+  background:
+    radial-gradient(55% 45% at 0% 0%, rgba(244, 241, 236, .07), transparent 70%),
+    radial-gradient(45% 50% at 100% 100%, rgba(120, 120, 128, .1), transparent 70%);
+}
+.site-footer {
+  background:
+    radial-gradient(50% 60% at 100% 0%, rgba(244, 241, 236, .07), transparent 70%),
+    radial-gradient(40% 50% at 0% 100%, rgba(120, 120, 128, .1), transparent 70%),
+    var(--black);
+}
+.is-enhanced .process__tabs,
+.process .btn--ghost,
+.contact__icon,
+.social__link {
+  background: var(--glass-dark-fill);
+  box-shadow: var(--glass-dark-edge);
+}
+.process__media,
+.map { box-shadow: 0 0 0 1px rgba(244, 241, 236, .1), 0 30px 60px -30px rgba(0, 0, 0, .8); }
+
+/* Sin desenfoque disponible o con transparencia reducida: superficies casi opacas */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root { --glass-fill: rgba(255, 255, 255, .88); --glass-fill-hover: #fff; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  :root { --glass-fill: #fff; --glass-fill-hover: #fff; --glass-dark-fill: #1A1918; }
+  .ambient, body::after { display: none; }
+}
+
+/* ── Accesorios en el celular: carrusel que se desliza con el dedo ──
+   Por debajo de 640px las tarjetas quedan en una fila que se mueve a izquierda y derecha,
+   y cada una se acomoda al centro (scroll-snap). Con JS (.is-swipe), la del centro se ve
+   completa y las vecinas quedan atrás, más chicas y tenues, con una transición al cambiar. */
+@media (max-width: 639px) {
+  .acc__grid {
+    --card-w: min(76vw, 20rem);
+    display: flex;
+    gap: .5rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    /* la primera y la última también pueden quedar centradas */
+    padding: .5rem calc((100% - var(--card-w)) / 2) 1.5rem;
+    margin-bottom: -1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .acc__grid::-webkit-scrollbar { display: none; }
+  .acc__grid:focus-visible { outline-offset: -2px; }
+  .acc__item {
+    flex: 0 0 var(--card-w);
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+  .acc.is-swipe .acc-card {
+    transform: scale(.92);
+    opacity: .45;
+    filter: saturate(.6);
+    transition: transform .6s var(--ease-out), opacity .5s var(--ease-out), filter .5s var(--ease-out);
+  }
+  .acc.is-swipe .acc__item.is-current .acc-card { transform: none; opacity: 1; filter: none; }
+}
+@media (max-width: 639px) and (prefers-reduced-motion: reduce) {
+  .acc.is-swipe .acc-card { transition-duration: .01ms; }
+}
+
+/* ───────────────────────── Nosotros ─────────────────────────
+   Texto a la izquierda (fijo al hacer scroll en escritorio), la historia en una línea de
+   tiempo sobre vidrio a la derecha. */
+.about {
+  display: grid;
+  gap: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+  padding: clamp(4rem, 3rem + 5vw, 7.5rem) var(--edge);
+}
+.about__intro { display: grid; gap: 1.5rem; align-content: start; }
+.about__title { max-width: 16ch; white-space: normal; }
+.about__text { display: grid; gap: 1rem; max-width: 36rem; }
+.about__text p {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: clamp(1rem, .95rem + .25vw, 1.125rem);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+.about__text .about__lead {
+  color: var(--ink);
+  font-size: clamp(1.125rem, 1rem + .5vw, 1.375rem);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.about__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: .25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.about__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: 2.25rem;
+  padding: 0 .875rem;
+  border-radius: 999px;
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-edge);
+  font-size: .875rem;
+  font-weight: 600;
+}
+.about__tag::before {
+  content: "";
+  width: .375rem;
+  height: .375rem;
+  border-radius: 50%;
+  background: var(--yellow);
+}
+
+/* Línea de tiempo: un riel fino une los cuatro momentos */
+.about__timeline {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+  margin: 0;
+  padding: clamp(1.75rem, 1.25rem + 2vw, 2.75rem) clamp(1.25rem, 1rem + 2vw, 2.75rem);
+  border-radius: 1.5rem;
+  list-style: none;
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+}
+.milestone {
+  position: relative;
+  padding-left: 2rem;
+}
+/* riel: va de un punto al siguiente */
+.milestone:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 1.25rem;
+  bottom: -2.25rem;
+  left: .3125rem;
+  width: 1px;
+  background: rgba(24, 24, 27, .16);
+}
+.milestone::before {
+  content: "";
+  position: absolute;
+  top: .3125rem;
+  left: 0;
+  width: .6875rem;
+  height: .6875rem;
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, .85);
+}
+.milestone:first-child::before { background: var(--yellow); box-shadow: 0 0 0 4px rgba(255, 255, 255, .85), 0 0 0 5px rgba(13, 13, 13, .12); }
+.milestone__when {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+.milestone__title {
+  margin: .375rem 0 0;
+  font-size: clamp(1.125rem, 1rem + .5vw, 1.375rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+}
+.milestone__text {
+  max-width: 34rem;
+  margin: .5rem 0 0;
+  color: var(--ink-muted);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.about__story { display: grid; gap: clamp(2.5rem, 2rem + 2vw, 3.5rem); }
+@media (min-width: 960px) {
+  /* el texto queda fijo mientras pasa la línea de tiempo */
+  .about__story {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    column-gap: clamp(3rem, 7vw, 8rem);
+    align-items: start;
+  }
+  .about__intro { position: sticky; top: calc(var(--header-h) + 2.5rem); }
+}
+
+/* ───────────────────────── Stagger reveal ─────────────────────────
+   Lo activa script.js (clase .js-reveal en <html>); sin JS o con movimiento reducido
+   todo se ve desde el principio. */
+
+/* Ítems escalonados: suben y se aclaran con una pizca de desenfoque que se disipa */
+.js-reveal .stagger-item {
+  opacity: 0;
+  filter: blur(6px);
+  transform: translate3d(0, 1.5rem, 0);
+}
+.js-reveal .stagger-item.is-revealed {
+  opacity: 1;
+  filter: none;
+  transform: none;
+  transition:
+    opacity .7s var(--ease-out) var(--reveal-delay, 0s),
+    filter .7s var(--ease-out) var(--reveal-delay, 0s),
+    transform .9s var(--ease-out) var(--reveal-delay, 0s);
+}
+
+/* Títulos: el bloque no se mueve; cada palabra sube desde atrás de una línea invisible */
+.js-reveal .is-split[data-reveal] { opacity: 1; transform: none; }
+.word {
+  display: inline-block;
+  overflow: hidden;
+  overflow: clip;
+  /* aire para tildes de mayúsculas y descendentes, sin cambiar el interlineado */
+  padding-block: .14em .08em;
+  margin-block: -.14em -.08em;
+  vertical-align: top;
+}
+.word__in { display: inline-block; }
+.js-reveal .is-split .word__in {
+  transform: translate3d(0, 110%, 0);
+  transition: transform .85s var(--ease-out) calc(var(--reveal-delay, 0s) + var(--w) * 70ms);
+}
+.js-reveal .is-split.is-revealed .word__in { transform: none; }
+
+/* ───────────────────────── Microinteracciones y hover ───────────────────────── */
+
+/* Reflejo de luz que sigue al cursor sobre el vidrio */
+.has-glint { position: relative; }
+.has-glint::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  background: radial-gradient(18rem circle at var(--mx, 50%) var(--my, 0%), rgba(255, 255, 255, .5), transparent 60%);
+  mix-blend-mode: soft-light;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s var(--ease-out);
+}
+.has-glint:hover::after { opacity: 1; }
+
+@media (hover: hover) {
+  /* Reseñas: la tarjeta se eleva, como las de accesorios */
+  .review { transition: transform .45s var(--ease-out), box-shadow .45s var(--ease-out), background-color .45s var(--ease-out); }
+  .review:hover { transform: translateY(-4px); background: var(--glass-fill-hover); box-shadow: var(--glass-shadow-lift); }
+
+  /* Preguntas: la fila se corre apenas hacia la respuesta */
+  .faq__q { transition: color .3s var(--ease-out), padding-left .35s var(--ease-out); }
+  .faq__q:hover { padding-left: .375rem; }
+
+  /* "Dejar reseña": la G gira un cuarto */
+  .btn--light .g-logo { transition: transform .5s var(--ease-out); }
+  .btn--light:hover .g-logo { transform: rotate(-90deg) scale(1.08); }
+}
+
+/* Botón principal: un destello de vidrio cruza el botón al pasar el cursor */
+.btn--primary { position: relative; overflow: hidden; isolation: isolate; }
+.btn--primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, .28) 50%, transparent 65%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+@media (hover: hover) {
+  .btn--primary:hover::after { transform: translateX(120%); transition: transform .75s var(--ease-out); }
+}
+
+/* Links del footer: un subrayado amarillo crece desde la izquierda */
+.legal a,
+.contact__link { background: linear-gradient(var(--yellow), var(--yellow)) no-repeat 0 calc(50% + .8em) / 0 1px; }
+.legal a { transition: color .2s ease, background-size .4s var(--ease-out); }
+.contact__link { transition: color .2s ease, background-size .4s var(--ease-out); }
+@media (hover: hover) {
+  .legal a:hover,
+  .contact__link:hover { background-size: 100% 1px; }
+}
+
+/* WhatsApp flotante: dos pulsos de atención poco después de cargar, y un saludo al pasar el cursor */
+.wa-float::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 50%;
+  background: var(--whatsapp);
+  opacity: 0;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .wa-float { isolation: isolate; }
+  .wa-float.is-pulsing::before { animation: wa-pulse 1.6s var(--ease-out) .6s 2; }
+  .wa-float:hover svg { animation: wa-nudge .5s var(--ease-out); }
+}
+@keyframes wa-pulse {
+  0%   { opacity: .45; transform: scale(1); }
+  100% { opacity: 0;   transform: scale(1.7); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .review:hover { transform: none; }
+  .faq__q:hover { padding-left: 0; }
+  .btn--light:hover .g-logo { transform: none; }
+}

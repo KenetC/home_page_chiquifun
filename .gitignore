@@ -1,0 +1,29 @@
+# --- Sistema operativo ---
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+
+# --- Editores / IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Herramientas de IA / agentes (se reinstalan desde skills-lock.json) ---
+.claude/
+.impeccable/
+.agents/
+.playwright-cli/
+
+# --- Material interno (no lo usa la web y el repo es público) ---
+datos_negocio/
+recursos-originales/
+
+# --- Dependencias y temporales, por si se agregan más adelante ---
+node_modules/
+dist/
+*.log
+.env
+.env.*
+*.tmp
