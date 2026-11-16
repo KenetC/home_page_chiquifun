@@ -1,29 +1,20 @@
-# --- Sistema operativo ---
+# Lista blanca: el repo solo contiene lo necesario para servir la página.
+# Todo lo que no esté habilitado abajo queda fuera.
+/*
+
+!/.gitignore
+!/index.html
+!/styles.css
+!/script.js
+!/favicon.ico
+!/uploads/
+
+# Dentro de uploads/, archivos que la página no carga
+/uploads/web/manifest.json
+/uploads/web/**/*-1920.jpg
+/uploads/icons/icon-512.png
+
+# Basura del sistema operativo en cualquier carpeta
 .DS_Store
 Thumbs.db
 desktop.ini
-*~
-
-# --- Editores / IDE ---
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# --- Herramientas de IA / agentes (se reinstalan desde skills-lock.json) ---
-.claude/
-.impeccable/
-.agents/
-.playwright-cli/
-
-# --- Material interno (no lo usa la web y el repo es público) ---
-datos_negocio/
-recursos-originales/
-
-# --- Dependencias y temporales, por si se agregan más adelante ---
-node_modules/
-dist/
-*.log
-.env
-.env.*
-*.tmp
