@@ -222,23 +222,29 @@ a { color: inherit; text-underline-offset: .2em; }
 .menu-toggle[aria-expanded="true"] .menu-toggle__icon span:first-child { transform: rotate(45deg); }
 .menu-toggle[aria-expanded="true"] .menu-toggle__icon span:last-child  { transform: rotate(-45deg); }
 
-/* Menú desplegable */
+/* Menú desplegable (celular y tablet): lista de secciones arriba y, al pie, cotizar,
+   dirección e Instagram. La cortina baja con clip-path; los links entran escalonados con GSAP
+   (script.js). La sección actual se marca con el rombo amarillo de la franja de marcas. */
 .nav {
   position: fixed;
   inset: 0;
   z-index: 1;
-  padding: calc(var(--header-h) + env(safe-area-inset-top, 0) + 1rem) var(--gutter) 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: calc(var(--header-h) + env(safe-area-inset-top, 0) + .75rem) var(--gutter) calc(1.5rem + env(safe-area-inset-bottom, 0));
   background: var(--header-bg);
   color: var(--paper);
   overflow-y: auto;
+  overscroll-behavior: contain;
   visibility: hidden;
   clip-path: inset(0 0 100% 0);
-  transition: clip-path .5s var(--ease-out), visibility 0s linear .5s;
+  transition: clip-path .45s var(--ease-out), visibility 0s linear .45s;
 }
 .site-header.is-open .nav {
   visibility: visible;
   clip-path: inset(0 0 0 0);
-  transition: clip-path .5s var(--ease-out), visibility 0s;
+  transition: clip-path .6s var(--ease-out), visibility 0s;
 }
 
 .nav__list {
@@ -247,18 +253,76 @@ a { color: inherit; text-underline-offset: .2em; }
   list-style: none;
 }
 .nav__list a {
+  position: relative;
   display: flex;
   align-items: center;
-  min-height: 3.75rem;
+  min-height: 3.5rem;
   border-bottom: 1px solid rgba(244, 241, 236, .1);
-  font: 600 clamp(1.5rem, 1.1rem + 2vw, 2rem)/1.1 var(--font-display);
+  font: 600 clamp(1.625rem, 1.2rem + 2.2vw, 2.125rem)/1.1 var(--font-display);
   text-transform: uppercase;
   letter-spacing: .01em;
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: color .2s ease, padding-left .45s var(--ease-out);
+}
+.nav__list li:last-child a { border-bottom: 0; }
+.nav__list a::before {
+  content: "";
+  position: absolute;
+  left: .125rem;
+  top: 50%;
+  width: .5rem;
+  height: .5rem;
+  margin-top: -.25rem;
+  background: var(--yellow);
+  transform: rotate(45deg) scale(0);
+  transition: transform .45s var(--ease-out);
+}
+.nav__list a[aria-current] { padding-left: 1.5rem; color: var(--yellow); }
+.nav__list a[aria-current]::before { transform: rotate(45deg) scale(1); }
+.nav__list a:active { color: var(--yellow); }
+@media (hover: hover) {
+  .nav__list a:hover { color: var(--yellow); }
+}
+
+.nav__foot {
+  display: grid;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(244, 241, 236, .1);
+}
+.nav__cta {
+  width: 100%;
+  min-height: 3.5rem;
+  background: var(--yellow);
+  color: var(--black);
+  font-size: 1.0625rem;
+  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, .7);
+}
+.nav__cta:hover { background: var(--amber); }
+.nav__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav__meta a {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: 44px;
+  font: 500 .9375rem/1.2 var(--font-body);
+  color: var(--paper-80);
+  text-decoration: none;
   transition: color .2s ease;
 }
-.nav__list a:hover,
-.nav__list a[aria-current] { color: var(--yellow); }
+.nav__meta a:hover,
+.nav__meta a:active { color: var(--paper); }
+.nav__meta .icon { flex: none; width: 1.125rem; height: 1.125rem; color: var(--yellow); }
 
 /* Desde tablet horizontal el hero es claro: el header arranca como barra oscura sólida */
 @media (min-width: 960px) {
@@ -272,8 +336,13 @@ a { color: inherit; text-underline-offset: .2em; }
 
   .menu-toggle { display: none; }
 
+  .nav__foot,
+  .nav__list a::before { display: none; }
+  .nav__list a[aria-current] { padding-left: .5rem; }
+
   .nav {
     position: static;
+    display: block;
     padding: 0;
     background: none;
     overflow: visible;
@@ -381,13 +450,31 @@ a { color: inherit; text-underline-offset: .2em; }
   color: var(--paper);
 }
 .hero__place .icon { flex: none; width: 1.125rem; height: 1.125rem; color: var(--yellow); }
+a.hero__place {
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color .2s ease;
+}
+a.hero__place:active { background: rgba(13, 13, 13, .8); }
+@media (hover: hover) {
+  a.hero__place:hover { background: rgba(13, 13, 13, .8); text-decoration: underline; text-underline-offset: .2em; }
+}
+
+/* Celular: la franja de marcas no asoma dentro del hero */
+@media (max-width: 959px) {
+  :root { --brands-peek: 0px; }
+  /* El bloque de texto se superpone al video: que su relleno no bloquee el clic en la ubicación */
+  .hero__content { pointer-events: none; }
+  .hero__content > * { pointer-events: auto; }
+}
 
 .hero__content {
   position: relative;
   z-index: 2;
   width: 100%;
   max-width: 40rem;
-  padding: calc(var(--header-h) + 3rem) var(--gutter) calc(50px + env(safe-area-inset-bottom, 0));
+  padding: calc(var(--header-h) + 3rem) var(--gutter) calc(40px + env(safe-area-inset-bottom, 0));
 }
 
 .hero__title {
@@ -1308,7 +1395,8 @@ a { color: inherit; text-underline-offset: .2em; }
   mask-composite: intersect;
 }
 /* Celular: la cámara está más cerca, el desvanecido de los costados es más corto para que asomen las vecinas */
-@media (max-width: 820px) { .featured.is-live .featured__stage { --fade: 1.25rem; } }
+/* Celular: sin desvanecido a los costados, para que las vecinas asomen como en Reseñas */
+@media (max-width: 820px) { .featured.is-live .featured__stage { --fade: 0px; } }
 .featured.is-live .featured__row {
   position: absolute;
   inset: 0;

@@ -5,7 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>ChiquiFun · Fundas tipo tapizado a medida en Floresta, CABA</title>
-  <meta name="description" content="Fundas tipo tapizado a medida para autos, camionetas y utilitarios, fabricadas en nuestro taller de Floresta, CABA. Colocación con turno y envíos a todo el país. Cotizá por WhatsApp.">
+  <meta name="description"
+    content="Fundas tipo tapizado a medida para autos, camionetas y utilitarios, fabricadas en nuestro taller de Floresta, CABA. Colocación con turno y envíos a todo el país. Cotizá por WhatsApp.">
   <meta name="theme-color" content="#141413">
 
   <link rel="icon" href="favicon.ico" sizes="48x48">
@@ -20,7 +21,8 @@
   <meta property="og:locale" content="es_AR">
   <meta property="og:site_name" content="ChiquiFun – Indumentaria Automotriz">
   <meta property="og:title" content="ChiquiFun · Fundas tipo tapizado a medida en Floresta, CABA">
-  <meta property="og:description" content="Fundas a medida para autos, camionetas y utilitarios, fabricadas en nuestro taller. Colocación con turno y envíos a todo el país. Cotizá por WhatsApp.">
+  <meta property="og:description"
+    content="Fundas a medida para autos, camionetas y utilitarios, fabricadas en nuestro taller. Colocación con turno y envíos a todo el país. Cotizá por WhatsApp.">
   <meta property="og:image" content="https://chiquifun.com.ar/uploads/og-chiquifun.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -35,14 +37,24 @@
   <link rel="preload" as="image" href="uploads/hero_vento-poster.webp" type="image/webp">
 
   <link rel="stylesheet" href="styles.css?v=53">
-  <script src="script.js?v=45" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="script.js?v=46" defer></script>
 </head>
 
 <body>
   <svg class="svg-sprite" width="0" height="0" aria-hidden="true" focusable="false">
-    <symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></symbol>
-    <symbol id="ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.75"/><circle cx="17.1" cy="6.9" r=".6" fill="currentColor" stroke="none"/></symbol>
-    <symbol id="star" viewBox="0 0 24 24"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9z"/></symbol>
+    <symbol id="wa" viewBox="0 0 24 24">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+    </symbol>
+    <symbol id="ig" viewBox="0 0 24 24">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+      <circle cx="12" cy="12" r="3.75" />
+      <circle cx="17.1" cy="6.9" r=".6" fill="currentColor" stroke="none" />
+    </symbol>
+    <symbol id="star" viewBox="0 0 24 24">
+      <path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9z" />
+    </symbol>
   </svg>
 
   <div class="ambient" aria-hidden="true" data-ambient>
@@ -70,6 +82,36 @@
           <li><a href="#nosotros">Nosotros</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
+
+        <!-- Solo en el menú del celular: cotizar, dirección e Instagram a mano -->
+        <div class="nav__foot">
+          <a class="btn nav__cta" href="https://wa.me/5491131059835" target="_blank" rel="noopener">
+            <span class="btn__wa" aria-hidden="true"><svg viewBox="0 0 24 24">
+                <use href="#wa" />
+              </svg></span>
+            Cotizar por WhatsApp
+          </a>
+          <ul class="nav__meta">
+            <li>
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Juan%20B.%20Justo%206125%2C%20Floresta%2C%20CABA"
+                target="_blank" rel="noopener">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z" />
+                  <circle cx="12" cy="10" r="2.4" />
+                </svg>
+                Av. Juan B. Justo 6125, Floresta<span class="visually-hidden"> (abre Google Maps)</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/chiquifun/" target="_blank" rel="noopener">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <use href="#ig" />
+                </svg>
+                <span class="visually-hidden">Instagram: </span>@chiquifun
+              </a>
+            </li>
+          </ul>
+        </div>
       </nav>
 
       <button class="menu-toggle" type="button" aria-controls="menu" aria-expanded="false" data-menu-toggle>
@@ -87,13 +129,15 @@
           <source src="uploads/hero_vento-web.mp4" type="video/mp4">
         </video>
         <div class="hero__overlay" aria-hidden="true"></div>
-        <p class="hero__place">
+        <a class="hero__place"
+          href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Juan%20B.%20Justo%206125%2C%20Floresta%2C%20CABA"
+          target="_blank" rel="noopener">
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z" />
             <circle cx="12" cy="10" r="2.4" />
           </svg>
-          Taller propio · Floresta, CABA
-        </p>
+          Taller propio · Floresta, CABA<span class="visually-hidden"> (abre Google Maps)</span>
+        </a>
       </div>
 
       <div class="hero__content">
@@ -102,8 +146,8 @@
           <span class="hero__line hero__accent">a medida</span>
         </h1>
 
-        <p class="hero__lead">Diseño personalizado, elaborado con materiales de primera calidad e instalado
-          profesionalmente. <span class="hero__lead-tail">Comodidad y estilo propio en cada viaje.</span></p>
+        <p class="hero__lead">Diseños personalizados, confeccionados con materiales de primera calidad e instalado
+          profesionalmente. <span class="hero__lead-tail">Comodidad, elegancia y estilo propio en cada viaje.</span></p>
 
         <div class="hero__actions">
           <a class="btn btn--primary" href="https://wa.me/5491131059835" target="_blank" rel="noopener">
@@ -142,35 +186,47 @@
       <div class="brands__marquee" data-reveal>
         <div class="brands__track">
           <ul class="brands__list">
-            <li><img class="brands__logo brands__logo--kp" src="uploads/kpcars-logo-mono.webp" width="98" height="128" loading="lazy" decoding="async" alt="KP Cars"></li>
+            <li><img class="brands__logo brands__logo--kp" src="uploads/kpcars-logo-mono.webp" width="98" height="128"
+                loading="lazy" decoding="async" alt="KP Cars"></li>
             <li><span class="brands__word">Camionetas</span></li>
-            <li><img class="brands__logo brands__logo--claro" src="uploads/claro-logo-mono.svg" width="1976" height="716" loading="lazy" decoding="async" alt="Claro"></li>
+            <li><img class="brands__logo brands__logo--claro" src="uploads/claro-logo-mono.svg" width="1976"
+                height="716" loading="lazy" decoding="async" alt="Claro"></li>
             <li><span class="brands__word">Utilitarios</span></li>
-            <li><img class="brands__logo brands__logo--lacto" src="uploads/lactocrem-logo-mono.webp" width="544" height="80" loading="lazy" decoding="async" alt="Lactocrem"></li>
+            <li><img class="brands__logo brands__logo--lacto" src="uploads/lactocrem-logo-mono.webp" width="544"
+                height="80" loading="lazy" decoding="async" alt="Lactocrem"></li>
             <li><span class="brands__word">Autos</span></li>
           </ul>
           <ul class="brands__list" aria-hidden="true">
-            <li><img class="brands__logo brands__logo--kp" src="uploads/kpcars-logo-mono.webp" width="98" height="128" loading="lazy" decoding="async" alt=""></li>
+            <li><img class="brands__logo brands__logo--kp" src="uploads/kpcars-logo-mono.webp" width="98" height="128"
+                loading="lazy" decoding="async" alt=""></li>
             <li><span class="brands__word">Camionetas</span></li>
-            <li><img class="brands__logo brands__logo--claro" src="uploads/claro-logo-mono.svg" width="1976" height="716" loading="lazy" decoding="async" alt=""></li>
+            <li><img class="brands__logo brands__logo--claro" src="uploads/claro-logo-mono.svg" width="1976"
+                height="716" loading="lazy" decoding="async" alt=""></li>
             <li><span class="brands__word">Utilitarios</span></li>
-            <li><img class="brands__logo brands__logo--lacto" src="uploads/lactocrem-logo-mono.webp" width="544" height="80" loading="lazy" decoding="async" alt=""></li>
+            <li><img class="brands__logo brands__logo--lacto" src="uploads/lactocrem-logo-mono.webp" width="544"
+                height="80" loading="lazy" decoding="async" alt=""></li>
             <li><span class="brands__word">Autos</span></li>
           </ul>
           <ul class="brands__list" aria-hidden="true">
-            <li><img class="brands__logo brands__logo--kp" src="uploads/kpcars-logo-mono.webp" width="98" height="128" loading="lazy" decoding="async" alt=""></li>
+            <li><img class="brands__logo brands__logo--kp" src="uploads/kpcars-logo-mono.webp" width="98" height="128"
+                loading="lazy" decoding="async" alt=""></li>
             <li><span class="brands__word">Camionetas</span></li>
-            <li><img class="brands__logo brands__logo--claro" src="uploads/claro-logo-mono.svg" width="1976" height="716" loading="lazy" decoding="async" alt=""></li>
+            <li><img class="brands__logo brands__logo--claro" src="uploads/claro-logo-mono.svg" width="1976"
+                height="716" loading="lazy" decoding="async" alt=""></li>
             <li><span class="brands__word">Utilitarios</span></li>
-            <li><img class="brands__logo brands__logo--lacto" src="uploads/lactocrem-logo-mono.webp" width="544" height="80" loading="lazy" decoding="async" alt=""></li>
+            <li><img class="brands__logo brands__logo--lacto" src="uploads/lactocrem-logo-mono.webp" width="544"
+                height="80" loading="lazy" decoding="async" alt=""></li>
             <li><span class="brands__word">Autos</span></li>
           </ul>
           <ul class="brands__list" aria-hidden="true">
-            <li><img class="brands__logo brands__logo--kp" src="uploads/kpcars-logo-mono.webp" width="98" height="128" loading="lazy" decoding="async" alt=""></li>
+            <li><img class="brands__logo brands__logo--kp" src="uploads/kpcars-logo-mono.webp" width="98" height="128"
+                loading="lazy" decoding="async" alt=""></li>
             <li><span class="brands__word">Camionetas</span></li>
-            <li><img class="brands__logo brands__logo--claro" src="uploads/claro-logo-mono.svg" width="1976" height="716" loading="lazy" decoding="async" alt=""></li>
+            <li><img class="brands__logo brands__logo--claro" src="uploads/claro-logo-mono.svg" width="1976"
+                height="716" loading="lazy" decoding="async" alt=""></li>
             <li><span class="brands__word">Utilitarios</span></li>
-            <li><img class="brands__logo brands__logo--lacto" src="uploads/lactocrem-logo-mono.webp" width="544" height="80" loading="lazy" decoding="async" alt=""></li>
+            <li><img class="brands__logo brands__logo--lacto" src="uploads/lactocrem-logo-mono.webp" width="544"
+                height="80" loading="lazy" decoding="async" alt=""></li>
             <li><span class="brands__word">Autos</span></li>
           </ul>
         </div>
@@ -183,47 +239,105 @@
 
         <div class="reviews__summary" data-reveal>
           <div class="rating">
-            <p class="rating__value"><span aria-hidden="true">4.9</span><span class="visually-hidden">4.9 de 5 estrellas</span></p>
+            <p class="rating__value"><span aria-hidden="true">4.9</span><span class="visually-hidden">4.9 de 5
+                estrellas</span></p>
             <div class="rating__detail">
               <span class="stars stars--partial" aria-hidden="true">
-                <span class="stars__base"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
-                <span class="stars__fill"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
+                <span class="stars__base"><svg viewBox="0 0 24 24">
+                    <use href="#star" />
+                  </svg><svg viewBox="0 0 24 24">
+                    <use href="#star" />
+                  </svg><svg viewBox="0 0 24 24">
+                    <use href="#star" />
+                  </svg><svg viewBox="0 0 24 24">
+                    <use href="#star" />
+                  </svg><svg viewBox="0 0 24 24">
+                    <use href="#star" />
+                  </svg></span>
+                <span class="stars__fill"><svg viewBox="0 0 24 24">
+                    <use href="#star" />
+                  </svg><svg viewBox="0 0 24 24">
+                    <use href="#star" />
+                  </svg><svg viewBox="0 0 24 24">
+                    <use href="#star" />
+                  </svg><svg viewBox="0 0 24 24">
+                    <use href="#star" />
+                  </svg><svg viewBox="0 0 24 24">
+                    <use href="#star" />
+                  </svg></span>
               </span>
               <p class="rating__source">Basado en reseñas de Google</p>
             </div>
           </div>
-          <a class="btn btn--light" href="https://search.google.com/local/writereview?placeid=ChIJ2Wl5CLbJvJURSt2voGFSOlM" target="_blank" rel="noopener">
-            <svg class="g-logo g-logo--mono" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.45a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.57-5.17 3.57-8.72Z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z"/><path fill="#FBBC05" d="M5.29 14.29A7.2 7.2 0 0 1 4.91 12c0-.8.14-1.57.38-2.29v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.39l4.01-3.1Z"/><path fill="#EA4335" d="M12 4.75c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4.01 3.1C6.23 6.86 8.88 4.75 12 4.75Z"/></svg>
+          <a class="btn btn--light"
+            href="https://search.google.com/local/writereview?placeid=ChIJ2Wl5CLbJvJURSt2voGFSOlM" target="_blank"
+            rel="noopener">
+            <svg class="g-logo g-logo--mono" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#4285F4"
+                d="M23.5 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.45a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.57-5.17 3.57-8.72Z" />
+              <path fill="#34A853"
+                d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z" />
+              <path fill="#FBBC05"
+                d="M5.29 14.29A7.2 7.2 0 0 1 4.91 12c0-.8.14-1.57.38-2.29v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.39l4.01-3.1Z" />
+              <path fill="#EA4335"
+                d="M12 4.75c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4.01 3.1C6.23 6.86 8.88 4.75 12 4.75Z" />
+            </svg>
             Dejar reseña
             <span class="visually-hidden">(abre Google en una pestaña nueva)</span>
           </a>
         </div>
       </div>
 
-      <div class="reviews__carousel" data-stagger=".review" role="region" aria-roledescription="carrusel" aria-label="Reseñas de clientes en Google" data-carousel>
+      <div class="reviews__carousel" data-stagger=".review" role="region" aria-roledescription="carrusel"
+        aria-label="Reseñas de clientes en Google" data-carousel>
         <button class="carousel-btn carousel-btn--prev" type="button" data-carousel-prev aria-label="Reseña anterior">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 5l-7 7 7 7" />
+          </svg>
         </button>
 
         <div class="reviews__viewport" data-carousel-viewport>
-        <ul class="reviews__track" data-carousel-track>
+          <ul class="reviews__track" data-carousel-track>
             <li class="review" role="group" aria-roledescription="reseña" aria-label="1 de 7">
               <div class="review__media">
-                <video class="review__img" data-review-video muted loop playsinline preload="metadata" aria-label="Video del trabajo terminado: fundas ChiquiFun instaladas">
+                <video class="review__img" data-review-video muted loop playsinline preload="metadata"
+                  aria-label="Video del trabajo terminado: fundas ChiquiFun instaladas">
                   <source src="uploads/p6.mp4#t=0.1" type="video/mp4">
                 </video>
               </div>
               <div class="review__body">
                 <div class="review__meta">
-                  <span class="stars" role="img" aria-label="5 de 5 estrellas"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
-                  <svg class="g-logo" viewBox="0 0 24 24" role="img" aria-label="Reseña de Google"><path fill="#4285F4" d="M23.5 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.45a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.57-5.17 3.57-8.72Z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z"/><path fill="#FBBC05" d="M5.29 14.29A7.2 7.2 0 0 1 4.91 12c0-.8.14-1.57.38-2.29v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.39l4.01-3.1Z"/><path fill="#EA4335" d="M12 4.75c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4.01 3.1C6.23 6.86 8.88 4.75 12 4.75Z"/></svg>
+                  <span class="stars" role="img" aria-label="5 de 5 estrellas"><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg></span>
+                  <svg class="g-logo" viewBox="0 0 24 24" role="img" aria-label="Reseña de Google">
+                    <path fill="#4285F4"
+                      d="M23.5 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.45a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.57-5.17 3.57-8.72Z" />
+                    <path fill="#34A853"
+                      d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z" />
+                    <path fill="#FBBC05"
+                      d="M5.29 14.29A7.2 7.2 0 0 1 4.91 12c0-.8.14-1.57.38-2.29v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.39l4.01-3.1Z" />
+                    <path fill="#EA4335"
+                      d="M12 4.75c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4.01 3.1C6.23 6.86 8.88 4.75 12 4.75Z" />
+                  </svg>
                 </div>
                 <blockquote class="review__quote" id="resena-1">
-                  <p>Hacen un excelente trabajo, la atencion 10 puntos, cumplen con los tiempos establecidos y el trabajo final es perfecto 👌 los recomiendo ampliamente</p>
+                  <p>Hacen un excelente trabajo, la atencion 10 puntos, cumplen con los tiempos establecidos y el
+                    trabajo final es perfecto 👌 los recomiendo ampliamente</p>
                 </blockquote>
-                <button class="review__more" type="button" aria-expanded="false" aria-controls="resena-1" hidden>Leer más</button>
+                <button class="review__more" type="button" aria-expanded="false" aria-controls="resena-1" hidden>Leer
+                  más</button>
                 <footer class="review__author">
-                  <img class="review__avatar" src="uploads/perfil6.webp" width="200" height="200" loading="lazy" decoding="async" alt="">
+                  <img class="review__avatar" src="uploads/perfil6.webp" width="200" height="200" loading="lazy"
+                    decoding="async" alt="">
                   <span class="review__who">
                     <cite class="review__name">Lucas Prados</cite>
                     <span class="review__role">Cliente particular</span>
@@ -233,19 +347,45 @@
             </li>
             <li class="review" role="group" aria-roledescription="reseña" aria-label="2 de 7">
               <div class="review__media">
-                <img class="review__img" src="uploads/p1.webp" width="960" height="1280" loading="lazy" decoding="async" alt="Butacas delanteras con fundas bicolor negro y blanco, con paneles horizontales cosidos">
+                <img class="review__img" src="uploads/p1.webp" width="960" height="1280" loading="lazy" decoding="async"
+                  alt="Butacas delanteras con fundas bicolor negro y blanco, con paneles horizontales cosidos">
               </div>
               <div class="review__body">
                 <div class="review__meta">
-                  <span class="stars" role="img" aria-label="5 de 5 estrellas"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
-                  <svg class="g-logo" viewBox="0 0 24 24" role="img" aria-label="Reseña de Google"><path fill="#4285F4" d="M23.5 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.45a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.57-5.17 3.57-8.72Z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z"/><path fill="#FBBC05" d="M5.29 14.29A7.2 7.2 0 0 1 4.91 12c0-.8.14-1.57.38-2.29v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.39l4.01-3.1Z"/><path fill="#EA4335" d="M12 4.75c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4.01 3.1C6.23 6.86 8.88 4.75 12 4.75Z"/></svg>
+                  <span class="stars" role="img" aria-label="5 de 5 estrellas"><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg></span>
+                  <svg class="g-logo" viewBox="0 0 24 24" role="img" aria-label="Reseña de Google">
+                    <path fill="#4285F4"
+                      d="M23.5 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.45a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.57-5.17 3.57-8.72Z" />
+                    <path fill="#34A853"
+                      d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z" />
+                    <path fill="#FBBC05"
+                      d="M5.29 14.29A7.2 7.2 0 0 1 4.91 12c0-.8.14-1.57.38-2.29v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.39l4.01-3.1Z" />
+                    <path fill="#EA4335"
+                      d="M12 4.75c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4.01 3.1C6.23 6.86 8.88 4.75 12 4.75Z" />
+                  </svg>
                 </div>
                 <blockquote class="review__quote" id="resena-2">
-                  <p>El trabajo que hacen es sencillamente genial. A gusto del cliente, mejoran la percepción de tu auto. Mejora la higiene, mejora la imagen. Las costuras son muy buenas, tienen moldes para hacer las fundas a medida de tu auto. El precio es justo por el tipo de trabajo hecho. Cristian es muy amable, el servicio que brindan y la forma de adaptarse a lo que necesita el cliente da mucha confianza. Recomiendo y volvería a utilizarlo varias veces.</p>
+                  <p>El trabajo que hacen es sencillamente genial. A gusto del cliente, mejoran la percepción de tu
+                    auto. Mejora la higiene, mejora la imagen. Las costuras son muy buenas, tienen moldes para hacer las
+                    fundas a medida de tu auto. El precio es justo por el tipo de trabajo hecho. Cristian es muy amable,
+                    el servicio que brindan y la forma de adaptarse a lo que necesita el cliente da mucha confianza.
+                    Recomiendo y volvería a utilizarlo varias veces.</p>
                 </blockquote>
-                <button class="review__more" type="button" aria-expanded="false" aria-controls="resena-2" hidden>Leer más</button>
+                <button class="review__more" type="button" aria-expanded="false" aria-controls="resena-2" hidden>Leer
+                  más</button>
                 <footer class="review__author">
-                  <img class="review__avatar" src="uploads/perfil1.webp" width="200" height="200" loading="lazy" decoding="async" alt="">
+                  <img class="review__avatar" src="uploads/perfil1.webp" width="200" height="200" loading="lazy"
+                    decoding="async" alt="">
                   <span class="review__who">
                     <cite class="review__name">Jorge G. Esteban</cite>
                     <span class="review__role">Cliente particular</span>
@@ -255,17 +395,40 @@
             </li>
             <li class="review" role="group" aria-roledescription="reseña" aria-label="3 de 7">
               <div class="review__media">
-                <img class="review__img" src="uploads/p2.webp" width="1200" height="1559" loading="lazy" decoding="async" alt="Butaca delantera con funda negra, diseño en relieve y costura clara">
+                <img class="review__img" src="uploads/p2.webp" width="1200" height="1559" loading="lazy"
+                  decoding="async" alt="Butaca delantera con funda negra, diseño en relieve y costura clara">
               </div>
               <div class="review__body">
                 <div class="review__meta">
-                  <span class="stars" role="img" aria-label="5 de 5 estrellas"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
-                  <svg class="g-logo" viewBox="0 0 24 24" role="img" aria-label="Reseña de Google"><path fill="#4285F4" d="M23.5 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.45a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.57-5.17 3.57-8.72Z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z"/><path fill="#FBBC05" d="M5.29 14.29A7.2 7.2 0 0 1 4.91 12c0-.8.14-1.57.38-2.29v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.39l4.01-3.1Z"/><path fill="#EA4335" d="M12 4.75c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4.01 3.1C6.23 6.86 8.88 4.75 12 4.75Z"/></svg>
+                  <span class="stars" role="img" aria-label="5 de 5 estrellas"><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg></span>
+                  <svg class="g-logo" viewBox="0 0 24 24" role="img" aria-label="Reseña de Google">
+                    <path fill="#4285F4"
+                      d="M23.5 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.45a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.57-5.17 3.57-8.72Z" />
+                    <path fill="#34A853"
+                      d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z" />
+                    <path fill="#FBBC05"
+                      d="M5.29 14.29A7.2 7.2 0 0 1 4.91 12c0-.8.14-1.57.38-2.29v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.39l4.01-3.1Z" />
+                    <path fill="#EA4335"
+                      d="M12 4.75c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4.01 3.1C6.23 6.86 8.88 4.75 12 4.75Z" />
+                  </svg>
                 </div>
                 <blockquote class="review__quote" id="resena-3">
-                  <p>Un lujo. Hace 3 años hice hacer todas las fundas de mi Renault Captur y siguen estando como nuevas. Estoy por cambiar de auto, por eso volví a entrar y quise dejar una reseña contando mi experiencia. Súper recomendable.</p>
+                  <p>Un lujo. Hace 3 años hice hacer todas las fundas de mi Renault Captur y siguen estando como nuevas.
+                    Estoy por cambiar de auto, por eso volví a entrar y quise dejar una reseña contando mi experiencia.
+                    Súper recomendable.</p>
                 </blockquote>
-                <button class="review__more" type="button" aria-expanded="false" aria-controls="resena-3" hidden>Leer más</button>
+                <button class="review__more" type="button" aria-expanded="false" aria-controls="resena-3" hidden>Leer
+                  más</button>
                 <footer class="review__author">
                   <span class="review__avatar review__avatar--initials" aria-hidden="true">JL</span>
                   <span class="review__who">
@@ -277,19 +440,44 @@
             </li>
             <li class="review" role="group" aria-roledescription="reseña" aria-label="4 de 7">
               <div class="review__media">
-                <img class="review__img" src="uploads/p3.webp" width="1200" height="1600" loading="lazy" decoding="async" alt="Butacas con fundas blancas con laterales negros y costuras en forma de V">
+                <img class="review__img" src="uploads/p3.webp" width="1200" height="1600" loading="lazy"
+                  decoding="async" alt="Butacas con fundas blancas con laterales negros y costuras en forma de V">
               </div>
               <div class="review__body">
                 <div class="review__meta">
-                  <span class="stars" role="img" aria-label="5 de 5 estrellas"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
-                  <svg class="g-logo" viewBox="0 0 24 24" role="img" aria-label="Reseña de Google"><path fill="#4285F4" d="M23.5 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.45a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.57-5.17 3.57-8.72Z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z"/><path fill="#FBBC05" d="M5.29 14.29A7.2 7.2 0 0 1 4.91 12c0-.8.14-1.57.38-2.29v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.39l4.01-3.1Z"/><path fill="#EA4335" d="M12 4.75c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4.01 3.1C6.23 6.86 8.88 4.75 12 4.75Z"/></svg>
+                  <span class="stars" role="img" aria-label="5 de 5 estrellas"><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg></span>
+                  <svg class="g-logo" viewBox="0 0 24 24" role="img" aria-label="Reseña de Google">
+                    <path fill="#4285F4"
+                      d="M23.5 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.45a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.57-5.17 3.57-8.72Z" />
+                    <path fill="#34A853"
+                      d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z" />
+                    <path fill="#FBBC05"
+                      d="M5.29 14.29A7.2 7.2 0 0 1 4.91 12c0-.8.14-1.57.38-2.29v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.39l4.01-3.1Z" />
+                    <path fill="#EA4335"
+                      d="M12 4.75c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4.01 3.1C6.23 6.86 8.88 4.75 12 4.75Z" />
+                  </svg>
                 </div>
                 <blockquote class="review__quote" id="resena-4">
-                  <p>Me voy muy conforme con el excelente trabajo de parte de los muchachos. Muchos diseños y variedades de colores para elegir, y a la hora de presentar un diseño tanto los muchachos como el mismo cliente trabajan conjuntamente para diseñar las fundas al criterio del cliente. Trabajan con una buena calidad y priorizan la excelencia a la hora de entregar el trabajo.</p>
+                  <p>Me voy muy conforme con el excelente trabajo de parte de los muchachos. Muchos diseños y variedades
+                    de colores para elegir, y a la hora de presentar un diseño tanto los muchachos como el mismo cliente
+                    trabajan conjuntamente para diseñar las fundas al criterio del cliente. Trabajan con una buena
+                    calidad y priorizan la excelencia a la hora de entregar el trabajo.</p>
                 </blockquote>
-                <button class="review__more" type="button" aria-expanded="false" aria-controls="resena-4" hidden>Leer más</button>
+                <button class="review__more" type="button" aria-expanded="false" aria-controls="resena-4" hidden>Leer
+                  más</button>
                 <footer class="review__author">
-                  <img class="review__avatar" src="uploads/perfil3.webp" width="200" height="200" loading="lazy" decoding="async" alt="">
+                  <img class="review__avatar" src="uploads/perfil3.webp" width="200" height="200" loading="lazy"
+                    decoding="async" alt="">
                   <span class="review__who">
                     <cite class="review__name">Mauro Juarez</cite>
                     <span class="review__role">Cliente particular</span>
@@ -299,19 +487,42 @@
             </li>
             <li class="review" role="group" aria-roledescription="reseña" aria-label="5 de 7">
               <div class="review__media">
-                <img class="review__img" src="uploads/p5.webp" width="1200" height="2133" loading="lazy" decoding="async" alt="Butacas delanteras de un utilitario con fundas negras y detalles blancos">
+                <img class="review__img" src="uploads/p5.webp" width="1200" height="2133" loading="lazy"
+                  decoding="async" alt="Butacas delanteras de un utilitario con fundas negras y detalles blancos">
               </div>
               <div class="review__body">
                 <div class="review__meta">
-                  <span class="stars" role="img" aria-label="5 de 5 estrellas"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
-                  <svg class="g-logo" viewBox="0 0 24 24" role="img" aria-label="Reseña de Google"><path fill="#4285F4" d="M23.5 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.45a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.57-5.17 3.57-8.72Z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z"/><path fill="#FBBC05" d="M5.29 14.29A7.2 7.2 0 0 1 4.91 12c0-.8.14-1.57.38-2.29v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.39l4.01-3.1Z"/><path fill="#EA4335" d="M12 4.75c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4.01 3.1C6.23 6.86 8.88 4.75 12 4.75Z"/></svg>
+                  <span class="stars" role="img" aria-label="5 de 5 estrellas"><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg></span>
+                  <svg class="g-logo" viewBox="0 0 24 24" role="img" aria-label="Reseña de Google">
+                    <path fill="#4285F4"
+                      d="M23.5 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.45a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.57-5.17 3.57-8.72Z" />
+                    <path fill="#34A853"
+                      d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z" />
+                    <path fill="#FBBC05"
+                      d="M5.29 14.29A7.2 7.2 0 0 1 4.91 12c0-.8.14-1.57.38-2.29v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.39l4.01-3.1Z" />
+                    <path fill="#EA4335"
+                      d="M12 4.75c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4.01 3.1C6.23 6.86 8.88 4.75 12 4.75Z" />
+                  </svg>
                 </div>
                 <blockquote class="review__quote" id="resena-5">
-                  <p>Buena atención. Las butacas de mi sprinter 517 quedaron hermosas buenas terminaciones. Respetaron el turno asignado y en términos generales muy conforme ;)</p>
+                  <p>Buena atención. Las butacas de mi sprinter 517 quedaron hermosas buenas terminaciones. Respetaron
+                    el turno asignado y en términos generales muy conforme ;)</p>
                 </blockquote>
-                <button class="review__more" type="button" aria-expanded="false" aria-controls="resena-5" hidden>Leer más</button>
+                <button class="review__more" type="button" aria-expanded="false" aria-controls="resena-5" hidden>Leer
+                  más</button>
                 <footer class="review__author">
-                  <img class="review__avatar" src="uploads/perfil5.webp" width="200" height="200" loading="lazy" decoding="async" alt="">
+                  <img class="review__avatar" src="uploads/perfil5.webp" width="200" height="200" loading="lazy"
+                    decoding="async" alt="">
                   <span class="review__who">
                     <cite class="review__name">Nestor Luis Gutierrez Panta</cite>
                     <span class="review__role">Cliente particular</span>
@@ -321,17 +532,38 @@
             </li>
             <li class="review" role="group" aria-roledescription="reseña" aria-label="6 de 7">
               <div class="review__media">
-                <img class="review__img" src="uploads/p7.webp" width="1200" height="1600" loading="lazy" decoding="async" alt="Butaca con funda negra, diseño de hexágonos, laterales blancos y logo bordado">
+                <img class="review__img" src="uploads/p7.webp" width="1200" height="1600" loading="lazy"
+                  decoding="async" alt="Butaca con funda negra, diseño de hexágonos, laterales blancos y logo bordado">
               </div>
               <div class="review__body">
                 <div class="review__meta">
-                  <span class="stars" role="img" aria-label="5 de 5 estrellas"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
-                  <svg class="g-logo" viewBox="0 0 24 24" role="img" aria-label="Reseña de Google"><path fill="#4285F4" d="M23.5 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.45a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.57-5.17 3.57-8.72Z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z"/><path fill="#FBBC05" d="M5.29 14.29A7.2 7.2 0 0 1 4.91 12c0-.8.14-1.57.38-2.29v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.39l4.01-3.1Z"/><path fill="#EA4335" d="M12 4.75c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4.01 3.1C6.23 6.86 8.88 4.75 12 4.75Z"/></svg>
+                  <span class="stars" role="img" aria-label="5 de 5 estrellas"><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg></span>
+                  <svg class="g-logo" viewBox="0 0 24 24" role="img" aria-label="Reseña de Google">
+                    <path fill="#4285F4"
+                      d="M23.5 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.45a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.57-5.17 3.57-8.72Z" />
+                    <path fill="#34A853"
+                      d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z" />
+                    <path fill="#FBBC05"
+                      d="M5.29 14.29A7.2 7.2 0 0 1 4.91 12c0-.8.14-1.57.38-2.29v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.39l4.01-3.1Z" />
+                    <path fill="#EA4335"
+                      d="M12 4.75c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4.01 3.1C6.23 6.86 8.88 4.75 12 4.75Z" />
+                  </svg>
                 </div>
                 <blockquote class="review__quote" id="resena-6">
                   <p>Excelente atención y espectacular como quedaron las fundas</p>
                 </blockquote>
-                <button class="review__more" type="button" aria-expanded="false" aria-controls="resena-6" hidden>Leer más</button>
+                <button class="review__more" type="button" aria-expanded="false" aria-controls="resena-6" hidden>Leer
+                  más</button>
                 <footer class="review__author">
                   <span class="review__avatar review__avatar--initials" aria-hidden="true">JT</span>
                   <span class="review__who">
@@ -343,19 +575,41 @@
             </li>
             <li class="review" role="group" aria-roledescription="reseña" aria-label="7 de 7">
               <div class="review__media">
-                <img class="review__img" src="uploads/p4.webp" width="720" height="1280" loading="lazy" decoding="async" alt="Butaca con funda negra, centro acolchado con diseño de hexágonos y franja blanca">
+                <img class="review__img" src="uploads/p4.webp" width="720" height="1280" loading="lazy" decoding="async"
+                  alt="Butaca con funda negra, centro acolchado con diseño de hexágonos y franja blanca">
               </div>
               <div class="review__body">
                 <div class="review__meta">
-                  <span class="stars" role="img" aria-label="5 de 5 estrellas"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></span>
-                  <svg class="g-logo" viewBox="0 0 24 24" role="img" aria-label="Reseña de Google"><path fill="#4285F4" d="M23.5 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.45a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.57-5.17 3.57-8.72Z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z"/><path fill="#FBBC05" d="M5.29 14.29A7.2 7.2 0 0 1 4.91 12c0-.8.14-1.57.38-2.29v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.39l4.01-3.1Z"/><path fill="#EA4335" d="M12 4.75c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4.01 3.1C6.23 6.86 8.88 4.75 12 4.75Z"/></svg>
+                  <span class="stars" role="img" aria-label="5 de 5 estrellas"><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg><svg viewBox="0 0 24 24">
+                      <use href="#star" />
+                    </svg></span>
+                  <svg class="g-logo" viewBox="0 0 24 24" role="img" aria-label="Reseña de Google">
+                    <path fill="#4285F4"
+                      d="M23.5 12.27c0-.82-.07-1.6-.2-2.36H12v4.46h6.45a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.57-5.17 3.57-8.72Z" />
+                    <path fill="#34A853"
+                      d="M12 24c3.24 0 5.96-1.07 7.94-2.9l-3.88-3.01c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z" />
+                    <path fill="#FBBC05"
+                      d="M5.29 14.29A7.2 7.2 0 0 1 4.91 12c0-.8.14-1.57.38-2.29v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.39l4.01-3.1Z" />
+                    <path fill="#EA4335"
+                      d="M12 4.75c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.61l4.01 3.1C6.23 6.86 8.88 4.75 12 4.75Z" />
+                  </svg>
                 </div>
                 <blockquote class="review__quote" id="resena-7">
                   <p>Excelente predisposición, atención, y prolijidad. Totalmente recomendable.</p>
                 </blockquote>
-                <button class="review__more" type="button" aria-expanded="false" aria-controls="resena-7" hidden>Leer más</button>
+                <button class="review__more" type="button" aria-expanded="false" aria-controls="resena-7" hidden>Leer
+                  más</button>
                 <footer class="review__author">
-                  <img class="review__avatar" src="uploads/perfil4.webp" width="200" height="200" loading="lazy" decoding="async" alt="">
+                  <img class="review__avatar" src="uploads/perfil4.webp" width="200" height="200" loading="lazy"
+                    decoding="async" alt="">
                   <span class="review__who">
                     <cite class="review__name">GRUAS MONTOYA</cite>
                     <span class="review__role">Empresa</span>
@@ -363,11 +617,13 @@
                 </footer>
               </div>
             </li>
-        </ul>
+          </ul>
         </div>
 
         <button class="carousel-btn carousel-btn--next" type="button" data-carousel-next aria-label="Reseña siguiente">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 5l7 7-7 7" />
+          </svg>
         </button>
 
         <p class="reviews__status" aria-live="polite" data-carousel-status></p>
@@ -379,65 +635,90 @@
         <h2 class="section-title" id="proyectos-title" data-reveal>Proyectos destacados</h2>
       </div>
 
-      <div class="featured__stage" role="region" aria-roledescription="carrusel" aria-label="Proyectos destacados, se desplaza solo. Arrastrá para moverlo." data-featured-stage>
+      <div class="featured__stage" role="region" aria-roledescription="carrusel"
+        aria-label="Proyectos destacados, se desplaza solo. Arrastrá para moverlo." data-featured-stage>
         <ul class="featured__row" data-featured-row>
           <li class="pcard" data-pcard data-tile="0">
             <button class="pcard__btn" type="button" data-project="toyota-hilux" data-video="1" aria-haspopup="dialog">
-              <span class="pcard__media" data-pcard-media><img class="pcard__poster" src="uploads/destacados/destacados-sprite-poster.webp?v=2" width="1920" height="1080" alt="" loading="lazy" decoding="async"></span>
+              <span class="pcard__media" data-pcard-media><img class="pcard__poster"
+                  src="uploads/destacados/destacados-sprite-poster.webp?v=2" width="1920" height="1080" alt=""
+                  loading="lazy" decoding="async"></span>
               <span class="visually-hidden">Ver fotos y videos del trabajo en Toyota Hilux</span>
             </button>
           </li>
           <li class="pcard" data-pcard data-tile="1">
-            <button class="pcard__btn" type="button" data-project="peugeot-208-linea-vieja" data-video="1" aria-haspopup="dialog">
-              <span class="pcard__media" data-pcard-media><img class="pcard__poster" src="uploads/destacados/destacados-sprite-poster.webp?v=2" width="1920" height="1080" alt="" loading="lazy" decoding="async"></span>
+            <button class="pcard__btn" type="button" data-project="peugeot-208-linea-vieja" data-video="1"
+              aria-haspopup="dialog">
+              <span class="pcard__media" data-pcard-media><img class="pcard__poster"
+                  src="uploads/destacados/destacados-sprite-poster.webp?v=2" width="1920" height="1080" alt=""
+                  loading="lazy" decoding="async"></span>
               <span class="visually-hidden">Ver fotos y videos del trabajo en Peugeot 208 línea vieja</span>
             </button>
           </li>
           <li class="pcard" data-pcard data-tile="2">
             <button class="pcard__btn" type="button" data-project="vw-t-cross" data-video="1" aria-haspopup="dialog">
-              <span class="pcard__media" data-pcard-media><img class="pcard__poster" src="uploads/destacados/destacados-sprite-poster.webp?v=2" width="1920" height="1080" alt="" loading="lazy" decoding="async"></span>
+              <span class="pcard__media" data-pcard-media><img class="pcard__poster"
+                  src="uploads/destacados/destacados-sprite-poster.webp?v=2" width="1920" height="1080" alt=""
+                  loading="lazy" decoding="async"></span>
               <span class="visually-hidden">Ver fotos y videos del trabajo en Volkswagen T-Cross</span>
             </button>
           </li>
           <li class="pcard" data-pcard data-tile="3">
             <button class="pcard__btn" type="button" data-project="ford-ranger" data-video="2" aria-haspopup="dialog">
-              <span class="pcard__media" data-pcard-media><img class="pcard__poster" src="uploads/destacados/destacados-sprite-poster.webp?v=2" width="1920" height="1080" alt="" loading="lazy" decoding="async"></span>
+              <span class="pcard__media" data-pcard-media><img class="pcard__poster"
+                  src="uploads/destacados/destacados-sprite-poster.webp?v=2" width="1920" height="1080" alt=""
+                  loading="lazy" decoding="async"></span>
               <span class="visually-hidden">Ver fotos y videos del trabajo en Ford Ranger</span>
             </button>
           </li>
           <li class="pcard" data-pcard data-tile="4">
             <button class="pcard__btn" type="button" data-project="ford-focus" data-video="0" aria-haspopup="dialog">
-              <span class="pcard__media" data-pcard-media><img class="pcard__poster" src="uploads/destacados/destacados-sprite-poster.webp?v=2" width="1920" height="1080" alt="" loading="lazy" decoding="async"></span>
+              <span class="pcard__media" data-pcard-media><img class="pcard__poster"
+                  src="uploads/destacados/destacados-sprite-poster.webp?v=2" width="1920" height="1080" alt=""
+                  loading="lazy" decoding="async"></span>
               <span class="visually-hidden">Ver fotos y videos del trabajo en Ford Focus</span>
             </button>
           </li>
           <li class="pcard" data-pcard data-tile="5">
-            <button class="pcard__btn" type="button" data-project="peugeot-partner-linea-nueva" data-video="1" aria-haspopup="dialog">
-              <span class="pcard__media" data-pcard-media><img class="pcard__poster" src="uploads/destacados/destacados-sprite-poster.webp?v=2" width="1920" height="1080" alt="" loading="lazy" decoding="async"></span>
+            <button class="pcard__btn" type="button" data-project="peugeot-partner-linea-nueva" data-video="1"
+              aria-haspopup="dialog">
+              <span class="pcard__media" data-pcard-media><img class="pcard__poster"
+                  src="uploads/destacados/destacados-sprite-poster.webp?v=2" width="1920" height="1080" alt=""
+                  loading="lazy" decoding="async"></span>
               <span class="visually-hidden">Ver fotos y videos del trabajo en Peugeot Partner línea nueva</span>
             </button>
           </li>
           <li class="pcard" data-pcard data-tile="6">
             <button class="pcard__btn" type="button" data-project="gol-power" data-video="1" aria-haspopup="dialog">
-              <span class="pcard__media" data-pcard-media><img class="pcard__poster" src="uploads/destacados/destacados-sprite-poster.webp?v=2" width="1920" height="1080" alt="" loading="lazy" decoding="async"></span>
+              <span class="pcard__media" data-pcard-media><img class="pcard__poster"
+                  src="uploads/destacados/destacados-sprite-poster.webp?v=2" width="1920" height="1080" alt=""
+                  loading="lazy" decoding="async"></span>
               <span class="visually-hidden">Ver fotos y videos del trabajo en Volkswagen Gol Power</span>
             </button>
           </li>
           <li class="pcard" data-pcard data-tile="7">
             <button class="pcard__btn" type="button" data-project="toyota-hilux" data-video="2" aria-haspopup="dialog">
-              <span class="pcard__media" data-pcard-media><img class="pcard__poster" src="uploads/destacados/destacados-sprite-poster.webp?v=2" width="1920" height="1080" alt="" loading="lazy" decoding="async"></span>
+              <span class="pcard__media" data-pcard-media><img class="pcard__poster"
+                  src="uploads/destacados/destacados-sprite-poster.webp?v=2" width="1920" height="1080" alt=""
+                  loading="lazy" decoding="async"></span>
               <span class="visually-hidden">Ver fotos y videos del trabajo en Toyota Hilux</span>
             </button>
           </li>
           <li class="pcard" data-pcard data-tile="8">
-            <button class="pcard__btn" type="button" data-project="fiat-fiorino-linea-nueva" data-video="1" aria-haspopup="dialog">
-              <span class="pcard__media" data-pcard-media><img class="pcard__poster" src="uploads/destacados/destacados-sprite-poster.webp?v=2" width="1920" height="1080" alt="" loading="lazy" decoding="async"></span>
+            <button class="pcard__btn" type="button" data-project="fiat-fiorino-linea-nueva" data-video="1"
+              aria-haspopup="dialog">
+              <span class="pcard__media" data-pcard-media><img class="pcard__poster"
+                  src="uploads/destacados/destacados-sprite-poster.webp?v=2" width="1920" height="1080" alt=""
+                  loading="lazy" decoding="async"></span>
               <span class="visually-hidden">Ver fotos y videos del trabajo en Fiat Fiorino línea nueva</span>
             </button>
           </li>
           <li class="pcard" data-pcard data-tile="9">
-            <button class="pcard__btn" type="button" data-project="peugeot-208-linea-vieja" data-video="2" aria-haspopup="dialog">
-              <span class="pcard__media" data-pcard-media><img class="pcard__poster" src="uploads/destacados/destacados-sprite-poster.webp?v=2" width="1920" height="1080" alt="" loading="lazy" decoding="async"></span>
+            <button class="pcard__btn" type="button" data-project="peugeot-208-linea-vieja" data-video="2"
+              aria-haspopup="dialog">
+              <span class="pcard__media" data-pcard-media><img class="pcard__poster"
+                  src="uploads/destacados/destacados-sprite-poster.webp?v=2" width="1920" height="1080" alt=""
+                  loading="lazy" decoding="async"></span>
               <span class="visually-hidden">Ver fotos y videos del trabajo en Peugeot 208 línea vieja</span>
             </button>
           </li>
@@ -451,42 +732,66 @@
             <p class="gallery__count" data-gallery-count></p>
           </div>
           <button class="gallery__close" type="button" aria-label="Cerrar galería" data-gallery-close>
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
           </button>
         </div>
         <ul class="gallery__track" data-gallery-track></ul>
         <p class="gallery__pos" aria-live="polite" data-gallery-pos></p>
         <button class="gallery__nav gallery__nav--prev" type="button" aria-label="Anterior" data-gallery-prev>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 5l-7 7 7 7" />
+          </svg>
         </button>
         <button class="gallery__nav gallery__nav--next" type="button" aria-label="Siguiente" data-gallery-next>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 5l7 7-7 7" />
+          </svg>
         </button>
       </dialog>
 
-      <script type="application/json" id="proyectos-data">{"fiat-fiorino-linea-nueva":{"nombre":"Fiat Fiorino línea nueva","fotos":5,"videos":1},"ford-ranger":{"nombre":"Ford Ranger","fotos":5,"videos":2},"ford-focus":{"nombre":"Ford Focus","fotos":7,"videos":0},"gol-power":{"nombre":"Volkswagen Gol Power","fotos":4,"videos":1},"peugeot-208-linea-vieja":{"nombre":"Peugeot 208 línea vieja","fotos":5,"videos":3},"peugeot-partner-linea-nueva":{"nombre":"Peugeot Partner línea nueva","fotos":4,"videos":2},"toyota-hilux":{"nombre":"Toyota Hilux","fotos":3,"videos":3},"vw-t-cross":{"nombre":"Volkswagen T-Cross","fotos":5,"videos":2}}</script>
+      <script type="application/json"
+        id="proyectos-data">{"fiat-fiorino-linea-nueva":{"nombre":"Fiat Fiorino línea nueva","fotos":5,"videos":1},"ford-ranger":{"nombre":"Ford Ranger","fotos":5,"videos":2},"ford-focus":{"nombre":"Ford Focus","fotos":7,"videos":0},"gol-power":{"nombre":"Volkswagen Gol Power","fotos":4,"videos":1},"peugeot-208-linea-vieja":{"nombre":"Peugeot 208 línea vieja","fotos":5,"videos":3},"peugeot-partner-linea-nueva":{"nombre":"Peugeot Partner línea nueva","fotos":4,"videos":2},"toyota-hilux":{"nombre":"Toyota Hilux","fotos":3,"videos":3},"vw-t-cross":{"nombre":"Volkswagen T-Cross","fotos":5,"videos":2}}</script>
     </section>
     <section class="process" id="como-trabajamos" aria-labelledby="proceso-title" data-process>
       <div class="process__track">
         <div class="process__pin">
           <div class="process__head">
-            <h2 class="process__title" id="proceso-title" data-reveal>De la consulta a tu vehículo listo, en 4 pasos</h2>
+            <h2 class="process__title" id="proceso-title" data-reveal>De la consulta a tu vehículo listo, en 4 pasos
+            </h2>
             <div class="process__tabs" role="tablist" aria-label="Elegí cómo querés tus fundas" data-process-tabs>
-              <button class="process__tab" type="button" role="tab" id="tab-stock" aria-controls="panel-stock" aria-selected="true">Fundas en stock</button>
-              <button class="process__tab" type="button" role="tab" id="tab-personalizado" aria-controls="panel-personalizado" aria-selected="false" tabindex="-1">Diseño personalizado</button>
+              <button class="process__tab" type="button" role="tab" id="tab-stock" aria-controls="panel-stock"
+                aria-selected="true">Fundas en stock</button>
+              <button class="process__tab" type="button" role="tab" id="tab-personalizado"
+                aria-controls="panel-personalizado" aria-selected="false" tabindex="-1">Diseño personalizado</button>
             </div>
           </div>
 
           <div class="process__stage">
             <div class="process__media" data-process-media data-dir="fwd">
-              <img class="process__img is-active" src="uploads/p2.webp" width="1200" height="1559" loading="lazy" decoding="async" alt="Butaca con funda negra, centro con costuras en relieve" data-tab="0" data-step="0">
-              <img class="process__img" src="uploads/p3.webp" width="1200" height="1600" loading="lazy" decoding="async" alt="Asientos con fundas blancas y laterales negros, costuras en V" data-tab="0" data-step="1">
-              <img class="process__img" src="uploads/p5.webp" width="1200" height="2133" loading="lazy" decoding="async" alt="Butacas de utilitario con fundas negras y laterales blancos, costuras en zigzag" data-tab="0" data-step="2">
-              <img class="process__img" src="uploads/p1.webp" width="960" height="1280" loading="lazy" decoding="async" alt="Asientos delanteros con fundas negras y gris claro, centro con costuras horizontales" data-tab="0" data-step="3">
-              <img class="process__img" src="uploads/p3.webp" width="1200" height="1600" loading="lazy" decoding="async" alt="Asientos con fundas blancas y laterales negros, costuras en V" data-tab="1" data-step="0">
-              <img class="process__img" src="uploads/p7.webp" width="1200" height="1600" loading="lazy" decoding="async" alt="Butaca con funda negra y blanca, hexágonos acolchados y el logo del vehículo bordado" data-tab="1" data-step="1">
-              <img class="process__img" src="uploads/p4.webp" width="720" height="1280" loading="lazy" decoding="async" alt="Butaca con funda negra, centro acolchado con diseño de hexágonos y franja blanca" data-tab="1" data-step="2">
-              <img class="process__img" src="uploads/p1.webp" width="960" height="1280" loading="lazy" decoding="async" alt="Asientos delanteros con fundas negras y gris claro, centro con costuras horizontales" data-tab="1" data-step="3">
+              <img class="process__img is-active" src="uploads/p2.webp" width="1200" height="1559" loading="lazy"
+                decoding="async" alt="Butaca con funda negra, centro con costuras en relieve" data-tab="0"
+                data-step="0">
+              <img class="process__img" src="uploads/p3.webp" width="1200" height="1600" loading="lazy" decoding="async"
+                alt="Asientos con fundas blancas y laterales negros, costuras en V" data-tab="0" data-step="1">
+              <img class="process__img" src="uploads/p5.webp" width="1200" height="2133" loading="lazy" decoding="async"
+                alt="Butacas de utilitario con fundas negras y laterales blancos, costuras en zigzag" data-tab="0"
+                data-step="2">
+              <img class="process__img" src="uploads/p1.webp" width="960" height="1280" loading="lazy" decoding="async"
+                alt="Asientos delanteros con fundas negras y gris claro, centro con costuras horizontales" data-tab="0"
+                data-step="3">
+              <img class="process__img" src="uploads/p3.webp" width="1200" height="1600" loading="lazy" decoding="async"
+                alt="Asientos con fundas blancas y laterales negros, costuras en V" data-tab="1" data-step="0">
+              <img class="process__img" src="uploads/p7.webp" width="1200" height="1600" loading="lazy" decoding="async"
+                alt="Butaca con funda negra y blanca, hexágonos acolchados y el logo del vehículo bordado" data-tab="1"
+                data-step="1">
+              <img class="process__img" src="uploads/p4.webp" width="720" height="1280" loading="lazy" decoding="async"
+                alt="Butaca con funda negra, centro acolchado con diseño de hexágonos y franja blanca" data-tab="1"
+                data-step="2">
+              <img class="process__img" src="uploads/p1.webp" width="960" height="1280" loading="lazy" decoding="async"
+                alt="Asientos delanteros con fundas negras y gris claro, centro con costuras horizontales" data-tab="1"
+                data-step="3">
             </div>
 
             <div class="process__panels">
@@ -495,111 +800,138 @@
                 <ol class="steps">
                   <li class="step is-active" data-step="0">
                     <button class="step__head" type="button" aria-expanded="true" aria-controls="paso-stock-1">
-                      <span class="step__num">01</span><span class="step__dot" aria-hidden="true"> · </span><span class="step__name">Consultá tu modelo</span>
+                      <span class="step__num">01</span><span class="step__dot" aria-hidden="true"> · </span><span
+                        class="step__name">Consultá tu modelo</span>
                     </button>
                     <div class="step__body" id="paso-stock-1">
                       <div class="step__inner">
                         <p class="step__label" aria-hidden="true">Consultá tu modelo</p>
-                        <p class="step__text">Escribinos por WhatsApp con la marca, el modelo y el año de tu vehículo, y te decimos qué fundas tenemos en stock, listas para llevar.</p>
+                        <p class="step__text">Escribinos por WhatsApp con la marca, el modelo y el año de tu vehículo, y
+                          te decimos qué fundas tenemos en stock, listas para llevar.</p>
                       </div>
                     </div>
                   </li>
                   <li class="step" data-step="1">
                     <button class="step__head" type="button" aria-expanded="false" aria-controls="paso-stock-2">
-                      <span class="step__num">02</span><span class="step__dot" aria-hidden="true"> · </span><span class="step__name">Pagá como prefieras</span>
+                      <span class="step__num">02</span><span class="step__dot" aria-hidden="true"> · </span><span
+                        class="step__name">Pagá como prefieras</span>
                     </button>
                     <div class="step__body" id="paso-stock-2">
                       <div class="step__inner">
                         <p class="step__label" aria-hidden="true">Pagá como prefieras</p>
-                        <p class="step__text">Efectivo, transferencia o tarjeta de crédito o débito, hasta en 3 cuotas.</p>
+                        <p class="step__text">Efectivo, transferencia o tarjeta de crédito o débito, hasta en 3 cuotas.
+                        </p>
                       </div>
                     </div>
                   </li>
                   <li class="step" data-step="2">
                     <button class="step__head" type="button" aria-expanded="false" aria-controls="paso-stock-3">
-                      <span class="step__num">03</span><span class="step__dot" aria-hidden="true"> · </span><span class="step__name">Retiro o envío</span>
+                      <span class="step__num">03</span><span class="step__dot" aria-hidden="true"> · </span><span
+                        class="step__name">Retiro o envío</span>
                     </button>
                     <div class="step__body" id="paso-stock-3">
                       <div class="step__inner">
                         <p class="step__label" aria-hidden="true">Retiro o envío</p>
-                        <p class="step__text">Retiralas en el local o te las mandamos: en el día si estás en CABA y en 48 hs al interior.</p>
+                        <p class="step__text">Retiralas en el local o te las mandamos: en el día si estás en CABA y en
+                          48 hs al interior.</p>
                       </div>
                     </div>
                   </li>
                   <li class="step" data-step="3">
                     <button class="step__head" type="button" aria-expanded="false" aria-controls="paso-stock-4">
-                      <span class="step__num">04</span><span class="step__dot" aria-hidden="true"> · </span><span class="step__name">Colocación</span>
+                      <span class="step__num">04</span><span class="step__dot" aria-hidden="true"> · </span><span
+                        class="step__name">Colocación</span>
                     </button>
                     <div class="step__body" id="paso-stock-4">
                       <div class="step__inner">
                         <p class="step__label" aria-hidden="true">Colocación</p>
-                        <p class="step__text">Si querés, sacás turno y las colocamos en nuestro local en 4 o 5 horas.</p>
+                        <p class="step__text">Si querés, sacás turno y las colocamos en nuestro local en 4 o 5 horas.
+                        </p>
                       </div>
                     </div>
                   </li>
                 </ol>
                 <div class="process__cta">
-                <a class="btn btn--primary" href="https://wa.me/5491131059835?text=%C2%A1Hola%20ChiquiFun%21%20Quiero%20saber%20si%20tienen%20fundas%20en%20stock%20para%20mi%20%5Bmodelo%5D%20%5Ba%C3%B1o%5D." target="_blank" rel="noopener">
-                  <span class="btn__wa" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></span>
-                  Consultar stock
-                  <span class="visually-hidden">(abre WhatsApp)</span>
-                </a>
+                  <a class="btn btn--primary"
+                    href="https://wa.me/5491131059835?text=%C2%A1Hola%20ChiquiFun%21%20Quiero%20saber%20si%20tienen%20fundas%20en%20stock%20para%20mi%20%5Bmodelo%5D%20%5Ba%C3%B1o%5D."
+                    target="_blank" rel="noopener">
+                    <span class="btn__wa" aria-hidden="true"><svg viewBox="0 0 24 24">
+                        <path
+                          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+                      </svg></span>
+                    Consultar stock
+                    <span class="visually-hidden">(abre WhatsApp)</span>
+                  </a>
                 </div>
               </div>
-              <div class="process__panel" id="panel-personalizado" role="tabpanel" aria-labelledby="tab-personalizado" data-tab="1">
+              <div class="process__panel" id="panel-personalizado" role="tabpanel" aria-labelledby="tab-personalizado"
+                data-tab="1">
                 <p class="process__intro">Para quien quiere un interior único</p>
                 <ol class="steps">
                   <li class="step is-active" data-step="0">
                     <button class="step__head" type="button" aria-expanded="true" aria-controls="paso-personalizado-1">
-                      <span class="step__num">01</span><span class="step__dot" aria-hidden="true"> · </span><span class="step__name">Consulta</span>
+                      <span class="step__num">01</span><span class="step__dot" aria-hidden="true"> · </span><span
+                        class="step__name">Consulta</span>
                     </button>
                     <div class="step__body" id="paso-personalizado-1">
                       <div class="step__inner">
                         <p class="step__label" aria-hidden="true">Consulta</p>
-                        <p class="step__text">Nos escribís por WhatsApp con el modelo, el año y una foto de tus asientos. Te asesoramos sin compromiso.</p>
+                        <p class="step__text">Nos escribís por WhatsApp con el modelo, el año y una foto de tus
+                          asientos. Te asesoramos sin compromiso.</p>
                       </div>
                     </div>
                   </li>
                   <li class="step" data-step="1">
                     <button class="step__head" type="button" aria-expanded="false" aria-controls="paso-personalizado-2">
-                      <span class="step__num">02</span><span class="step__dot" aria-hidden="true"> · </span><span class="step__name">Diseño y material</span>
+                      <span class="step__num">02</span><span class="step__dot" aria-hidden="true"> · </span><span
+                        class="step__name">Diseño y material</span>
                     </button>
                     <div class="step__body" id="paso-personalizado-2">
                       <div class="step__inner">
                         <p class="step__label" aria-hidden="true">Diseño y material</p>
-                        <p class="step__text">Elegís el material y combinás entre más de 30 colores. Te mostramos muestras reales antes de fabricar.</p>
+                        <p class="step__text">Elegís el material y combinás entre más de 30 colores. Te mostramos
+                          muestras reales antes de fabricar.</p>
                       </div>
                     </div>
                   </li>
                   <li class="step" data-step="2">
                     <button class="step__head" type="button" aria-expanded="false" aria-controls="paso-personalizado-3">
-                      <span class="step__num">03</span><span class="step__dot" aria-hidden="true"> · </span><span class="step__name">Fabricación propia</span>
+                      <span class="step__num">03</span><span class="step__dot" aria-hidden="true"> · </span><span
+                        class="step__name">Fabricación propia</span>
                     </button>
                     <div class="step__body" id="paso-personalizado-3">
                       <div class="step__inner">
                         <p class="step__label" aria-hidden="true">Fabricación propia</p>
-                        <p class="step__text">Cortamos y cosemos tu funda en nuestro taller, con moldes para tu modelo. Lista en 24 hs.</p>
+                        <p class="step__text">Cortamos y cosemos tu funda en nuestro taller, con moldes para tu modelo.
+                          Lista en 24 hs.</p>
                       </div>
                     </div>
                   </li>
                   <li class="step" data-step="3">
                     <button class="step__head" type="button" aria-expanded="false" aria-controls="paso-personalizado-4">
-                      <span class="step__num">04</span><span class="step__dot" aria-hidden="true"> · </span><span class="step__name">Instalación o envío</span>
+                      <span class="step__num">04</span><span class="step__dot" aria-hidden="true"> · </span><span
+                        class="step__name">Instalación o envío</span>
                     </button>
                     <div class="step__body" id="paso-personalizado-4">
                       <div class="step__inner">
                         <p class="step__label" aria-hidden="true">Instalación o envío</p>
-                        <p class="step__text">Con turno previo, la colocamos en nuestro local en 4 o 5 horas. También enviamos a todo el país.</p>
+                        <p class="step__text">Con turno previo, la colocamos en nuestro local en 4 o 5 horas. También
+                          enviamos a todo el país.</p>
                       </div>
                     </div>
                   </li>
                 </ol>
                 <div class="process__cta">
-                <a class="btn btn--primary" href="https://wa.me/5491131059835?text=%C2%A1Hola%20ChiquiFun%21%20Quiero%20un%20dise%C3%B1o%20personalizado%20de%20fundas%20para%20mi%20%5Bmodelo%5D%20%5Ba%C3%B1o%5D." target="_blank" rel="noopener">
-                  <span class="btn__wa" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></span>
-                  Diseñar
-                  <span class="visually-hidden">(abre WhatsApp)</span>
-                </a>
+                  <a class="btn btn--primary"
+                    href="https://wa.me/5491131059835?text=%C2%A1Hola%20ChiquiFun%21%20Quiero%20un%20dise%C3%B1o%20personalizado%20de%20fundas%20para%20mi%20%5Bmodelo%5D%20%5Ba%C3%B1o%5D."
+                    target="_blank" rel="noopener">
+                    <span class="btn__wa" aria-hidden="true"><svg viewBox="0 0 24 24">
+                        <path
+                          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+                      </svg></span>
+                    Diseñar
+                    <span class="visually-hidden">(abre WhatsApp)</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -617,16 +949,21 @@
         <li class="acc__item" data-reveal>
           <article class="acc-card" aria-labelledby="acc-pisos">
             <div class="acc-card__media">
-              <img class="acc-card__img acc-card__img--pisos" src="uploads/acc-pisos.webp" width="747" height="560" loading="lazy" decoding="async" alt="Piso de goma negro con bordes elevados y canales en relieve">
+              <img class="acc-card__img acc-card__img--pisos" src="uploads/acc-pisos.webp" width="747" height="560"
+                loading="lazy" decoding="async" alt="Piso de goma negro con bordes elevados y canales en relieve">
             </div>
             <div class="acc-card__body">
               <h3 class="acc-card__title" id="acc-pisos">
                 <span class="acc-card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path pathLength="1" d="M4.5 3.5h15l-1.2 14a3.5 3.5 0 0 1-3.5 3.2H9.2a3.5 3.5 0 0 1-3.5-3.2z"/><path pathLength="1" d="M8 7.5h8M8.3 11h7.4M10.5 16.5h3"/></svg>
+                  <svg viewBox="0 0 24 24">
+                    <path pathLength="1" d="M4.5 3.5h15l-1.2 14a3.5 3.5 0 0 1-3.5 3.2H9.2a3.5 3.5 0 0 1-3.5-3.2z" />
+                    <path pathLength="1" d="M8 7.5h8M8.3 11h7.4M10.5 16.5h3" />
+                  </svg>
                 </span>
                 Pisos
               </h3>
-              <p class="acc-card__text">Protegen el piso original de tu vehículo del barro, el agua y el desgaste de todos los días. Un detalle que hace que el interior se vea prolijo y cuidado.</p>
+              <p class="acc-card__text">Protegen el piso original de tu vehículo del barro, el agua y el desgaste de
+                todos los días. Un detalle que hace que el interior se vea prolijo y cuidado.</p>
             </div>
           </article>
         </li>
@@ -634,16 +971,24 @@
         <li class="acc__item" data-reveal>
           <article class="acc-card" aria-labelledby="acc-cobertores">
             <div class="acc-card__media">
-              <img class="acc-card__img" src="uploads/acc-cobertores.webp" width="896" height="672" loading="lazy" decoding="async" alt="Auto cubierto con un cobertor gris, con la trompa a la vista">
+              <img class="acc-card__img" src="uploads/acc-cobertores.webp" width="896" height="672" loading="lazy"
+                decoding="async" alt="Auto cubierto con un cobertor gris, con la trompa a la vista">
             </div>
             <div class="acc-card__body">
               <h3 class="acc-card__title" id="acc-cobertores">
                 <span class="acc-card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path pathLength="1" d="M2.5 16.5V14a2 2 0 0 1 1.4-1.9L7 11l2.6-3.6A2 2 0 0 1 11.2 6.5h3.4a2 2 0 0 1 1.6.8L19 11l1.2.4a2 2 0 0 1 1.3 1.9v3.2"/><path pathLength="1" d="M2.5 16.5c1.6 1.2 3.2 1.2 4.75 0s3.15-1.2 4.75 0 3.2 1.2 4.75 0 3.15-1.2 4.75 0"/><path pathLength="1" d="M12 6.5v4.5"/></svg>
+                  <svg viewBox="0 0 24 24">
+                    <path pathLength="1"
+                      d="M2.5 16.5V14a2 2 0 0 1 1.4-1.9L7 11l2.6-3.6A2 2 0 0 1 11.2 6.5h3.4a2 2 0 0 1 1.6.8L19 11l1.2.4a2 2 0 0 1 1.3 1.9v3.2" />
+                    <path pathLength="1"
+                      d="M2.5 16.5c1.6 1.2 3.2 1.2 4.75 0s3.15-1.2 4.75 0 3.2 1.2 4.75 0 3.15-1.2 4.75 0" />
+                    <path pathLength="1" d="M12 6.5v4.5" />
+                  </svg>
                 </span>
                 Cobertores
               </h3>
-              <p class="acc-card__text">Cuidan la pintura de tu vehículo del sol, el polvo y la intemperie. Están hechos en lona con interior afelpado, para que la protección no termine rayando lo que querés proteger.</p>
+              <p class="acc-card__text">Cuidan la pintura de tu vehículo del sol, el polvo y la intemperie. Están hechos
+                en lona con interior afelpado, para que la protección no termine rayando lo que querés proteger.</p>
             </div>
           </article>
         </li>
@@ -651,16 +996,22 @@
         <li class="acc__item" data-reveal>
           <article class="acc-card" aria-labelledby="acc-apoya">
             <div class="acc-card__media">
-              <img class="acc-card__img" src="uploads/acc-apoya-cervicales.webp" width="896" height="672" loading="lazy" decoding="async" alt="Butaca negra con apoya cervical en el cabezal y apoya lumbar en el respaldo">
+              <img class="acc-card__img" src="uploads/acc-apoya-cervicales.webp" width="896" height="672" loading="lazy"
+                decoding="async" alt="Butaca negra con apoya cervical en el cabezal y apoya lumbar en el respaldo">
             </div>
             <div class="acc-card__body">
               <h3 class="acc-card__title" id="acc-apoya">
                 <span class="acc-card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path pathLength="1" d="M5.5 19.5C3.9 18 3 15.7 3 13.2 3 8.1 7 4 12 4s9 4.1 9 9.2c0 2.5-.9 4.8-2.5 6.3h-3.4c1-1.2 1.4-2.7 1.4-4.2 0-2.6-1.6-4.3-4.5-4.3s-4.5 1.7-4.5 4.3c0 1.5.4 3 1.4 4.2z"/></svg>
+                  <svg viewBox="0 0 24 24">
+                    <path pathLength="1"
+                      d="M5.5 19.5C3.9 18 3 15.7 3 13.2 3 8.1 7 4 12 4s9 4.1 9 9.2c0 2.5-.9 4.8-2.5 6.3h-3.4c1-1.2 1.4-2.7 1.4-4.2 0-2.6-1.6-4.3-4.5-4.3s-4.5 1.7-4.5 4.3c0 1.5.4 3 1.4 4.2z" />
+                  </svg>
                 </span>
                 Apoya cervicales y lumbares
               </h3>
-              <p class="acc-card__text">Más confort en cada kilómetro. Acompañan el cuello y la zona baja de la espalda para que manejar sea más cómodo, tanto en el día a día como en los viajes largos, para vos y para tus acompañantes.</p>
+              <p class="acc-card__text">Más confort en cada kilómetro. Acompañan el cuello y la zona baja de la espalda
+                para que manejar sea más cómodo, tanto en el día a día como en los viajes largos, para vos y para tus
+                acompañantes.</p>
             </div>
           </article>
         </li>
@@ -670,19 +1021,34 @@
             <div class="acc-card__media">
               <ul class="acc-more" aria-label="Algunos de los otros accesorios">
                 <li>
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M3 16a9 9 0 0 1 18 0v1.5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path pathLength="1" d="M12 16l3.5-4.5"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path pathLength="1" d="M3 16a9 9 0 0 1 18 0v1.5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z" />
+                    <path pathLength="1" d="M12 16l3.5-4.5" />
+                  </svg>
                   Cubretableros
                 </li>
                 <li>
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/><path pathLength="1" d="M14.5 12a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM3.3 11h6.2M14.5 11h6.2M12 14.5V21"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path pathLength="1" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
+                    <path pathLength="1"
+                      d="M14.5 12a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM3.3 11h6.2M14.5 11h6.2M12 14.5V21" />
+                  </svg>
                   Cubrevolantes
                 </li>
                 <li>
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M4 3l7 9.5M8.5 14.5h9a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 7 19v-3a1.5 1.5 0 0 1 1.5-1.5z"/><path pathLength="1" d="M11 17.5h5"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path pathLength="1"
+                      d="M4 3l7 9.5M8.5 14.5h9a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 7 19v-3a1.5 1.5 0 0 1 1.5-1.5z" />
+                    <path pathLength="1" d="M11 17.5h5" />
+                  </svg>
                   Cubrecinturones
                 </li>
                 <li>
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M5.5 3.5h13a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1h-13a1 1 0 0 1-1-1v-15a1 1 0 0 1 1-1z"/><path pathLength="1" d="M4.5 11h15M8 11v9.5M16 11v9.5M9.5 7h5"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path pathLength="1"
+                      d="M5.5 3.5h13a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1h-13a1 1 0 0 1-1-1v-15a1 1 0 0 1 1-1z" />
+                    <path pathLength="1" d="M4.5 11h15M8 11v9.5M16 11v9.5M9.5 7h5" />
+                  </svg>
                   Organizadores
                 </li>
               </ul>
@@ -690,11 +1056,17 @@
             <div class="acc-card__body">
               <h3 class="acc-card__title" id="acc-otros">
                 <span class="acc-card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path pathLength="1" d="M5.5 4h3A1.5 1.5 0 0 1 10 5.5v3A1.5 1.5 0 0 1 8.5 10h-3A1.5 1.5 0 0 1 4 8.5v-3A1.5 1.5 0 0 1 5.5 4zM15.5 4h3A1.5 1.5 0 0 1 20 5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 14 8.5v-3A1.5 1.5 0 0 1 15.5 4zM5.5 14h3a1.5 1.5 0 0 1 1.5 1.5v3A1.5 1.5 0 0 1 8.5 20h-3A1.5 1.5 0 0 1 4 18.5v-3A1.5 1.5 0 0 1 5.5 14z"/><path pathLength="1" d="M17 14v6M14 17h6"/></svg>
+                  <svg viewBox="0 0 24 24">
+                    <path pathLength="1"
+                      d="M5.5 4h3A1.5 1.5 0 0 1 10 5.5v3A1.5 1.5 0 0 1 8.5 10h-3A1.5 1.5 0 0 1 4 8.5v-3A1.5 1.5 0 0 1 5.5 4zM15.5 4h3A1.5 1.5 0 0 1 20 5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 14 8.5v-3A1.5 1.5 0 0 1 15.5 4zM5.5 14h3a1.5 1.5 0 0 1 1.5 1.5v3A1.5 1.5 0 0 1 8.5 20h-3A1.5 1.5 0 0 1 4 18.5v-3A1.5 1.5 0 0 1 5.5 14z" />
+                    <path pathLength="1" d="M17 14v6M14 17h6" />
+                  </svg>
                 </span>
                 Otros
               </h3>
-              <p class="acc-card__text">Además de estos productos, tenemos cubretableros, cubrevolantes, cubrecinturones y organizadores de asiento, entre otros accesorios. Nuestro catálogo se renueva constantemente, así que si buscás algo en particular, consultanos.</p>
+              <p class="acc-card__text">Además de estos productos, tenemos cubretableros, cubrevolantes, cubrecinturones
+                y organizadores de asiento, entre otros accesorios. Nuestro catálogo se renueva constantemente, así que
+                si buscás algo en particular, consultanos.</p>
             </div>
           </article>
         </li>
@@ -704,9 +1076,12 @@
       <div class="faq__head">
         <h2 class="section-title faq__title" id="faq-title" data-reveal>Preguntas frecuentes</h2>
         <div class="faq__tabs" role="tablist" aria-label="Temas de las preguntas" data-reveal>
-          <button class="faq__tab" type="button" role="tab" id="faq-tab-fundas" aria-controls="faq-panel-fundas" aria-selected="true">Sobre las fundas</button>
-          <button class="faq__tab" type="button" role="tab" id="faq-tab-colocacion" aria-controls="faq-panel-colocacion" aria-selected="false" tabindex="-1">Colocación y tiempos</button>
-          <button class="faq__tab" type="button" role="tab" id="faq-tab-pagos" aria-controls="faq-panel-pagos" aria-selected="false" tabindex="-1">Compras, pagos y envíos</button>
+          <button class="faq__tab" type="button" role="tab" id="faq-tab-fundas" aria-controls="faq-panel-fundas"
+            aria-selected="true">Sobre las fundas</button>
+          <button class="faq__tab" type="button" role="tab" id="faq-tab-colocacion" aria-controls="faq-panel-colocacion"
+            aria-selected="false" tabindex="-1">Colocación y tiempos</button>
+          <button class="faq__tab" type="button" role="tab" id="faq-tab-pagos" aria-controls="faq-panel-pagos"
+            aria-selected="false" tabindex="-1">Compras, pagos y envíos</button>
         </div>
       </div>
 
@@ -714,78 +1089,144 @@
         <div class="faq__panel" id="faq-panel-fundas" role="tabpanel" aria-labelledby="faq-tab-fundas" tabindex="0">
           <h3 class="faq__panel-title">Sobre las fundas</h3>
           <details class="faq__item" name="faq-fundas">
-            <summary class="faq__q">¿Las fundas son universales?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__a"><p>No. Trabajamos con moldes propios para cada modelo y año de vehículo; así quedan justas, sin arrugas ni bolsas. Para los modelos más elegidos tenemos fundas en stock, y para el resto las confeccionamos a pedido.</p></div>
+            <summary class="faq__q">¿Las fundas son universales?<span class="faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__a">
+              <p>No. Trabajamos con moldes propios para cada modelo y año de vehículo; así quedan justas, sin arrugas ni
+                bolsas. Para los modelos más elegidos tenemos fundas en stock, y para el resto las confeccionamos a
+                pedido.</p>
+            </div>
           </details>
           <details class="faq__item" name="faq-fundas">
-            <summary class="faq__q">¿Tienen fundas para mi vehículo?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__a"><p>Trabajamos con autos, camionetas y utilitarios de una amplia variedad de marcas y modelos. Si tenés dudas, escribinos por WhatsApp con el modelo y el año, y te decimos qué opciones tenés.</p></div>
+            <summary class="faq__q">¿Tienen fundas para mi vehículo?<span class="faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__a">
+              <p>Trabajamos con autos, camionetas y utilitarios de una amplia variedad de marcas y modelos. Si tenés
+                dudas, escribinos por WhatsApp con el modelo y el año, y te decimos qué opciones tenés.</p>
+            </div>
           </details>
           <details class="faq__item" name="faq-fundas">
-            <summary class="faq__q">¿Qué diferencia hay entre las fundas en stock y las personalizadas?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__a"><p>Las fundas en stock son para los modelos más elegidos y te las llevás en el día. Las personalizadas las diseñamos con vos: elegís material, colores y combinaciones, y las fabricamos en nuestro taller en 24 hs.</p></div>
+            <summary class="faq__q">¿Qué diferencia hay entre las fundas en stock y las personalizadas?<span
+                class="faq__icon" aria-hidden="true"></span></summary>
+            <div class="faq__a">
+              <p>Las fundas en stock son para los modelos más elegidos y te las llevás en el día. Las personalizadas las
+                diseñamos con vos: elegís material, colores y combinaciones, y las fabricamos en nuestro taller en 24
+                hs.</p>
+            </div>
           </details>
           <details class="faq__item" name="faq-fundas">
-            <summary class="faq__q">¿Puedo elegir el color y el material?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__a"><p>Sí. En los diseños personalizados elegís entre cuerina, cuero automotor o tela, y combinás más de 30 colores. Las fundas en stock vienen en los colores que tengamos disponibles para tu modelo.</p></div>
+            <summary class="faq__q">¿Puedo elegir el color y el material?<span class="faq__icon"
+                aria-hidden="true"></span></summary>
+            <div class="faq__a">
+              <p>Sí. En los diseños personalizados elegís entre cuerina, cuero automotor o tela, y combinás más de 30
+                colores. Las fundas en stock vienen en los colores que tengamos disponibles para tu modelo.</p>
+            </div>
           </details>
           <details class="faq__item" name="faq-fundas">
-            <summary class="faq__q">¿Las fundas se mueven o se aflojan con el uso?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__a"><p>No. Al estar hechas para tu modelo e instaladas correctamente, quedan firmes y mantienen el ajuste con el uso diario.</p></div>
+            <summary class="faq__q">¿Las fundas se mueven o se aflojan con el uso?<span class="faq__icon"
+                aria-hidden="true"></span></summary>
+            <div class="faq__a">
+              <p>No. Al estar hechas para tu modelo e instaladas correctamente, quedan firmes y mantienen el ajuste con
+                el uso diario.</p>
+            </div>
           </details>
           <details class="faq__item" name="faq-fundas">
-            <summary class="faq__q">¿Protegen el tapizado original?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__a"><p>Sí. Protegen los asientos del desgaste diario, las manchas y la suciedad, mantienen el tapizado original en las mejores condiciones, algo que también suma a la hora de vender el vehículo.</p></div>
+            <summary class="faq__q">¿Protegen el tapizado original?<span class="faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__a">
+              <p>Sí. Protegen los asientos del desgaste diario, las manchas y la suciedad, mantienen el tapizado
+                original en las mejores condiciones, algo que también suma a la hora de vender el vehículo.</p>
+            </div>
           </details>
           <details class="faq__item" name="faq-fundas">
-            <summary class="faq__q">¿Las fundas incluyen los apoyacabezas?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__a"><p>Sí. Incluyen los apoyacabezas y todas las piezas correspondientes, según el modelo del vehículo.</p></div>
+            <summary class="faq__q">¿Las fundas incluyen los apoyacabezas?<span class="faq__icon"
+                aria-hidden="true"></span></summary>
+            <div class="faq__a">
+              <p>Sí. Incluyen los apoyacabezas y todas las piezas correspondientes, según el modelo del vehículo.</p>
+            </div>
           </details>
           <details class="faq__item" name="faq-fundas">
-            <summary class="faq__q">¿Se pueden colocar sobre asientos de cuero?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__a"><p>Sí. Se pueden instalar tanto sobre asientos de tela como de cuero.</p></div>
+            <summary class="faq__q">¿Se pueden colocar sobre asientos de cuero?<span class="faq__icon"
+                aria-hidden="true"></span></summary>
+            <div class="faq__a">
+              <p>Sí. Se pueden instalar tanto sobre asientos de tela como de cuero.</p>
+            </div>
           </details>
           <details class="faq__item" name="faq-fundas">
             <summary class="faq__q">¿Cómo se limpian?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__a"><p>Es muy sencillo: un paño húmedo con agua y jabón neutro. Evitá productos abrasivos para que el material se mantenga como el primer día.</p></div>
+            <div class="faq__a">
+              <p>Es muy sencillo: un paño húmedo con agua y jabón neutro. Evitá productos abrasivos para que el material
+                se mantenga como el primer día.</p>
+            </div>
           </details>
           <details class="faq__item" name="faq-fundas">
             <summary class="faq__q">¿Qué garantía ofrecen?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__a"><p>Ofrecemos garantía por defectos de fabricación y colocación. Si surge algún inconveniente con la confección o la instalación, nos ocupamos de resolverlo. La garantía de costuras y terminaciones es de 6 meses.</p></div>
+            <div class="faq__a">
+              <p>Ofrecemos garantía por defectos de fabricación y colocación. Si surge algún inconveniente con la
+                confección o la instalación, nos ocupamos de resolverlo. La garantía de costuras y terminaciones es de 6
+                meses.</p>
+            </div>
           </details>
         </div>
-        <div class="faq__panel" id="faq-panel-colocacion" role="tabpanel" aria-labelledby="faq-tab-colocacion" tabindex="0">
+        <div class="faq__panel" id="faq-panel-colocacion" role="tabpanel" aria-labelledby="faq-tab-colocacion"
+          tabindex="0">
           <h3 class="faq__panel-title">Colocación y tiempos</h3>
           <details class="faq__item" name="faq-colocacion">
             <summary class="faq__q">¿Cuánto tardan?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__a"><p>Las fundas en stock se retiran en el día. Los diseños personalizados están listos en 24 hs una vez definido el diseño.</p></div>
+            <div class="faq__a">
+              <p>Las fundas en stock se retiran en el día. Los diseños personalizados están listos en 24 hs una vez
+                definido el diseño.</p>
+            </div>
           </details>
           <details class="faq__item" name="faq-colocacion">
-            <summary class="faq__q">¿Hay que sacar turno? ¿Tengo que dejar el vehículo?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__a"><p>Sí, la colocación es con turno previo en nuestro local de Floresta. Dejás el vehículo, la colocación lleva entre 4 y 5 horas según el modelo, y lo retirás listo el mismo día.</p></div>
+            <summary class="faq__q">¿Hay que sacar turno? ¿Tengo que dejar el vehículo?<span class="faq__icon"
+                aria-hidden="true"></span></summary>
+            <div class="faq__a">
+              <p>Sí, la colocación es con turno previo en nuestro local de Floresta. Dejás el vehículo, la colocación
+                lleva entre 4 y 5 horas según el modelo, y lo retirás listo el mismo día.</p>
+            </div>
           </details>
           <details class="faq__item" name="faq-colocacion">
-            <summary class="faq__q">¿Cuánto cuesta la colocación?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__a"><p>Si las fundas son de ChiquiFun, la colocación es sin cargo, con turno previo en nuestro local. También colocamos fundas compradas en otro lado; en ese caso la colocación tiene costo.</p></div>
+            <summary class="faq__q">¿Cuánto cuesta la colocación?<span class="faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__a">
+              <p>Si las fundas son de ChiquiFun, la colocación es sin cargo, con turno previo en nuestro local. También
+                colocamos fundas compradas en otro lado; en ese caso la colocación tiene costo.</p>
+            </div>
           </details>
           <details class="faq__item" name="faq-colocacion">
-            <summary class="faq__q">¿Las fundas vienen listas para colocar?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__a"><p>Sí. Se entregan listas para el vehículo correspondiente. Podés colocarlas vos o sacar turno para que lo hagamos nosotros en el local.</p></div>
+            <summary class="faq__q">¿Las fundas vienen listas para colocar?<span class="faq__icon"
+                aria-hidden="true"></span></summary>
+            <div class="faq__a">
+              <p>Sí. Se entregan listas para el vehículo correspondiente. Podés colocarlas vos o sacar turno para que lo
+                hagamos nosotros en el local.</p>
+            </div>
           </details>
         </div>
         <div class="faq__panel" id="faq-panel-pagos" role="tabpanel" aria-labelledby="faq-tab-pagos" tabindex="0">
           <h3 class="faq__panel-title">Compras, pagos y envíos</h3>
           <details class="faq__item" name="faq-pagos">
-            <summary class="faq__q">¿Qué medios de pago aceptan?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__a"><p>Efectivo, transferencia y tarjeta de crédito o débito. Con tarjeta podés pagar hasta en 3 cuotas con recargo, con todas las tarjetas.</p></div>
+            <summary class="faq__q">¿Qué medios de pago aceptan?<span class="faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__a">
+              <p>Efectivo, transferencia y tarjeta de crédito o débito. Con tarjeta podés pagar hasta en 3 cuotas con
+                recargo, con todas las tarjetas.</p>
+            </div>
           </details>
           <details class="faq__item" name="faq-pagos">
-            <summary class="faq__q">¿Hacen envíos a todo el país?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__a"><p>Sí, enviamos a todas las provincias: en el día en Capital y en 48 hs al interior.</p></div>
+            <summary class="faq__q">¿Hacen envíos a todo el país?<span class="faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__a">
+              <p>Sí, enviamos a todas las provincias: en el día en Capital y en 48 hs al interior.</p>
+            </div>
           </details>
           <details class="faq__item" name="faq-pagos">
-            <summary class="faq__q">¿Trabajan para empresas y flotas?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__a"><p>Sí. Fabricamos fundas para empresas, flotas, utilitarios y camionetas, adaptándonos a las necesidades de cada cliente. Escribinos por WhatsApp y armamos una propuesta a medida.</p></div>
+            <summary class="faq__q">¿Trabajan para empresas y flotas?<span class="faq__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq__a">
+              <p>Sí. Fabricamos fundas para empresas, flotas, utilitarios y camionetas, adaptándonos a las necesidades
+                de cada cliente. Escribinos por WhatsApp y armamos una propuesta a medida.</p>
+            </div>
           </details>
         </div>
       </div>
@@ -793,42 +1234,52 @@
 
     <section class="about" id="nosotros" aria-labelledby="nosotros-title">
       <div class="about__story">
-      <div class="about__intro">
-        <h2 class="section-title about__title" id="nosotros-title" data-reveal>Nació de una necesidad. Creció con perseverancia.</h2>
-        <div class="about__text" data-reveal>
-          <p class="about__lead">ChiquiFun nació en 2019, pero la historia empezó un poco antes: en una fábrica de fundas universales, donde aprendimos el oficio y entendimos que una funda es mucho más que cortar y coser.</p>
-          <p>Un día llegó el despido, y con él una decisión: quedarse pensando en lo perdido o construir algo propio con lo aprendido. Elegimos construir. Y desde entonces buscamos lo mismo en cada trabajo: que la funda se parezca cada vez más a un tapizado hecho a medida.</p>
+        <div class="about__intro">
+          <h2 class="section-title about__title" id="nosotros-title" data-reveal>Nació de una necesidad. Creció con
+            perseverancia.</h2>
+          <div class="about__text" data-reveal>
+            <p class="about__lead">ChiquiFun nació en 2019, pero la historia empezó un poco antes: en una fábrica de
+              fundas universales, donde aprendimos el oficio y entendimos que una funda es mucho más que cortar y coser.
+            </p>
+            <p>Un día llegó el despido, y con él una decisión: quedarse pensando en lo perdido o construir algo propio
+              con lo aprendido. Elegimos construir. Y desde entonces buscamos lo mismo en cada trabajo: que la funda se
+              parezca cada vez más a un tapizado hecho a medida.</p>
+          </div>
+          <ul class="about__tags" aria-label="Lo que nos define" data-stagger=".about__tag">
+            <li class="about__tag">Fabricación propia</li>
+            <li class="about__tag">Emprendimiento familiar</li>
+            <li class="about__tag">Taller en Floresta</li>
+            <li class="about__tag">Envíos a todo el país</li>
+          </ul>
         </div>
-        <ul class="about__tags" aria-label="Lo que nos define" data-stagger=".about__tag">
-          <li class="about__tag">Fabricación propia</li>
-          <li class="about__tag">Emprendimiento familiar</li>
-          <li class="about__tag">Taller en Floresta</li>
-          <li class="about__tag">Envíos a todo el país</li>
-        </ul>
-      </div>
 
-      <ol class="about__timeline" aria-label="Nuestra historia" data-stagger=".milestone">
-        <li class="milestone">
-          <p class="milestone__when">2019</p>
-          <h3 class="milestone__title">Desde casa</h3>
-          <p class="milestone__text">Sin grandes máquinas ni recursos, pero con ganas de trabajar y aprender: fundas a medida para cada cliente que confiaba en nosotros. Cada trabajo era un desafío y cada cliente nos enseñaba algo.</p>
-        </li>
-        <li class="milestone">
-          <p class="milestone__when">Entre hermanos</p>
-          <h3 class="milestone__title">Se suma Andrés</h3>
-          <p class="milestone__text">Solo era muy difícil. Trabajando juntos, aprendiendo uno del otro, nació el espíritu de ChiquiFun: familia, trabajo y ganas de hacer las cosas cada vez mejor.</p>
-        </li>
-        <li class="milestone">
-          <p class="milestone__when">El primer local</p>
-          <h3 class="milestone__title">5 × 5 metros</h3>
-          <p class="milestone__text">Ahí entraban, justas, una mesa de corte de 2,80 × 3,50 m y tres máquinas de coser. No sobraba espacio, pero sobraban ganas.</p>
-        </li>
-        <li class="milestone">
-          <p class="milestone__when">La pandemia</p>
-          <h3 class="milestone__title">Una puerta se cierra</h3>
-          <p class="milestone__text">El trabajo cayó y tuvimos que dejar el local. Cuando parecía que había que empezar de nuevo, apareció uno más grande: un lugar para pensar a largo plazo.</p>
-        </li>
-      </ol>
+        <ol class="about__timeline" aria-label="Nuestra historia" data-stagger=".milestone">
+          <li class="milestone">
+            <p class="milestone__when">2019</p>
+            <h3 class="milestone__title">Desde casa</h3>
+            <p class="milestone__text">Sin grandes máquinas ni recursos, pero con ganas de trabajar y aprender: fundas a
+              medida para cada cliente que confiaba en nosotros. Cada trabajo era un desafío y cada cliente nos enseñaba
+              algo.</p>
+          </li>
+          <li class="milestone">
+            <p class="milestone__when">Entre hermanos</p>
+            <h3 class="milestone__title">Se suma Andrés</h3>
+            <p class="milestone__text">Solo era muy difícil. Trabajando juntos, aprendiendo uno del otro, nació el
+              espíritu de ChiquiFun: familia, trabajo y ganas de hacer las cosas cada vez mejor.</p>
+          </li>
+          <li class="milestone">
+            <p class="milestone__when">El primer local</p>
+            <h3 class="milestone__title">5 × 5 metros</h3>
+            <p class="milestone__text">Ahí entraban, justas, una mesa de corte de 2,80 × 3,50 m y tres máquinas de
+              coser. No sobraba espacio, pero sobraban ganas.</p>
+          </li>
+          <li class="milestone">
+            <p class="milestone__when">La pandemia</p>
+            <h3 class="milestone__title">Una puerta se cierra</h3>
+            <p class="milestone__text">El trabajo cayó y tuvimos que dejar el local. Cuando parecía que había que
+              empezar de nuevo, apareció uno más grande: un lugar para pensar a largo plazo.</p>
+          </li>
+        </ol>
       </div>
 
     </section>
@@ -838,29 +1289,52 @@
     <div class="site-footer__main">
       <div class="site-footer__brand">
         <a class="site-footer__logo" href="#inicio" aria-label="ChiquiFun, volver al inicio">
-          <img src="uploads/logo-chiquifun.png" width="822" height="231" loading="lazy" decoding="async" alt="ChiquiFun Indumentaria Automotriz">
+          <img src="uploads/logo-chiquifun.png" width="822" height="231" loading="lazy" decoding="async"
+            alt="ChiquiFun Indumentaria Automotriz">
         </a>
-        <p class="site-footer__tagline">Fundas tipo tapizado a medida, fabricadas en nuestro taller de Floresta. Envíos a todo el país.</p>
+        <p class="site-footer__tagline">Fundas tipo tapizado a medida, fabricadas en nuestro taller de Floresta. Envíos
+          a todo el país.</p>
 
         <ul class="contact" data-stagger=".contact__row">
           <li class="contact__row">
-            <span class="contact__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><path d="M14.25 10a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0z"/></svg></span>
-            <a class="contact__link" href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Juan%20B.%20Justo%206125%2C%20Floresta%2C%20CABA" target="_blank" rel="noopener">Av. Juan B. Justo 6125, Floresta, CABA<span class="visually-hidden"> (abre Google Maps)</span></a>
+            <span class="contact__icon" aria-hidden="true"><svg viewBox="0 0 24 24">
+                <path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z" />
+                <path d="M14.25 10a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0z" />
+              </svg></span>
+            <a class="contact__link"
+              href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Juan%20B.%20Justo%206125%2C%20Floresta%2C%20CABA"
+              target="_blank" rel="noopener">Av. Juan B. Justo 6125, Floresta, CABA<span class="visually-hidden"> (abre
+                Google Maps)</span></a>
           </li>
           <li class="contact__row">
-            <span class="contact__icon contact__icon--fill" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#wa"/></svg></span>
-            <a class="contact__link contact__link--strong" href="https://wa.me/5491131059835" target="_blank" rel="noopener"><span class="visually-hidden">WhatsApp: </span>+54 9 11 3105-9835</a>
+            <span class="contact__icon contact__icon--fill" aria-hidden="true"><svg viewBox="0 0 24 24">
+                <use href="#wa" />
+              </svg></span>
+            <a class="contact__link contact__link--strong" href="https://wa.me/5491131059835" target="_blank"
+              rel="noopener"><span class="visually-hidden">WhatsApp: </span>+54 9 11 3105-9835</a>
           </li>
           <li class="contact__row">
-            <span class="contact__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#ig"/></svg></span>
-            <a class="contact__link" href="https://www.instagram.com/chiquifun/" target="_blank" rel="noopener"><span class="visually-hidden">Instagram: </span>chiquifun</a>
+            <span class="contact__icon" aria-hidden="true"><svg viewBox="0 0 24 24">
+                <use href="#ig" />
+              </svg></span>
+            <a class="contact__link" href="https://www.instagram.com/chiquifun/" target="_blank" rel="noopener"><span
+                class="visually-hidden">Instagram: </span>chiquifun</a>
           </li>
           <li class="contact__row contact__row--hours">
-            <span class="contact__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/><path d="M12 7v5l3 2"/></svg></span>
+            <span class="contact__icon" aria-hidden="true"><svg viewBox="0 0 24 24">
+                <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
+                <path d="M12 7v5l3 2" />
+              </svg></span>
             <div class="hours">
               <dl class="hours__list">
-                <div><dt>Lunes a viernes</dt><dd>9:00 a 13:00 y 14:00 a 18:00</dd></div>
-                <div><dt>Sábados</dt><dd>9:00 a 14:00</dd></div>
+                <div>
+                  <dt>Lunes a viernes</dt>
+                  <dd>9:00 a 13:00 y 14:00 a 18:00</dd>
+                </div>
+                <div>
+                  <dt>Sábados</dt>
+                  <dd>9:00 a 14:00</dd>
+                </div>
               </dl>
               <p class="hours__note">Colocación con turno previo</p>
             </div>
@@ -870,11 +1344,17 @@
 
       <div class="site-footer__map">
         <h2 class="site-footer__heading">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><path d="M14.25 10a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0z"/></svg>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z" />
+            <path d="M14.25 10a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0z" />
+          </svg>
           Ubicación
         </h2>
         <div class="map">
-          <iframe class="map__frame" src="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m3!2m1!1sChiquiFun+Fundas+a+Medida,+Av.+Juan+B.+Justo+6125,+CABA!6i16!3m1!1ses!5m1!1ses" title="Mapa: ChiquiFun en Av. Juan B. Justo 6125, Floresta, CABA" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <iframe class="map__frame"
+            src="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m3!2m1!1sChiquiFun+Fundas+a+Medida,+Av.+Juan+B.+Justo+6125,+CABA!6i16!3m1!1ses!5m1!1ses"
+            title="Mapa: ChiquiFun en Av. Juan B. Justo 6125, Floresta, CABA" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         </div>
       </div>
     </div>
@@ -891,10 +1371,26 @@
         </ul>
       </div>
       <ul class="social" aria-label="Redes sociales">
-        <li><a class="social__link" href="https://www.instagram.com/chiquifun/" target="_blank" rel="noopener" aria-label="Instagram (abre en una pestaña nueva)"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ig"/></svg></a></li>
-        <li><a class="social__link social__link--fill" href="https://www.facebook.com/p/ChiquiFun-fundas-a-medida-para-el-automotor-100033470307190" target="_blank" rel="noopener" aria-label="Facebook (abre en una pestaña nueva)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.2v2.3H7.4V14h2.8v8z"/></svg></a></li>
-        <li><a class="social__link social__link--fill" href="https://www.tiktok.com/@chiquifun?lang=es" target="_blank" rel="noopener" aria-label="TikTok (abre en una pestaña nueva)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 3c.3 2.2 1.6 3.6 3.9 3.8v3.1c-1.4.1-2.6-.3-3.9-1.1v5.6c0 3.5-2.4 6-5.8 6S5 18 5 15s2.6-5.6 6.2-5.3v3.2c-1.6-.3-3 .7-3 2.2 0 1.3 1 2.3 2.4 2.3 1.5 0 2.5-1 2.5-2.9V3z"/></svg></a></li>
-        <li><a class="social__link social__link--fill" href="https://wa.me/5491131059835" target="_blank" rel="noopener" aria-label="WhatsApp (abre WhatsApp)"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg></a></li>
+        <li><a class="social__link" href="https://www.instagram.com/chiquifun/" target="_blank" rel="noopener"
+            aria-label="Instagram (abre en una pestaña nueva)"><svg viewBox="0 0 24 24" aria-hidden="true">
+              <use href="#ig" />
+            </svg></a></li>
+        <li><a class="social__link social__link--fill"
+            href="https://www.facebook.com/p/ChiquiFun-fundas-a-medida-para-el-automotor-100033470307190"
+            target="_blank" rel="noopener" aria-label="Facebook (abre en una pestaña nueva)"><svg viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path
+                d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.2v2.3H7.4V14h2.8v8z" />
+            </svg></a></li>
+        <li><a class="social__link social__link--fill" href="https://www.tiktok.com/@chiquifun?lang=es" target="_blank"
+            rel="noopener" aria-label="TikTok (abre en una pestaña nueva)"><svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M16.6 3c.3 2.2 1.6 3.6 3.9 3.8v3.1c-1.4.1-2.6-.3-3.9-1.1v5.6c0 3.5-2.4 6-5.8 6S5 18 5 15s2.6-5.6 6.2-5.3v3.2c-1.6-.3-3 .7-3 2.2 0 1.3 1 2.3 2.4 2.3 1.5 0 2.5-1 2.5-2.9V3z" />
+            </svg></a></li>
+        <li><a class="social__link social__link--fill" href="https://wa.me/5491131059835" target="_blank" rel="noopener"
+            aria-label="WhatsApp (abre WhatsApp)"><svg viewBox="0 0 24 24" aria-hidden="true">
+              <use href="#wa" />
+            </svg></a></li>
       </ul>
     </div>
   </footer>

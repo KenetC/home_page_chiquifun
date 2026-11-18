@@ -11,9 +11,38 @@
 
   /* Menú del celular */
   const label = toggle.querySelector('.menu-toggle__label');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* Coreografía con GSAP (si no cargó, el menú funciona igual, sin escalonado):
+     al abrir, los links suben uno tras otro mientras baja la cortina y el pie llega último;
+     al cerrar, se apagan rápido de abajo hacia arriba. Opacidad y no autoAlpha:
+     el primer link recibe el foco apenas se abre. */
+  const menuItems = [...menu.querySelectorAll('.nav__list > li'), menu.querySelector('.nav__foot')].filter(Boolean);
+  let menuAnim = null;
+  const animateMenu = (open) => {
+    const gsap = window.gsap;
+    if (!gsap) return;
+    menuAnim?.kill();
+    menuAnim = null;
+    if (desktop.matches || reduceMotion.matches) {
+      gsap.set(menuItems, { clearProps: 'opacity,transform' });
+      return;
+    }
+    if (open) {
+      menuAnim = gsap.fromTo(menuItems,
+        { opacity: 0, y: 28 },
+        { opacity: 1, y: 0, duration: .75, ease: 'expo.out', delay: .1, stagger: .045, clearProps: 'opacity,transform' });
+    } else {
+      menuAnim = gsap.timeline()
+        .to(menuItems, { opacity: 0, y: -10, duration: .2, ease: 'power2.in', stagger: { each: .012, from: 'end' } })
+        .set(menuItems, { clearProps: 'opacity,transform' }, '+=.3');  // ya con la cortina cerrada
+    }
+  };
 
   const setMenu = (open) => {
+    const wasOpen = header.classList.contains('is-open');
     header.classList.toggle('is-open', open);
+    if (open !== wasOpen) animateMenu(open);
     toggle.setAttribute('aria-expanded', String(open));
     label.textContent = open ? 'Cerrar menú' : 'Abrir menú';
     document.body.classList.toggle('is-locked', open);
@@ -85,7 +114,6 @@
   }
 
   /* ───────── Reseñas ───────── */
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   /* Carrusel en cinta: una copia de las reseñas a cada lado. Al pasar la última
      aparece la primera; cuando la cinta termina de moverse sobre una copia,
@@ -694,9 +722,10 @@
     const full = section.clientWidth;
     let w = full;
     if (phone.matches) {
-      // Celular: fila plana, una tarjeta centrada (86% del ancho, tope por alto de pantalla)
-      // y las vecinas asomando. u convierte unidades a px: el arrastre sigue al dedo 1:1.
-      flatW = Math.min(full * 0.86, 380, window.innerHeight * 0.62 * TILE_RATIO);
+      // Celular: fila plana, una tarjeta centrada (76% del ancho, tope por alto de pantalla)
+      // y las vecinas asomando a los costados, como en Reseñas. u convierte unidades a px:
+      // el arrastre sigue al dedo 1:1.
+      flatW = Math.min(full * 0.76, 340, window.innerHeight * 0.62 * TILE_RATIO);
       flatH = flatW / TILE_RATIO;
       flatP = flatW + 8;
       u = flatP / PITCH;
@@ -1025,11 +1054,32 @@
     if (drag) endDrag({ pointerId: drag.id, clientX: drag.lastX, timeStamp: drag.lastT });
   });
 
+  /* Celular: la primera vez que se ve la sección, la fila hace un amago hacia la izquierda
+     y vuelve, para mostrar que se puede deslizar. Si el usuario ya tocó, no se hace. */
+  let hinted = false, touched = false;
+  stage.addEventListener('pointerdown', () => { touched = true; }, true);
+  const hintSwipe = () => {
+    if (hinted || !phone.matches || reduceMotion.matches) return;
+    hinted = true;
+    setTimeout(() => {
+      if (touched || drag) return;
+      const home = Math.round(offset / PITCH) * PITCH;
+      snapTarget = home + PITCH * 0.22;
+      start();
+      setTimeout(() => {
+        if (touched || drag) return;
+        snapTarget = home;
+        start();
+      }, 420);
+    }, 700);
+  };
+
   new IntersectionObserver(([entry]) => {
     onScreen = entry.isIntersecting;
     if (onScreen) {
       section.classList.add('is-in');
       startVideos();
+      hintSwipe();
     }
     sync();
   }, { rootMargin: '10% 0px' }).observe(stage);
